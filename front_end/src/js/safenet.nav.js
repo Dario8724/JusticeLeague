@@ -39,6 +39,7 @@
             </svg>
           </button>
         </div>
+        <div id="scroll-progress" class="scroll-progress"></div>
       </header>
     `;
   };
@@ -103,10 +104,42 @@
         `;
         document.body.appendChild(menu);
         SafeNet.initActiveLinks();
+        menu.addEventListener('click', (e) => {
+          const target = e.target;
+          const isLink = target && (target.tagName === 'A' || target.closest('a'));
+          if (isLink) {
+            toggle.setAttribute('aria-expanded', 'false');
+            menu.classList.add('d-none');
+          }
+        });
       } else {
         menu.classList.toggle('d-none');
       }
     });
+
+    const progress = document.getElementById('scroll-progress');
+    let raf = 0;
+    const update = () => {
+      raf = 0;
+      const scrollTop = window.scrollY || document.documentElement.scrollTop || 0;
+      if (scrollTop > 10) navbar.classList.add('navbar-scrolled');
+      else navbar.classList.remove('navbar-scrolled');
+
+      if (progress) {
+        const max = (document.documentElement.scrollHeight || 0) - window.innerHeight;
+        const pct = max > 0 ? Math.min(100, Math.max(0, (scrollTop / max) * 100)) : 0;
+        progress.style.width = `${pct}%`;
+      }
+    };
+
+    const onScroll = () => {
+      if (raf) return;
+      raf = window.requestAnimationFrame(update);
+    };
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll, { passive: true });
+    update();
   };
 
   SafeNet.logout = function () {

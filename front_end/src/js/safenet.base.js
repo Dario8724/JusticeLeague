@@ -12,6 +12,7 @@
     if (this.initReport) this.initReport();
     if (this.initResources) this.initResources();
     if (this.adaptViewport) this.adaptViewport();
+    if (this.initUIEffects) this.initUIEffects();
     if (this.initScrollReveal) this.initScrollReveal();
   };
 

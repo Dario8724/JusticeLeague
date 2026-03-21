@@ -8,16 +8,16 @@
         if (!container || !input || !btn) return;
 
         let messages = [
-            { id: 1, text: "Olá! 👋 Sou o teu assistente de apoio. Estou aqui para te ajudar de forma segura e confidencial.", sender: "bot" },
+            { id: 1, text: "Olá. Sou o teu assistente de apoio. Estou aqui para ajudar de forma segura e confidencial.", sender: "bot" },
             { id: 2, text: "Como te posso ajudar hoje?", sender: "bot" },
         ];
         let emergencyCtaShown = false;
 
         const botResponses = {
-            "Preciso de ajuda": "Claro, estou aqui para te ouvir. Podes contar-me o que se passa? 💙",
+            "Preciso de ajuda": "Claro, estou aqui para te ouvir. Podes contar-me o que se passa?",
             "Quero denunciar": "Compreendo. Posso ajudar-te a fazer uma denúncia. Queres descrever o que aconteceu?",
             "Sinto-me triste": "Lamento que estejas a passar por isso. Lembra-te: não estás sozinho/a. Queres falar sobre o que sentes?",
-            "Não sei o que fazer": "Está tudo bem não saber. Vamos falar com calma e encontrar uma solução juntos. 🤝",
+            "Não sei o que fazer": "Está tudo bem não saber. Vamos falar com calma e encontrar uma solução juntos.",
         };
 
         const userIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary-foreground"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>`;
@@ -28,10 +28,10 @@
                 const isUser = msg.sender === "user";
                 return `
           <div class="flex gap-4 ${isUser ? "flex-row-reverse" : ""} animate-scale-in">
-            <div class="w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0 mt-1 ${isUser ? "bg-primary" : "bg-[#7c3aed]"}">
+            <div class="safenet-chat-avatar ${isUser ? "safenet-chat-avatar--user" : "safenet-chat-avatar--bot"}">
               ${isUser ? userIcon : botIcon}
             </div>
-            <div class="max-w-[80%] px-5 py-3.5 text-sm leading-relaxed ${isUser ? "bg-primary text-white rounded-2xl rounded-tr-sm" : "bg-[#f1f5f9] text-[#1e293b] rounded-2xl rounded-tl-sm"}">
+            <div class="safenet-bubble ${isUser ? "safenet-bubble--user" : "safenet-bubble--bot"}">
               ${msg.text}
             </div>
           </div>
@@ -40,7 +40,7 @@
 
             if (messages.length <= 2) {
                 const quick = ["Preciso de ajuda", "Quero denunciar", "Sinto-me triste", "Não sei o que fazer"];
-                const qHtml = `<div class="flex flex-wrap gap-2.5 pt-4 pl-13">${quick.map(r => `<button onclick="SafeNet.sendChat('${r}')" class="bg-[#f1f5f9] text-[#4338ca] px-5 py-2.5 rounded-full text-sm font-semibold active:scale-95 transition-all duration-150 hover:bg-[#e2e8f0] cursor-pointer border-0">${r}</button>`).join('')}</div>`;
+                const qHtml = `<div class="flex flex-wrap gap-2.5 pt-4" style="padding-left: 52px;">${quick.map(r => `<button onclick="SafeNet.sendChat('${r}')" class="safenet-chip btn-modern border-0" type="button">${r}</button>`).join('')}</div>`;
                 container.innerHTML += qHtml;
             }
 
@@ -54,7 +54,7 @@
             btn.disabled = true;
             render();
             setTimeout(() => {
-                const res = botResponses[text.trim()] || "Obrigado por partilhares. Estou aqui para te ouvir e ajudar no que precisares. 💙";
+                const res = botResponses[text.trim()] || "Obrigado por partilhares. Estou aqui para te ouvir e ajudar no que precisares.";
                 messages.push({ id: Date.now() + 1, text: res, sender: "bot" });
                 if (!emergencyCtaShown) {
                     emergencyCtaShown = true;
