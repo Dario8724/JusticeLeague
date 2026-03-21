@@ -1,0 +1,43 @@
+<!-- AspectRatio Component -->
+<!-- 
+  No HTML com Tailwind CSS, a funcionalidade do Radix UI AspectRatio 
+  é replicada utilizando as classes nativas de proporção (aspect-*).
+-->
+
+<div class="space-y-8 max-w-md">
+  <!-- Exemplo 16:9 (Vídeo/Imagens largas) -->
+  <div>
+    <p class="text-sm font-medium mb-2 text-muted-foreground">Proporção 16:9</p>
+    <div class="aspect-video w-full overflow-hidden rounded-md bg-muted">
+      <img 
+        src="placeholder.svg" 
+        alt="Exemplo 16:9" 
+        class="h-full w-full object-cover"
+      />
+    </div>
+  </div>
+
+  <!-- Exemplo 1:1 (Quadrado/Avatar) -->
+  <div>
+    <p class="text-sm font-medium mb-2 text-muted-foreground">Proporção 1:1 (Quadrado)</p>
+    <div class="aspect-square w-full overflow-hidden rounded-md bg-muted">
+      <img 
+        src="placeholder.svg" 
+        alt="Exemplo 1:1" 
+        class="h-full w-full object-cover"
+      />
+    </div>
+  </div>
+
+  <!-- Exemplo Customizado (4:3) -->
+  <div>
+    <p class="text-sm font-medium mb-2 text-muted-foreground">Proporção Customizada (4/3)</p>
+    <div class="w-full overflow-hidden rounded-md bg-muted" style="aspect-ratio: 4 / 3;">
+      <img 
+        src="placeholder.svg" 
+        alt="Exemplo 4:3" 
+        class="h-full w-full object-cover"
+      />
+    </div>
+  </div>
+</div>
