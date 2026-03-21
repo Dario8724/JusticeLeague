@@ -1,107 +1,23 @@
-<!-- Carousel Component -->
-<!-- Incluir a biblioteca Embla Carousel via CDN no <head> da tua página principal -->
-<!-- <script src="https://unpkg.com/embla-carousel/embla-carousel.umd.js"></script> -->
-
-<style>
-  .embla {
-    overflow: hidden;
-  }
-  .embla__container {
-    display: flex;
-    /* Adicionar margem negativa para compensar o padding dos items */
-    margin-left: -1rem; 
-  }
-  .embla__slide {
-    flex: 0 0 100%;
-    min-width: 0;
-    padding-left: 1rem;
-  }
-  
-  /* Botões desativados */
-  .carousel-button:disabled {
-    opacity: 0.5;
-    pointer-events: none;
-  }
-</style>
-
 <div class="p-12 max-w-2xl mx-auto">
   <div class="relative" role="region" aria-roledescription="carousel" id="embla-carousel">
-    <!-- Viewport -->
     <div class="embla overflow-hidden" id="embla-viewport">
-      <!-- Container -->
       <div class="embla__container flex">
-        <!-- Slides -->
         <div class="embla__slide flex-none w-full pl-4" role="group" aria-roledescription="slide">
-          <div class="p-1">
-            <div class="flex items-center justify-center border rounded-xl h-64 bg-card text-2xl font-bold">1</div>
-          </div>
+          <div class="p-1"><div class="flex items-center justify-center border rounded-xl h-64 bg-card text-2xl font-bold">1</div></div>
         </div>
         <div class="embla__slide flex-none w-full pl-4" role="group" aria-roledescription="slide">
-          <div class="p-1">
-            <div class="flex items-center justify-center border rounded-xl h-64 bg-card text-2xl font-bold">2</div>
-          </div>
+          <div class="p-1"><div class="flex items-center justify-center border rounded-xl h-64 bg-card text-2xl font-bold">2</div></div>
         </div>
         <div class="embla__slide flex-none w-full pl-4" role="group" aria-roledescription="slide">
-          <div class="p-1">
-            <div class="flex items-center justify-center border rounded-xl h-64 bg-card text-2xl font-bold">3</div>
-          </div>
-        </div>
-        <div class="embla__slide flex-none w-full pl-4" role="group" aria-roledescription="slide">
-          <div class="p-1">
-            <div class="flex items-center justify-center border rounded-xl h-64 bg-card text-2xl font-bold">4</div>
-          </div>
+          <div class="p-1"><div class="flex items-center justify-center border rounded-xl h-64 bg-card text-2xl font-bold">3</div></div>
         </div>
       </div>
     </div>
-
-    <!-- Navigation Buttons -->
-    <button 
-      id="carousel-prev" 
-      class="carousel-button absolute h-8 w-8 rounded-full border border-input bg-background hover:bg-accent hover:text-accent-foreground flex items-center justify-center shadow-sm -left-12 top-1/2 -translate-y-1/2 transition-all active:scale-90"
-      aria-label="Previous slide"
-    >
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-left"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
+    <button id="carousel-prev" class="carousel-button absolute h-8 w-8 rounded-full border border-input bg-background hover:bg-accent hover:text-accent-foreground flex items-center justify-center shadow-sm -left-12 top-1/2 -translate-y-1/2 transition-all active:scale-90" aria-label="Previous slide">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
     </button>
-    
-    <button 
-      id="carousel-next" 
-      class="carousel-button absolute h-8 w-8 rounded-full border border-input bg-background hover:bg-accent hover:text-accent-foreground flex items-center justify-center shadow-sm -right-12 top-1/2 -translate-y-1/2 transition-all active:scale-90"
-      aria-label="Next slide"
-    >
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+    <button id="carousel-next" class="carousel-button absolute h-8 w-8 rounded-full border border-input bg-background hover:bg-accent hover:text-accent-foreground flex items-center justify-center shadow-sm -right-12 top-1/2 -translate-y-1/2 transition-all active:scale-90" aria-label="Next slide">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
     </button>
   </div>
 </div>
-
-<!-- Script de Inicialização -->
-<script src="https://unpkg.com/embla-carousel/embla-carousel.umd.js"></script>
-<script>
-  (function() {
-    const viewportNode = document.getElementById('embla-viewport');
-    const prevBtn = document.getElementById('carousel-prev');
-    const nextBtn = document.getElementById('carousel-next');
-
-    // Inicializar Embla
-    const emblaApi = EmblaCarousel(viewportNode, { loop: false });
-
-    // Funções de Scroll
-    prevBtn.addEventListener('click', () => emblaApi.scrollPrev(), false);
-    nextBtn.addEventListener('click', () => emblaApi.scrollNext(), false);
-
-    // Atualizar estado dos botões
-    const updateButtons = () => {
-      prevBtn.disabled = !emblaApi.canScrollPrev();
-      nextBtn.disabled = !emblaApi.canScrollNext();
-    };
-
-    emblaApi.on('select', updateButtons);
-    emblaApi.on('init', updateButtons);
-    emblaApi.on('reInit', updateButtons);
-
-    // Suporte para teclas de seta
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'ArrowLeft') emblaApi.scrollPrev();
-      if (e.key === 'ArrowRight') emblaApi.scrollNext();
-    });
-  })();
-</script>

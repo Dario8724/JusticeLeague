@@ -1,37 +1,12 @@
-<!-- Card Component -->
-<div class="p-8 space-y-8 max-w-2xl mx-auto">
-  
-  <!-- Standard Card -->
-  <div class="rounded-lg border bg-card text-card-foreground shadow-sm">
-    <!-- Card Header -->
+<div class="p-12 max-w-sm mx-auto">
+  <div class="rounded-2xl border border-border bg-card text-card-foreground shadow-sm overflow-hidden transition-all hover:shadow-md">
     <div class="flex flex-col space-y-1.5 p-6">
-      <h3 class="text-2xl font-semibold leading-none tracking-tight">Título do Cartão</h3>
-      <p class="text-sm text-muted-foreground">Esta é a descrição opcional do cartão.</p>
+      <h3 class="text-xl font-bold leading-none tracking-tight">Título do Card</h3>
+      <p class="text-sm text-muted-foreground">Uma breve descrição do conteúdo deste cartão informativo.</p>
     </div>
-    
-    <!-- Card Content -->
-    <div class="p-6 pt-0">
-      <p class="text-sm leading-relaxed">
-        Este é o conteúdo principal do cartão. Podes colocar aqui qualquer elemento HTML, como formulários, imagens ou texto detalhado.
-      </p>
-    </div>
-    
-    <!-- Card Footer -->
-    <div class="flex items-center p-6 pt-0">
-      <button class="inline-flex items-center justify-center rounded-md text-sm font-medium bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2 transition-colors">
-        Ação Principal
-      </button>
+    <div class="p-6 pt-0 text-sm leading-relaxed">Este é o corpo principal do card onde podes colocar textos, listas ou outros elementos UI.</div>
+    <div class="flex items-center p-6 pt-0 border-t border-border/50 mt-4 bg-muted/20">
+      <button class="text-sm font-bold text-primary hover:underline">Saber mais →</button>
     </div>
   </div>
-
-  <!-- Minimal Card -->
-  <div class="rounded-lg border bg-card text-card-foreground shadow-sm">
-    <div class="p-6">
-      <h3 class="text-lg font-bold mb-2">Cartão Simples</h3>
-      <p class="text-sm text-muted-foreground">
-        Um exemplo de cartão sem separação explícita de header e footer, apenas com padding uniforme.
-      </p>
-    </div>
-  </div>
-
 </div>

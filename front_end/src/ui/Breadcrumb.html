@@ -1,44 +1,19 @@
-<!-- Breadcrumb Component -->
-<nav aria-label="breadcrumb" class="p-4">
+<nav aria-label="breadcrumb" class="p-12 flex justify-center">
   <ol class="flex flex-wrap items-center gap-1.5 break-words text-sm text-muted-foreground sm:gap-2.5">
-    <!-- Home Link -->
     <li class="inline-flex items-center gap-1.5">
-      <a href="HomeScreen.html" class="transition-colors hover:text-foreground">Início</a>
+      <a class="transition-colors hover:text-foreground cursor-pointer" href="/">Home</a>
     </li>
-
-    <!-- Separator -->
     <li role="presentation" aria-hidden="true" class="[&>svg]:size-3.5">
-      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right"><path d="m9 18 6-6-6-6"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
     </li>
-
-    <!-- Ellipsis Example (Optional) -->
     <li class="inline-flex items-center gap-1.5">
-      <span role="presentation" aria-hidden="true" class="flex h-9 w-9 items-center justify-center">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-more-horizontal"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg>
-        <span class="sr-only">More</span>
-      </span>
+      <a class="transition-colors hover:text-foreground cursor-pointer" href="/components">Components</a>
     </li>
-
-    <!-- Separator -->
     <li role="presentation" aria-hidden="true" class="[&>svg]:size-3.5">
-      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right"><path d="m9 18 6-6-6-6"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
     </li>
-
-    <!-- Category Link -->
     <li class="inline-flex items-center gap-1.5">
-      <a href="ResourcesScreen.html" class="transition-colors hover:text-foreground">Recursos</a>
-    </li>
-
-    <!-- Separator -->
-    <li role="presentation" aria-hidden="true" class="[&>svg]:size-3.5">
-      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right"><path d="m9 18 6-6-6-6"/></svg>
-    </li>
-
-    <!-- Current Page -->
-    <li class="inline-flex items-center gap-1.5">
-      <span role="link" aria-disabled="true" aria-current="page" class="font-normal text-foreground">
-        Segurança Online
-      </span>
+      <span role="link" aria-disabled="true" aria-current="page" class="font-normal text-foreground">Breadcrumb</span>
     </li>
   </ol>
 </nav>

@@ -3,250 +3,66 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Chat de Apoio - SafeSpace</title>
+  <title>Chat de Apoio - SafeNet</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --background: 220 20% 97%;
-      --foreground: 220 30% 12%;
-      --primary: 230 72% 56%;
-      --primary-foreground: 0 0% 100%;
-      --secondary: 220 14% 96%;
-      --secondary-foreground: 220 30% 12%;
-      --accent: 260 60% 58%;
-      --accent-foreground: 0 0% 100%;
-      --muted: 220 14% 96%;
-      --muted-foreground: 220 8% 46%;
-      --card: 0 0% 100%;
-      --border: 220 13% 91%;
-      --ring: 230 72% 56%;
-      --chat-user: 230 72% 56%;
-      --chat-user-foreground: 0 0% 100%;
-      --chat-bot: 220 14% 96%;
-      --chat-bot-foreground: 220 30% 12%;
-    }
-    body {
-      font-family: 'Inter', sans-serif;
-      background: hsl(var(--background));
-      color: hsl(var(--foreground));
-    }
-  </style>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            background: "hsl(var(--background))",
-            foreground: "hsl(var(--foreground))",
-            primary: {
-              DEFAULT: "hsl(var(--primary))",
-              foreground: "hsl(var(--primary-foreground))"
-            },
-            secondary: {
-              DEFAULT: "hsl(var(--secondary))",
-              foreground: "hsl(var(--secondary-foreground))"
-            },
-            accent: {
-              DEFAULT: "hsl(var(--accent))",
-              foreground: "hsl(var(--accent-foreground))"
-            },
-            muted: {
-              DEFAULT: "hsl(var(--muted))",
-              foreground: "hsl(var(--muted-foreground))"
-            },
-            card: "hsl(var(--card))",
-            border: "hsl(var(--border))",
-            ring: "hsl(var(--ring))",
-            "chat-user": {
-              DEFAULT: "hsl(var(--chat-user))",
-              foreground: "hsl(var(--chat-user-foreground))"
-            },
-            "chat-bot": {
-              DEFAULT: "hsl(var(--chat-bot))",
-              foreground: "hsl(var(--chat-bot-foreground))"
-            }
-          },
-          animation: {
-            "fade-up": "fadeUp 0.5s ease-out forwards",
-            "scale-in": "scaleIn 0.3s ease-out forwards"
-          },
-          keyframes: {
-            fadeUp: {
-              "0%": { opacity: "0", transform: "translateY(20px)" },
-              "100%": { opacity: "1", transform: "translateY(0)" }
-            },
-            scaleIn: {
-              "0%": { opacity: "0", transform: "scale(0.95)" },
-              "100%": { opacity: "1", transform: "scale(1)" }
-            }
-          }
-        }
-      }
-    }
-  </script>
+  <link rel="stylesheet" href="../css/style.css">
+  <script src="../js/config.js"></script>
 </head>
-<body class="min-h-screen pt-20 pb-8 flex justify-center items-start">
-  
-  <!-- Back Button -->
-  <a href="HomeScreen.html" class="absolute top-6 left-6 text-muted-foreground hover:text-foreground transition-colors flex items-center gap-2 text-sm font-medium hover:bg-black/5 p-2 rounded-lg cursor-pointer">
+<body class="min-h-screen pt-20 pb-8 flex flex-col items-center">
+  <header id="main-navbar" class="fixed top-0 left-0 right-0 z-50 glass border-b border-border/50 bg-white/80 backdrop-blur-md">
+    <div class="container mx-auto px-4 flex items-center justify-between h-16">
+      <a href="HomeScreen.html" class="flex items-center gap-2.5 group">
+        <div class="w-9 h-9 rounded-xl bg-primary flex items-center justify-center shadow-md shadow-primary/25 group-active:scale-95 transition-transform">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary-foreground"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg>
+        </div>
+        <span class="text-lg font-extrabold tracking-tight">Safe<span class="gradient-text">Net</span></span>
+      </a>
+      <nav class="hidden md:flex items-center gap-1">
+        <a href="HomeScreen.html" class="nav-link px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-200 active:scale-95 text-muted-foreground hover:text-foreground hover:bg-muted">Início</a>
+        <a href="ChatScreen.html" class="nav-link px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-200 active:scale-95 text-muted-foreground hover:text-foreground hover:bg-muted">Chat de Apoio</a>
+        <a href="ResourcesScreen.html" class="nav-link px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-200 active:scale-95 text-muted-foreground hover:text-foreground hover:bg-muted">Recursos</a>
+        <a href="ReportScreen.html" class="nav-link px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-200 active:scale-95 text-muted-foreground hover:text-foreground hover:bg-muted">Denúncia</a>
+      </nav>
+      <div class="hidden md:flex items-center gap-3">
+        <a href="ChatScreen.html" class="bg-primary text-primary-foreground px-5 py-2.5 rounded-xl text-sm font-bold shadow-lg shadow-primary/20 hover:shadow-primary/30 active:scale-95 transition-all duration-200">Pedir Ajuda</a>
+      </div>
+      <button id="mobile-toggle" class="md:hidden p-2 rounded-lg hover:bg-muted active:scale-95 transition-transform text-foreground">
+        <svg id="menu-icon" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        <svg id="close-icon" class="hidden" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden border-t border-border/50 bg-white/95 backdrop-blur-md animate-fade-in">
+      <div class="container mx-auto px-4 py-4 space-y-1">
+        <a href="HomeScreen.html" class="nav-link block w-full text-left px-4 py-3 rounded-xl text-sm font-semibold transition-colors text-muted-foreground hover:bg-muted">Início</a>
+        <a href="ChatScreen.html" class="nav-link block w-full text-left px-4 py-3 rounded-xl text-sm font-semibold transition-colors text-muted-foreground hover:bg-muted">Chat de Apoio</a>
+        <a href="ResourcesScreen.html" class="nav-link block w-full text-left px-4 py-3 rounded-xl text-sm font-semibold transition-colors text-muted-foreground hover:bg-muted">Recursos</a>
+        <a href="ReportScreen.html" class="nav-link block w-full text-left px-4 py-3 rounded-xl text-sm font-semibold transition-colors text-muted-foreground hover:bg-muted">Denúncia</a>
+        <a href="ChatScreen.html" class="block w-full bg-primary text-primary-foreground text-center px-4 py-3 rounded-xl text-sm font-bold mt-2">Pedir Ajuda</a>
+      </div>
+    </div>
+  </header>
+  <a href="HomeScreen.html" class="absolute top-24 left-6 text-muted-foreground hover:text-foreground transition-colors flex items-center gap-2 text-sm font-medium hover:bg-black/5 p-2 rounded-lg cursor-pointer z-10">
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
     Voltar
   </a>
-
-  <div class="container max-w-3xl w-full px-4">
-    <!-- Header -->
+  <div class="container max-w-3xl w-full px-4 mt-8">
     <div class="mb-6 animate-fade-up">
       <h1 class="text-2xl md:text-3xl font-black tracking-tight">Chat de Apoio</h1>
       <p class="text-muted-foreground text-sm mt-1">Conversa confidencial e segura 🔒</p>
     </div>
-
-    <!-- Chat container -->
     <div class="bg-card border border-border/60 rounded-3xl shadow-sm overflow-hidden animate-fade-up" style="animation-delay: 100ms;">
-      <!-- Messages -->
-      <div id="messagesContainer" class="h-[60vh] overflow-y-auto px-5 md:px-8 py-6 space-y-4">
-        <!-- Message injection -->
-      </div>
-
-      <!-- Input -->
+      <div id="messagesContainer" class="h-[60vh] overflow-y-auto px-5 md:px-8 py-6 space-y-4"></div>
       <div class="border-t border-border/60 px-5 md:px-8 py-4 bg-muted/30">
         <div class="flex gap-3">
-          <input
-            id="chatInput"
-            type="text"
-            placeholder="Escreve a tua mensagem..."
-            class="flex-1 bg-card border border-border rounded-xl px-5 py-3 text-sm outline-none focus:ring-2 focus:ring-ring/50 transition-shadow"
-          />
-          <button
-            id="sendButton"
-            disabled
-            class="bg-primary text-primary-foreground rounded-xl p-3 active:scale-95 transition-all duration-150 shadow-md shadow-primary/20 disabled:opacity-40 disabled:pointer-events-none hover:shadow-lg flex items-center justify-center shrink-0"
-            style="width: 46px; height: 46px;"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-send"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
+          <input id="chatInput" type="text" placeholder="Escreve a tua mensagem..." class="flex-1 bg-card border border-border rounded-xl px-5 py-3 text-sm outline-none focus:ring-2 focus:ring-ring/50 transition-shadow" />
+          <button id="sendButton" disabled class="bg-primary text-primary-foreground rounded-xl p-3 active:scale-95 transition-all duration-150 shadow-md shadow-primary/20 disabled:opacity-40 disabled:pointer-events-none hover:shadow-lg flex items-center justify-center shrink-0" style="width: 46px; height: 46px;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
           </button>
         </div>
       </div>
     </div>
   </div>
-
-  <script>
-    // State
-    let messages = [
-      { id: 1, text: "Olá! 👋 Sou o teu assistente de apoio. Estou aqui para te ajudar de forma segura e confidencial.", sender: "bot" },
-      { id: 2, text: "Como te posso ajudar hoje?", sender: "bot" },
-    ];
-    
-    const quickReplies = [
-      "Preciso de ajuda",
-      "Quero denunciar",
-      "Sinto-me triste",
-      "Não sei o que fazer",
-    ];
-    
-    const botResponses = {
-      "Preciso de ajuda": "Claro, estou aqui para te ouvir. Podes contar-me o que se passa? 💙",
-      "Quero denunciar": "Compreendo. Posso ajudar-te a fazer uma denúncia. Queres descrever o que aconteceu?",
-      "Sinto-me triste": "Lamento que estejas a passar por isso. Lembra-te: não estás sozinho/a. Queres falar sobre o que sentes?",
-      "Não sei o que fazer": "Está tudo bem não saber. Vamos falar com calma e encontrar uma solução juntos. 🤝",
-    };
-
-    // DOM Elements
-    const messagesContainer = document.getElementById("messagesContainer");
-    const chatInput = document.getElementById("chatInput");
-    const sendButton = document.getElementById("sendButton");
-
-    // Icons
-    const userIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary-foreground"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>`;
-    const botIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-accent-foreground"><path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/><path d="M2 14h2"/><path d="M20 14h2"/><path d="M15 13v2"/><path d="M9 13v2"/></svg>`;
-
-    // Escape HTML function to prevent XSS
-    function escapeHTML(str) {
-      const p = document.createElement('p');
-      p.innerText = str;
-      return p.innerHTML;
-    }
-
-    // Render Messages
-    function renderMessages() {
-      let html = messages.map(msg => {
-        const isUser = msg.sender === "user";
-        return `
-          <div class="flex gap-3 ${isUser ? "flex-row-reverse" : ""} animate-scale-in">
-            <div class="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 mt-1 ${isUser ? "bg-primary" : "bg-accent"}">
-              ${isUser ? userIcon : botIcon}
-            </div>
-            <div class="max-w-[70%] px-5 py-3.5 text-sm leading-relaxed ${isUser ? "bg-chat-user text-chat-user-foreground rounded-2xl rounded-tr-md" : "bg-chat-bot text-chat-bot-foreground rounded-2xl rounded-tl-md"}">
-              ${escapeHTML(msg.text)}
-            </div>
-          </div>
-        `;
-      }).join('');
-
-      // Render Quick Replies inside messages container if messages <= 3
-      if (messages.length <= 3) {
-        html += `
-          <div class="flex flex-wrap gap-2 pt-3 pl-11">
-            ${quickReplies.map(reply => `
-              <button
-                onclick="sendQuickReply('${reply.replace(/'/g, "\\'")}')"
-                class="bg-secondary text-secondary-foreground px-4 py-2.5 rounded-xl text-sm font-semibold active:scale-95 transition-all duration-150 border border-border/60 hover:shadow-md cursor-pointer"
-              >
-                ${reply}
-              </button>
-            `).join('')}
-          </div>
-        `;
-      }
-
-      messagesContainer.innerHTML = html;
-      
-      // Auto-scrolling to bottom
-      setTimeout(() => {
-        messagesContainer.scrollTop = messagesContainer.scrollHeight;
-      }, 0);
-    }
-
-    // Handle Sending Message
-    window.sendMessage = (text) => {
-      if (!text || !text.trim()) return;
-      
-      const userText = text.trim();
-      messages.push({ id: Date.now(), text: userText, sender: "user" });
-      chatInput.value = "";
-      sendButton.disabled = true;
-      renderMessages();
-
-      setTimeout(() => {
-        const response = botResponses[userText] || "Obrigado por partilhares. Estou aqui para te ouvir e ajudar no que precisares. 💙";
-        messages.push({ id: Date.now() + 1, text: response, sender: "bot" });
-        renderMessages();
-      }, 800);
-    };
-
-    window.sendQuickReply = (text) => {
-      window.sendMessage(text);
-    };
-
-    // Event Listeners
-    chatInput.addEventListener('input', (e) => {
-      sendButton.disabled = !e.target.value.trim();
-    });
-
-    chatInput.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' && chatInput.value.trim()) {
-        window.sendMessage(chatInput.value);
-      }
-    });
-
-    sendButton.addEventListener('click', () => {
-      if (chatInput.value.trim()) {
-        window.sendMessage(chatInput.value);
-      }
-    });
-
-    // Initial render
-    renderMessages();
-  </script>
+  <script src="../js/main.js"></script>
 </body>
 </html>

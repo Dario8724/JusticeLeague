@@ -6,48 +6,15 @@
   <title>Página Não Encontrada - SafeNet</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --background: 220 20% 97%;
-      --foreground: 220 30% 12%;
-      --primary: 230 72% 56%;
-      --muted: 220 14% 96%;
-      --muted-foreground: 220 8% 46%;
-    }
-    body {
-      font-family: 'Inter', sans-serif;
-      background: hsl(var(--background));
-      color: hsl(var(--foreground));
-    }
-  </style>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            background: "hsl(var(--background))",
-            foreground: "hsl(var(--foreground))",
-            primary: "hsl(var(--primary))",
-            muted: "hsl(var(--muted))",
-            "muted-foreground": "hsl(var(--muted-foreground))"
-          }
-        }
-      }
-    }
-  </script>
+  <link rel="stylesheet" href="../css/style.css">
+  <script src="../js/config.js"></script>
 </head>
 <body class="flex min-h-screen items-center justify-center bg-muted">
   <div class="text-center">
     <h1 class="mb-4 text-4xl font-bold">404</h1>
     <p class="mb-4 text-xl text-muted-foreground">Oops! Página não encontrada</p>
-    <a href="HomeScreen.html" class="text-primary underline hover:text-primary/90 transition-colors">
-      Voltar ao início
-    </a>
+    <a href="HomeScreen.html" class="text-primary underline hover:text-primary/90 transition-colors">Voltar ao início</a>
   </div>
-
-  <script>
-    // Console log para simular o useEffect do React
-    console.error("404 Error: O utilizador tentou aceder a uma rota inexistente:", window.location.pathname);
-  </script>
+  <script src="../js/main.js"></script>
 </body>
 </html>

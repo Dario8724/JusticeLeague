@@ -1,30 +1,8 @@
-<!-- Avatar Component -->
-<div class="flex items-center gap-4">
-  <!-- Avatar with Image -->
-  <div class="relative flex h-10 w-10 shrink-0 overflow-hidden rounded-full border border-border">
-    <img 
-      src="placeholder.svg" 
-      alt="User Avatar" 
-      class="aspect-square h-full w-full object-cover"
-      onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
-    />
-    <!-- Fallback (Hidden if image loads) -->
-    <div class="hidden h-full w-full items-center justify-center rounded-full bg-muted text-xs font-medium uppercase text-muted-foreground">
-      JD
-    </div>
+<div class="p-12 flex flex-wrap gap-6 items-center justify-center">
+  <div class="relative flex h-10 w-10 shrink-0 overflow-hidden rounded-full border border-border shadow-sm">
+    <img class="aspect-square h-full w-full object-cover" alt="User Avatar" src="https://github.com/shadcn.png" />
   </div>
-
-  <!-- Avatar Fallback Only -->
-  <div class="relative flex h-10 w-10 shrink-0 overflow-hidden rounded-full bg-muted border border-border">
-    <div class="flex h-full w-full items-center justify-center rounded-full text-xs font-medium uppercase text-muted-foreground">
-      SN
-    </div>
-  </div>
-
-  <!-- Large Avatar Example -->
-  <div class="relative flex h-16 w-16 shrink-0 overflow-hidden rounded-full border-2 border-primary/20">
-    <div class="flex h-full w-full items-center justify-center rounded-full bg-primary/10 text-primary font-bold text-xl uppercase">
-      A
-    </div>
+  <div class="relative flex h-12 w-12 shrink-0 overflow-hidden rounded-full bg-muted border border-border shadow-sm">
+    <span class="flex h-full w-full items-center justify-center rounded-full bg-muted font-bold text-muted-foreground uppercase">SN</span>
   </div>
 </div>

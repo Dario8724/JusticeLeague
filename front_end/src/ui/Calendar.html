@@ -1,149 +1,27 @@
-<!-- Calendar Component -->
-<div class="p-3 border rounded-md bg-card shadow-sm w-fit" id="calendar-container">
-  <!-- Calendar Header -->
-  <div class="flex justify-between items-center pt-1 pb-4 relative">
-    <button 
-      type="button" 
-      id="prev-month"
-      class="h-7 w-7 bg-transparent p-0 opacity-50 hover:opacity-100 border border-input rounded-md flex items-center justify-center transition-opacity active:scale-95"
-    >
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
-    </button>
-    
-    <div id="current-month-label" class="text-sm font-medium"></div>
-    
-    <button 
-      type="button" 
-      id="next-month"
-      class="h-7 w-7 bg-transparent p-0 opacity-50 hover:opacity-100 border border-input rounded-md flex items-center justify-center transition-opacity active:scale-95"
-    >
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
-    </button>
+<div class="p-12 flex justify-center">
+  <div class="p-4 border rounded-xl bg-card shadow-sm animate-scale-in">
+    <div class="flex items-center justify-between mb-4">
+      <h4 class="font-bold text-sm px-2">Março 2024</h4>
+      <div class="flex gap-1">
+        <button class="p-1 rounded-md hover:bg-muted"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg></button>
+        <button class="p-1 rounded-md hover:bg-muted"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></button>
+      </div>
+    </div>
+    <div class="grid grid-cols-7 gap-1 text-center text-xs">
+      <div class="font-medium text-muted-foreground py-2">Dom</div>
+      <div class="font-medium text-muted-foreground py-2">Seg</div>
+      <div class="font-medium text-muted-foreground py-2">Ter</div>
+      <div class="font-medium text-muted-foreground py-2">Qua</div>
+      <div class="font-medium text-muted-foreground py-2">Qui</div>
+      <div class="font-medium text-muted-foreground py-2">Sex</div>
+      <div class="font-medium text-muted-foreground py-2">Sáb</div>
+      <div class="p-2 rounded-md hover:bg-muted">1</div>
+      <div class="p-2 rounded-md hover:bg-muted">2</div>
+      <div class="p-2 rounded-md bg-primary text-primary-foreground font-bold">3</div>
+      <div class="p-2 rounded-md hover:bg-muted">4</div>
+      <div class="p-2 rounded-md hover:bg-muted">5</div>
+      <div class="p-2 rounded-md hover:bg-muted">6</div>
+      <div class="p-2 rounded-md hover:bg-muted">7</div>
+    </div>
   </div>
-
-  <!-- Calendar Table -->
-  <table class="w-full border-collapse space-y-1">
-    <thead>
-      <tr class="flex">
-        <th class="text-muted-foreground rounded-md w-9 font-normal text-[0.8rem]">Do</th>
-        <th class="text-muted-foreground rounded-md w-9 font-normal text-[0.8rem]">Se</th>
-        <th class="text-muted-foreground rounded-md w-9 font-normal text-[0.8rem]">Te</th>
-        <th class="text-muted-foreground rounded-md w-9 font-normal text-[0.8rem]">Qu</th>
-        <th class="text-muted-foreground rounded-md w-9 font-normal text-[0.8rem]">Qu</th>
-        <th class="text-muted-foreground rounded-md w-9 font-normal text-[0.8rem]">Se</th>
-        <th class="text-muted-foreground rounded-md w-9 font-normal text-[0.8rem]">Sá</th>
-      </tr>
-    </thead>
-    <tbody id="calendar-body">
-      <!-- Days will be injected here -->
-    </tbody>
-  </table>
 </div>
-
-<script>
-  (function() {
-    const container = document.getElementById('calendar-container');
-    const body = document.getElementById('calendar-body');
-    const label = document.getElementById('current-month-label');
-    const prevBtn = document.getElementById('prev-month');
-    const nextBtn = document.getElementById('next-month');
-
-    let currentDate = new Date();
-    let selectedDate = new Date();
-
-    const months = [
-      "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho",
-      "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"
-    ];
-
-    function renderCalendar() {
-      const year = currentDate.getFullYear();
-      const month = currentDate.getMonth();
-      
-      label.innerText = `${months[month]} ${year}`;
-      body.innerHTML = '';
-
-      const firstDay = new Date(year, month, 1).getDay();
-      const daysInMonth = new Date(year, month + 1, 0).getDate();
-      const prevMonthDays = new Date(year, month, 0).getDate();
-
-      let days = [];
-      
-      // Outside days (prev month)
-      for (let i = firstDay - 1; i >= 0; i--) {
-        days.push({ day: prevMonthDays - i, outside: true });
-      }
-
-      // Current month days
-      for (let i = 1; i <= daysInMonth; i++) {
-        days.push({ day: i, outside: false });
-      }
-
-      // Outside days (next month)
-      const remaining = 42 - days.length;
-      for (let i = 1; i <= remaining; i++) {
-        days.push({ day: i, outside: true });
-      }
-
-      // Render weeks
-      for (let i = 0; i < 6; i++) {
-        const row = document.createElement('tr');
-        row.className = 'flex w-full mt-2';
-        
-        for (let j = 0; j < 7; j++) {
-          const dayData = days[i * 7 + j];
-          const cell = document.createElement('td');
-          cell.className = 'h-9 w-9 text-center text-sm p-0 relative focus-within:relative focus-within:z-20';
-          
-          const btn = document.createElement('button');
-          btn.type = 'button';
-          btn.innerText = dayData.day;
-          
-          // Base day styles (buttonVariants ghost)
-          let btnClasses = 'inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-normal transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-9 w-9 p-0 hover:bg-accent hover:text-accent-foreground';
-          
-          const isToday = !dayData.outside && dayData.day === new Date().getDate() && month === new Date().getMonth() && year === new Date().getFullYear();
-          const isSelected = !dayData.outside && dayData.day === selectedDate.getDate() && month === selectedDate.getMonth() && year === selectedDate.getFullYear();
-
-          if (dayData.outside) {
-            btnClasses += ' text-muted-foreground opacity-50';
-          }
-          
-          if (isToday) {
-            btnClasses += ' bg-accent text-accent-foreground';
-          }
-
-          if (isSelected) {
-            btnClasses = btnClasses.replace('hover:bg-accent hover:text-accent-foreground', '');
-            btnClasses += ' bg-primary text-primary-foreground hover:bg-primary hover:text-primary-foreground focus:bg-primary focus:text-primary-foreground opacity-100';
-          }
-
-          btn.className = btnClasses;
-          
-          if (!dayData.outside) {
-            btn.onclick = () => {
-              selectedDate = new Date(year, month, dayData.day);
-              renderCalendar();
-            };
-          }
-
-          cell.appendChild(btn);
-          row.appendChild(cell);
-        }
-        body.appendChild(row);
-      }
-    }
-
-    prevBtn.onclick = () => {
-      currentDate.setMonth(currentDate.getMonth() - 1);
-      renderCalendar();
-    };
-
-    nextBtn.onclick = () => {
-      currentDate.setMonth(currentDate.getMonth() + 1);
-      renderCalendar();
-    };
-
-    renderCalendar();
-  })();
-</script>
