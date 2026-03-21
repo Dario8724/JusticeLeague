@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <title>Login - SafeNet</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-light">
+
+<div class="container mt-5 pt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+
+      <div class="card shadow p-4">
+        <h3 class="text-center mb-4">Aceder ao SafeNet</h3>
+
+        <!-- Tabs -->
+        <ul class="nav nav-tabs mb-3">
+          <li class="nav-item">
+            <button class="nav-link active" onclick="showTab('login')">Login</button>
+          </li>
+          <li class="nav-item">
+            <button class="nav-link" onclick="showTab('register')">Registo</button>
+          </li>
+          <li class="nav-item">
+            <button class="nav-link" onclick="showTab('anon')">Anónimo</button>
+          </li>
+        </ul>
+
+        <!-- LOGIN NORMAL -->
+        <div id="loginTab">
+          <form>
+            <input type="email" class="form-control mb-3" placeholder="Email" required>
+            <input type="password" class="form-control mb-3" placeholder="Password" required>
+
+            <select class="form-control mb-3">
+              <option>Utilizador</option>
+              <option>Agente PSP</option>
+            </select>
+
+            <button class="btn btn-primary w-100">Entrar</button>
+          </form>
+        </div>
+
+        <!-- REGISTO COMPLETO -->
+        <div id="registerTab" style="display:none;">
+          <form>
+            <input type="text" class="form-control mb-2" placeholder="Nome completo" required>
+
+            <select class="form-control mb-2">
+              <option>Sexo</option>
+              <option>Masculino</option>
+              <option>Feminino</option>
+              <option>Outro</option>
+            </select>
+
+            <input type="email" class="form-control mb-2" placeholder="Email" required>
+            <input type="password" class="form-control mb-2" placeholder="Password" required>
+
+            <input type="date" class="form-control mb-2" required>
+            <input type="tel" class="form-control mb-2" placeholder="Telemóvel" required>
+
+            <select class="form-control mb-3">
+              <option>Tipo de conta</option>
+              <option>Utilizador</option>
+              <option>Agente PSP</option>
+            </select>
+
+            <button class="btn btn-success w-100">Criar Conta</button>
+          </form>
+        </div>
+
+        <!-- LOGIN ANÓNIMO -->
+        <div id="anonTab" style="display:none;">
+          <div class="text-center">
+            <p>Podes entrar sem criar conta 👇</p>
+            <button class="btn btn-dark w-100" onclick="loginAnon()">
+              Entrar Anonimamente
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+function showTab(tab) {
+  document.getElementById("loginTab").style.display = "none";
+  document.getElementById("registerTab").style.display = "none";
+  document.getElementById("anonTab").style.display = "none";
+
+  document.getElementById(tab + "Tab").style.display = "block";
+}
+
+function loginAnon() {
+  alert("Entraste como utilizador anónimo!");
+  window.location.href = "ChatScreen.html";
+}
+</script>
+
+</body>
+</html>
