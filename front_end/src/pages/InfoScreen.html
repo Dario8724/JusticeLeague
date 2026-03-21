@@ -7,9 +7,9 @@
   <title>Informação - SafeNet</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="../css/style.css">
-  <link rel="stylesheet" href="../css/info.css">
   <script src="../js/config.js"></script>
 </head>
 
@@ -17,297 +17,498 @@
   <div id="main-navbar-container"></div>
 
   <main class="flex-grow-1">
-    <!-- HERO -->
-    <div class="info-hero">
-      <div class="hero-inner container mx-auto px-4">
-        <div class="label">Informação</div>
-        <h1>Conhecer é a melhor<br><span>forma de te protegeres.</span></h1>
-        <p>Tudo o que precisas de saber sobre cyberbullying — o que é, como reconhecer, o que fazer e o que diz a lei.</p>
-        <div class="tab-nav">
-          <button class="tab-btn active" onclick="showTab('oque', this)">O que é?</button>
-          <button class="tab-btn" onclick="showTab('tipos', this)">Tipos</button>
-          <button class="tab-btn" onclick="showTab('proteger', this)">Como me proteger</button>
-          <button class="tab-btn" onclick="showTab('lei', this)">Legislação</button>
-        </div>
-      </div>
-    </div>
-
-    <div class="container mx-auto px-4">
-      <!-- TAB: O QUE É -->
-      <div class="info-section active" id="tab-oque">
-        <div class="section-title">O que é o cyberbullying?</div>
-        <div class="section-sub">Explicado de forma simples, para perceberes quando algo não está bem.</div>
-
-        <div class="highlight">
-          <div class="highlight-icon">💡</div>
-          <div>
-            <h3>Definição simples</h3>
-            <p>Cyberbullying é quando alguém usa a internet, o telemóvel ou as redes sociais para magoar, assustar, humilhar ou controlar outra pessoa — de forma repetida e intencional. Não é uma brincadeira e não é normal.</p>
+    <section class="hero-gradient pt-32 pb-16 overflow-hidden">
+      <div class="container px-4">
+        <div class="row justify-content-center">
+          <div class="col-12 col-lg-10 text-center animate-reveal">
+            <p class="text-primary fw-black small tracking-[0.2em] text-uppercase mb-3">Informação</p>
+            <h1 class="display-5 fw-black tracking-tighter mb-3">Conhecer é a melhor forma de te protegeres.</h1>
+            <p class="text-muted-foreground fs-5 mb-0">Tudo o que precisas de saber sobre cyberbullying — o que é, como
+              reconhecer, o que fazer e o que diz a lei.</p>
           </div>
         </div>
 
-        <div class="cards-grid">
-          <div class="info-card">
-            <div class="card-icon" style="background:#EEF2FF">🔁</div>
-            <h3>É repetido</h3>
-            <p>Não acontece só uma vez. O agressor volta sempre — pode ser todos os dias, semanas ou meses. Essa repetição é o que o torna tão difícil de suportar.</p>
-            <span class="card-tag" style="background:#EEF2FF;color:#4338CA">Característica-chave</span>
-          </div>
-          <div class="info-card">
-            <div class="card-icon" style="background:#FEF2F2">😰</div>
-            <h3>Causa sofrimento real</h3>
-            <p>Mesmo que seja "só online", as palavras e as imagens magoam a sério. Pode causar ansiedade, tristeza, falta de vontade de ir à escola ou de usar o telemóvel.</p>
-            <span class="card-tag" style="background:#FEF2F2;color:#DC2626">Impacto emocional</span>
-          </div>
-          <div class="info-card">
-            <div class="card-icon" style="background:#F0FDF4">🌐</div>
-            <h3>Acontece online</h3>
-            <p>Pode ser nas redes sociais, no WhatsApp, em jogos online, por email ou até em grupos de turma. Segue-te para casa — não há escapatória como no bullying físico.</p>
-            <span class="card-tag" style="background:#F0FDF4;color:#059669">Onde acontece</span>
-          </div>
-          <div class="info-card">
-            <div class="card-icon" style="background:#FFF7ED">👥</div>
-            <h3>Pode ser anónimo</h3>
-            <p>Às vezes não sabes quem é o agressor — podem usar contas falsas ou perfis sem nome. Isso torna tudo ainda mais assustador.</p>
-            <span class="card-tag" style="background:#FFF7ED;color:#EA580C">Atenção</span>
-          </div>
-          <div class="info-card">
-            <div class="card-icon" style="background:#F5F3FF">📸</div>
-            <h3>Deixa rasto digital</h3>
-            <p>Ao contrário do bullying na escola, o que acontece online pode ser guardado como prova — capturas de ecrã, mensagens, comentários. Isso é uma vantagem para ti.</p>
-            <span class="card-tag" style="background:#F5F3FF;color:#7C3AED">Importante saber</span>
-          </div>
-          <div class="info-card">
-            <div class="card-icon" style="background:#ECFDF5">🚫</div>
-            <h3>Não é culpa tua</h3>
-            <p>Ninguém merece ser vítima de cyberbullying. O problema está sempre em quem agride, nunca em quem é agredido. Pedir ajuda é o caminho certo.</p>
-            <span class="card-tag" style="background:#ECFDF5;color:#059669">Lembra-te sempre</span>
-          </div>
-        </div>
-
-        <!-- FAQ -->
-        <div class="section-title" style="font-size:20px;margin-bottom:20px">Perguntas frequentes</div>
-        <div class="faq-list">
-          <div class="faq-item">
-            <div class="faq-q" onclick="toggleFaq(this)">
-              Uma pessoa gozou comigo uma vez. É cyberbullying?
-              <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <polyline points="6 9 12 15 18 9" />
-              </svg>
-            </div>
-            <div class="faq-a">Não necessariamente. O cyberbullying implica repetição — acontecer várias vezes de forma intencional. Se foi uma vez, pode ter sido descuido ou falta de noção. Mas se se repetir, é bullying. Guarda sempre as provas e fala com um adulto de confiança.</div>
-          </div>
-          <div class="faq-item">
-            <div class="faq-q" onclick="toggleFaq(this)">
-              E se for um amigo a fazê-lo? Ainda é cyberbullying?
-              <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <polyline points="6 9 12 15 18 9" />
-              </svg>
-            </div>
-            <div class="faq-a">Sim. O cyberbullying pode ser praticado por colegas, amigos ou até pessoas próximas. Uma amizade real não inclui humilhação, ameaças ou partilha de informação privada sem permissão. Se um amigo te trata assim, mereces melhor.</div>
-          </div>
-          <div class="faq-item">
-            <div class="faq-q" onclick="toggleFaq(this)">
-              Posso ser vítima sem me aperceber?
-              <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <polyline points="6 9 12 15 18 9" />
-              </svg>
-            </div>
-            <div class="faq-a">Sim. Por vezes existe um grupo a falar mal de ti em privado, ou alguém a partilhar fotos tuas sem saberes. Sinais de alerta: amigos que se afastam de repente, sentires que estão a rir-se de ti sem perceberes porquê, ou alguém partilhar algo teu online sem permissão.</div>
-          </div>
-          <div class="faq-item">
-            <div class="faq-q" onclick="toggleFaq(this)">
-              O que devo fazer se estou a sofrer cyberbullying?
-              <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <polyline points="6 9 12 15 18 9" />
-              </svg>
-            </div>
-            <div class="faq-a">1. Não respondas — pode piorar. 2. Guarda provas (capturas de ecrã). 3. Bloqueia o agressor nas plataformas. 4. Conta a um adulto de confiança — pais, professor ou psicólogo. 5. Podes fazer uma denúncia formal aqui no SafeNet ou à PSP.</div>
-          </div>
-        </div>
-
-        <div class="sos-banner">
-          <div>
-            <h3>Precisas de ajuda agora?</h3>
-            <p>Estamos aqui 24 horas por dia, todos os dias.</p>
-          </div>
-          <div class="sos-num">116 111</div>
-          <button class="btn-sos" onclick="window.location.href='ChatScreen.html'">Falar com o SafeBot →</button>
-        </div>
-      </div>
-
-      <!-- TAB: TIPOS -->
-      <div class="info-section" id="tab-tipos">
-        <div class="section-title">Tipos de cyberbullying</div>
-        <div class="section-sub">Conhecer os tipos ajuda-te a identificar o que está a acontecer e a pedir ajuda certa.</div>
-
-        <div class="tipos-grid">
-          <div class="tipo-card">
-            <div class="tipo-emoji">💬</div>
-            <h4>Assédio online</h4>
-            <p>Envio repetido de mensagens ofensivas, insultos ou ameaças por mensagem ou redes sociais.</p>
-            <span class="tipo-nivel nivel-alto">Grau alto</span>
-          </div>
-          <div class="tipo-card">
-            <div class="tipo-emoji">📸</div>
-            <h4>Partilha não autorizada</h4>
-            <p>Publicar fotos, vídeos ou informação pessoal de alguém sem a sua permissão, incluindo imagens íntimas.</p>
-            <span class="tipo-nivel nivel-alto">Grau alto</span>
-          </div>
-          <div class="tipo-card">
-            <div class="tipo-emoji">🎭</div>
-            <h4>Impersonação</h4>
-            <p>Criar um perfil falso com o nome, fotos ou identidade de outra pessoa para a envergonhar ou enganar.</p>
-            <span class="tipo-nivel nivel-alto">Grau alto</span>
-          </div>
-          <div class="tipo-card">
-            <div class="tipo-emoji">🔒</div>
-            <h4>Sextortion</h4>
-            <p>Chantagem usando imagens ou vídeos íntimos — reais ou manipulados — para obrigar alguém a fazer algo.</p>
-            <span class="tipo-nivel nivel-alto">Grau alto</span>
-          </div>
-          <div class="tipo-card">
-            <div class="tipo-emoji">🗺️</div>
-            <h4>Doxing</h4>
-            <p>Publicar informação privada de alguém online sem permissão — morada, escola, telemóvel, rotinas.</p>
-            <span class="tipo-nivel nivel-alto">Grau alto</span>
-          </div>
-          <div class="tipo-card">
-            <div class="tipo-emoji">👁️</div>
-            <h4>Stalking online</h4>
-            <p>Seguir e monitorizar de forma obsessiva e persistente a vida online de outra pessoa, causando medo.</p>
-            <span class="tipo-nivel nivel-alto">Grau alto</span>
-          </div>
-          <div class="tipo-card">
-            <div class="tipo-emoji">🚪</div>
-            <h4>Exclusão digital</h4>
-            <p>Excluir alguém de grupos, jogos ou comunidades online de forma intencional e repetida para o isolar.</p>
-            <span class="tipo-nivel nivel-medio">Grau médio</span>
-          </div>
-          <div class="tipo-card">
-            <div class="tipo-emoji">😠</div>
-            <h4>Discurso de ódio</h4>
-            <p>Comentários ou publicações que atacam alguém pela raça, género, religião, orientação ou aparência.</p>
-            <span class="tipo-nivel nivel-medio">Grau médio</span>
-          </div>
-          <div class="tipo-card">
-            <div class="tipo-emoji">🧒</div>
-            <h4>Grooming</h4>
-            <p>Adulto que ganha a confiança de um menor online com intenções abusivas. É crime grave em Portugal.</p>
-            <span class="tipo-nivel nivel-alto">Grau alto — Crime</span>
-          </div>
-          <div class="tipo-card">
-            <div class="tipo-emoji">🎮</div>
-            <h4>Bullying em jogos</h4>
-            <p>Assédio, ameaças ou humilhação dentro de plataformas de jogos online. Tão sério como nas redes sociais.</p>
-            <span class="tipo-nivel nivel-medio">Grau médio</span>
-          </div>
-        </div>
-
-        <div class="faq-list">
-          <div class="faq-item">
-            <div class="faq-q" onclick="toggleFaq(this)">
-              Gozaram comigo num jogo online. Isso conta?
-              <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <polyline points="6 9 12 15 18 9" />
-              </svg>
-            </div>
-            <div class="faq-a">Sim, conta. O bullying em jogos online é tão real e prejudicial quanto nas redes sociais. Podes bloquear o utilizador dentro do jogo, reportá-lo à plataforma (Xbox, PlayStation, Steam, etc.) e guardar capturas de ecrã como prova.</div>
-          </div>
-          <div class="faq-item">
-            <div class="faq-q" onclick="toggleFaq(this)">
-              Alguém ameaçou partilhar uma foto minha. O que faço?
-              <svg class="faq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <polyline points="6 9 12 15 18 9" />
-              </svg>
-            </div>
-            <div class="faq-a">Não cedas às ameaças — normalmente pioram se cederes. Conta a um adulto de confiança imediatamente, guarda todas as provas da ameaça e faz uma denúncia à PSP. Isto é um crime em Portugal, independentemente da tua idade.</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- TAB: PROTEGER (Simplified placeholder as input was truncated) -->
-      <div class="info-section" id="tab-proteger">
-        <div class="section-title">Como me proteger</div>
-        <div class="section-sub">Dicas práticas para manteres a tua segurança no mundo digital.</div>
-        <div class="dicas-list">
-          <div class="dica-item">
-            <div class="dica-num">1</div>
-            <div>
-              <h4>Configura a tua privacidade</h4>
-              <p>Mantém os teus perfis privados e controla quem pode ver as tuas publicações e enviar mensagens.</p>
-            </div>
-          </div>
-          <div class="dica-item">
-            <div class="dica-num">2</div>
-            <div>
-              <h4>Pensa antes de publicar</h4>
-              <p>O que colocas na internet pode ficar lá para sempre. Evita partilhar informação sensível ou fotos comprometedoras.</p>
-            </div>
-          </div>
-          <div class="dica-item">
-            <div class="dica-num">3</div>
-            <div>
-              <h4>Bloqueia e Denuncia</h4>
-              <p>Não hesites em bloquear pessoas que te incomodam e reportar comportamentos abusivos às plataformas.</p>
+        <div class="row justify-content-center mt-5 animate-reveal" style="transition-delay: 150ms;">
+          <div class="col-12 col-lg-10">
+            <div class="card-modern p-2 p-md-3">
+              <ul class="nav nav-pills nav-fill gap-2" id="infoTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                  <button class="nav-link active" id="info-oque-tab" data-bs-toggle="pill" data-bs-target="#info-oque"
+                    type="button" role="tab" aria-controls="info-oque" aria-selected="true">O que é?</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <button class="nav-link" id="info-tipos-tab" data-bs-toggle="pill" data-bs-target="#info-tipos"
+                    type="button" role="tab" aria-controls="info-tipos" aria-selected="false">Tipos</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <button class="nav-link" id="info-proteger-tab" data-bs-toggle="pill" data-bs-target="#info-proteger"
+                    type="button" role="tab" aria-controls="info-proteger" aria-selected="false">Como me
+                    proteger</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <button class="nav-link" id="info-lei-tab" data-bs-toggle="pill" data-bs-target="#info-lei"
+                    type="button" role="tab" aria-controls="info-lei" aria-selected="false">Legislação</button>
+                </li>
+              </ul>
             </div>
           </div>
         </div>
       </div>
+    </section>
 
-      <!-- TAB: LEI (Simplified placeholder as input was truncated) -->
-      <div class="info-section" id="tab-lei">
-        <div class="section-title">Legislação em Portugal</div>
-        <div class="section-sub">O cyberbullying tem consequências legais reais. Conhece os teus direitos.</div>
-        <div class="lei-cards">
-          <div class="lei-card">
-            <div class="lei-badge" style="background:#FEE2E2; color:#991B1B">Artigo 154.º-A CP</div>
-            <h4>Perseguição (Stalking)</h4>
-            <p>Quem, de modo reiterado, perseguir outra pessoa, por qualquer meio, direta ou indiretamente, provocando-lhe medo ou inquietação.</p>
-            <div class="lei-pena">Pena de prisão até 3 anos ou multa.</div>
+    <section class="py-24">
+      <div class="container px-4">
+        <div class="tab-content" id="infoTabContent">
+          <div class="tab-pane fade show active" id="info-oque" role="tabpanel" aria-labelledby="info-oque-tab"
+            tabindex="0">
+            <div class="row justify-content-center">
+              <div class="col-12 col-lg-10">
+                <div class="card-modern p-5 mb-4">
+                  <div class="d-flex align-items-start gap-4">
+                    <div
+                      class="w-14 h-14 rounded-2xl bg-primary/10 d-flex align-items-center justify-content-center text-primary flex-shrink-0">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 18h.01" />
+                        <path d="M9 13a3 3 0 1 1 6 0c0 2-3 2-3 4" />
+                        <path
+                          d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
+                      </svg>
+                    </div>
+                    <div>
+                      <h2 class="fw-black h4 mb-2">O que é o cyberbullying?</h2>
+                      <p class="text-muted-foreground mb-0">Cyberbullying é quando alguém usa a internet, o telemóvel ou
+                        as redes sociais para magoar, assustar, humilhar ou controlar outra pessoa — de forma repetida e
+                        intencional.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row g-4">
+                  <div class="col-md-6">
+                    <div class="card-modern p-5 h-100">
+                      <div class="d-flex align-items-center gap-3 mb-3">
+                        <div
+                          class="w-12 h-12 rounded-2xl bg-primary/10 d-flex align-items-center justify-content-center text-primary">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M17 2.1l4 4-4 4" />
+                            <path d="M3 12.6V11a5 5 0 0 1 5-5h13" />
+                            <path d="M7 21.9l-4-4 4-4" />
+                            <path d="M21 11.4V13a5 5 0 0 1-5 5H3" />
+                          </svg>
+                        </div>
+                        <div class="fw-black text-[#1e293b]">É repetido</div>
+                      </div>
+                      <p class="text-muted-foreground mb-0">Não acontece só uma vez. A repetição é o que torna a
+                        situação mais pesada e difícil de suportar.</p>
+                    </div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="card-modern p-5 h-100">
+                      <div class="d-flex align-items-center gap-3 mb-3">
+                        <div
+                          class="w-12 h-12 rounded-2xl bg-primary/10 d-flex align-items-center justify-content-center text-primary">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M10 16l2 2 4-4" />
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                          </svg>
+                        </div>
+                        <div class="fw-black text-[#1e293b]">Causa sofrimento real</div>
+                      </div>
+                      <p class="text-muted-foreground mb-0">Mesmo sendo online, pode causar ansiedade, tristeza e medo.
+                        Se te está a afetar, é sério.</p>
+                    </div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="card-modern p-5 h-100">
+                      <div class="d-flex align-items-center gap-3 mb-3">
+                        <div
+                          class="w-12 h-12 rounded-2xl bg-primary/10 d-flex align-items-center justify-content-center text-primary">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10" />
+                            <path d="M2 12h20" />
+                            <path
+                              d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+                          </svg>
+                        </div>
+                        <div class="fw-black text-[#1e293b]">Acontece online</div>
+                      </div>
+                      <p class="text-muted-foreground mb-0">Pode ser nas redes sociais, WhatsApp, jogos online, email ou
+                        grupos. Às vezes “segue-te” para casa.</p>
+                    </div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="card-modern p-5 h-100">
+                      <div class="d-flex align-items-center gap-3 mb-3">
+                        <div
+                          class="w-12 h-12 rounded-2xl bg-primary/10 d-flex align-items-center justify-content-center text-primary">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+                            <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+                          </svg>
+                        </div>
+                        <div class="fw-black text-[#1e293b]">Pode envolver contas falsas</div>
+                      </div>
+                      <p class="text-muted-foreground mb-0">Às vezes a pessoa usa perfis falsos para te provocar ou
+                        intimidar. Guarda provas e pede ajuda.</p>
+                    </div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="card-modern p-5 h-100">
+                      <div class="d-flex align-items-center gap-3 mb-3">
+                        <div
+                          class="w-12 h-12 rounded-2xl bg-primary/10 d-flex align-items-center justify-content-center text-primary">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                            <polyline points="17 8 12 3 7 8" />
+                            <line x1="12" x2="12" y1="3" y2="15" />
+                          </svg>
+                        </div>
+                        <div class="fw-black text-[#1e293b]">Deixa rasto digital</div>
+                      </div>
+                      <p class="text-muted-foreground mb-0">Capturas de ecrã, mensagens e links podem servir de prova.
+                        Isso ajuda-te a agir com mais segurança.</p>
+                    </div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="card-modern p-5 h-100">
+                      <div class="d-flex align-items-center gap-3 mb-3">
+                        <div
+                          class="w-12 h-12 rounded-2xl bg-primary/10 d-flex align-items-center justify-content-center text-primary">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M9 18V5l12-2v13" />
+                            <circle cx="6" cy="18" r="3" />
+                            <circle cx="18" cy="16" r="3" />
+                          </svg>
+                        </div>
+                        <div class="fw-black text-[#1e293b]">Não é culpa tua</div>
+                      </div>
+                      <p class="text-muted-foreground mb-0">O problema está sempre em quem agride. Pedir ajuda é o
+                        caminho certo.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="mt-5 pt-3">
+                  <h3 class="fw-black h5 mb-3">Perguntas frequentes</h3>
+                  <div class="accordion" id="infoFaq">
+                    <div class="accordion-item border-0 mb-3">
+                      <div class="card-modern p-0 overflow-hidden">
+                        <h2 class="accordion-header">
+                          <button class="accordion-button collapsed bg-white fw-bold" type="button"
+                            data-bs-toggle="collapse" data-bs-target="#faq1" aria-expanded="false" aria-controls="faq1">
+                            Uma pessoa gozou comigo uma vez. É cyberbullying?
+                          </button>
+                        </h2>
+                        <div id="faq1" class="accordion-collapse collapse" data-bs-parent="#infoFaq">
+                          <div class="accordion-body text-muted-foreground">
+                            Não necessariamente. O cyberbullying implica repetição. Se se repetir, guarda provas e fala
+                            com um adulto de confiança.
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="accordion-item border-0 mb-3">
+                      <div class="card-modern p-0 overflow-hidden">
+                        <h2 class="accordion-header">
+                          <button class="accordion-button collapsed bg-white fw-bold" type="button"
+                            data-bs-toggle="collapse" data-bs-target="#faq2" aria-expanded="false" aria-controls="faq2">
+                            E se for um amigo a fazê-lo? Ainda é cyberbullying?
+                          </button>
+                        </h2>
+                        <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#infoFaq">
+                          <div class="accordion-body text-muted-foreground">
+                            Sim. Se te magoa, humilha ou ameaça, não é uma brincadeira. Numa amizade saudável há
+                            respeito.
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="accordion-item border-0 mb-3">
+                      <div class="card-modern p-0 overflow-hidden">
+                        <h2 class="accordion-header">
+                          <button class="accordion-button collapsed bg-white fw-bold" type="button"
+                            data-bs-toggle="collapse" data-bs-target="#faq3" aria-expanded="false" aria-controls="faq3">
+                            Posso ser vítima sem me aperceber?
+                          </button>
+                        </h2>
+                        <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#infoFaq">
+                          <div class="accordion-body text-muted-foreground">
+                            Sim. Sinais de alerta: afastamento de amigos, gozo sem motivo aparente, partilhas sobre ti
+                            sem consentimento.
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="accordion-item border-0">
+                      <div class="card-modern p-0 overflow-hidden">
+                        <h2 class="accordion-header">
+                          <button class="accordion-button collapsed bg-white fw-bold" type="button"
+                            data-bs-toggle="collapse" data-bs-target="#faq4" aria-expanded="false" aria-controls="faq4">
+                            O que devo fazer se estou a sofrer cyberbullying?
+                          </button>
+                        </h2>
+                        <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#infoFaq">
+                          <div class="accordion-body text-muted-foreground">
+                            Não respondas, guarda provas, bloqueia e denuncia na plataforma, e fala com um adulto de
+                            confiança. Se for grave, faz denúncia.
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="mt-5">
+                  <div class="card-modern p-5 bg-primary text-white">
+                    <div
+                      class="d-flex flex-column flex-md-row align-items-start align-items-md-center justify-content-between gap-4">
+                      <div>
+                        <div class="fw-black h4 mb-2">Precisas de ajuda agora?</div>
+                        <div class="text-white/80">Começa com uma mensagem e seguimos contigo passo a passo. Em caso de
+                          emergência, liga 112.</div>
+                      </div>
+                      <a href="ChatScreen.html"
+                        class="btn-modern bg-white text-primary px-6 py-3 rounded-2xl fw-black text-decoration-none">Falar
+                        agora →</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="lei-card">
-            <div class="lei-badge" style="background:#FEE2E2; color:#991B1B">Artigo 180.º CP</div>
-            <h4>Difamação</h4>
-            <p>Afirmar ou reproduzir juízo que atente contra a honra e consideração de outra pessoa.</p>
-            <div class="lei-pena">Pena de prisão até 6 meses ou multa.</div>
+
+          <div class="tab-pane fade" id="info-tipos" role="tabpanel" aria-labelledby="info-tipos-tab" tabindex="0">
+            <div class="row justify-content-center">
+              <div class="col-12 col-lg-10">
+                <div
+                  class="d-flex flex-column flex-md-row align-items-start align-items-md-end justify-content-between gap-3 mb-4">
+                  <div>
+                    <h2 class="fw-black h3 mb-1">Tipos de cyberbullying</h2>
+                    <p class="text-muted-foreground mb-0">Conhecer os tipos ajuda-te a identificar o que está a
+                      acontecer e a pedir ajuda certa.</p>
+                  </div>
+                </div>
+
+                <div class="row g-4">
+                  <div class="col-md-6">
+                    <div class="card-modern p-5 h-100">
+                      <div class="d-flex align-items-center gap-3 mb-3">
+                        <div
+                          class="w-12 h-12 rounded-2xl bg-primary/10 d-flex align-items-center justify-content-center text-primary">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15a4 4 0 0 1-4 4H7l-4 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z" />
+                          </svg>
+                        </div>
+                        <div class="fw-black text-[#1e293b]">Assédio online</div>
+                      </div>
+                      <p class="text-muted-foreground mb-3">Mensagens ofensivas, insultos ou ameaças repetidas.</p>
+                      <span class="badge rounded-pill text-bg-primary">Grau alto</span>
+                    </div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="card-modern p-5 h-100">
+                      <div class="d-flex align-items-center gap-3 mb-3">
+                        <div
+                          class="w-12 h-12 rounded-2xl bg-primary/10 d-flex align-items-center justify-content-center text-primary">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <rect width="18" height="14" x="3" y="5" rx="2" />
+                            <path d="M3 15l4-4a3 5 0 0 1 3 0l3 3a3 5 0 0 0 3 0l5-5" />
+                          </svg>
+                        </div>
+                        <div class="fw-black text-[#1e293b]">Partilha sem consentimento</div>
+                      </div>
+                      <p class="text-muted-foreground mb-3">Publicar fotos, vídeos ou informação privada sem permissão.
+                      </p>
+                      <span class="badge rounded-pill text-bg-primary">Grau alto</span>
+                    </div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="card-modern p-5 h-100">
+                      <div class="d-flex align-items-center gap-3 mb-3">
+                        <div
+                          class="w-12 h-12 rounded-2xl bg-primary/10 d-flex align-items-center justify-content-center text-primary">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                            <circle cx="12" cy="7" r="4" />
+                          </svg>
+                        </div>
+                        <div class="fw-black text-[#1e293b]">Impersonação</div>
+                      </div>
+                      <p class="text-muted-foreground mb-3">Criar um perfil falso para envergonhar, enganar ou atacar.
+                      </p>
+                      <span class="badge rounded-pill text-bg-primary">Grau alto</span>
+                    </div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="card-modern p-5 h-100">
+                      <div class="d-flex align-items-center gap-3 mb-3">
+                        <div
+                          class="w-12 h-12 rounded-2xl bg-primary/10 d-flex align-items-center justify-content-center text-primary">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 17v5" />
+                            <path d="M9 10a3 3 0 1 1 6 0c0 2-3 2-3 4" />
+                            <path d="M12 2a10 10 0 1 0 10 10" />
+                            <path d="M22 2l-5 5" />
+                          </svg>
+                        </div>
+                        <div class="fw-black text-[#1e293b]">Sextortion</div>
+                      </div>
+                      <p class="text-muted-foreground mb-3">Chantagem com imagens/vídeos íntimos para exigir algo.</p>
+                      <span class="badge rounded-pill text-bg-primary">Grau alto</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="mt-5 pt-3">
+                  <h3 class="fw-black h5 mb-3">Perguntas rápidas</h3>
+                  <div class="accordion" id="infoTiposFaq">
+                    <div class="accordion-item border-0 mb-3">
+                      <div class="card-modern p-0 overflow-hidden">
+                        <h2 class="accordion-header">
+                          <button class="accordion-button collapsed bg-white fw-bold" type="button"
+                            data-bs-toggle="collapse" data-bs-target="#tfaq1" aria-expanded="false"
+                            aria-controls="tfaq1">
+                            Gozaram comigo num jogo online. Isso conta?
+                          </button>
+                        </h2>
+                        <div id="tfaq1" class="accordion-collapse collapse" data-bs-parent="#infoTiposFaq">
+                          <div class="accordion-body text-muted-foreground">
+                            Sim. Podes bloquear e reportar dentro do jogo/plataforma e guardar capturas de ecrã como
+                            prova.
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="accordion-item border-0">
+                      <div class="card-modern p-0 overflow-hidden">
+                        <h2 class="accordion-header">
+                          <button class="accordion-button collapsed bg-white fw-bold" type="button"
+                            data-bs-toggle="collapse" data-bs-target="#tfaq2" aria-expanded="false"
+                            aria-controls="tfaq2">
+                            Alguém ameaçou partilhar uma foto minha. O que faço?
+                          </button>
+                        </h2>
+                        <div id="tfaq2" class="accordion-collapse collapse" data-bs-parent="#infoTiposFaq">
+                          <div class="accordion-body text-muted-foreground">
+                            Não cedas. Guarda as provas, fala com um adulto de confiança e pede ajuda o mais rápido
+                            possível.
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tab-pane fade" id="info-proteger" role="tabpanel" aria-labelledby="info-proteger-tab"
+            tabindex="0">
+            <div class="row justify-content-center">
+              <div class="col-12 col-lg-10">
+                <h2 class="fw-black h3 mb-1">Como me proteger</h2>
+                <p class="text-muted-foreground mb-4">Dicas práticas para manteres a tua segurança no mundo digital.</p>
+
+                <div class="row g-4">
+                  <div class="col-md-4">
+                    <div class="card-modern p-5 h-100">
+                      <div class="d-flex align-items-center gap-3 mb-3">
+                        <div class="badge rounded-pill text-bg-primary px-3 py-2">1</div>
+                        <div class="fw-black text-[#1e293b]">Privacidade</div>
+                      </div>
+                      <p class="text-muted-foreground mb-0">Mantém perfis privados e controla quem vê o teu conteúdo.
+                      </p>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="card-modern p-5 h-100">
+                      <div class="d-flex align-items-center gap-3 mb-3">
+                        <div class="badge rounded-pill text-bg-primary px-3 py-2">2</div>
+                        <div class="fw-black text-[#1e293b]">Pensa antes</div>
+                      </div>
+                      <p class="text-muted-foreground mb-0">Evita partilhar informação sensível ou fotos
+                        comprometedoras.</p>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="card-modern p-5 h-100">
+                      <div class="d-flex align-items-center gap-3 mb-3">
+                        <div class="badge rounded-pill text-bg-primary px-3 py-2">3</div>
+                        <div class="fw-black text-[#1e293b]">Bloqueia e denuncia</div>
+                      </div>
+                      <p class="text-muted-foreground mb-0">Bloqueia quem te incomoda e reporta comportamentos abusivos.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tab-pane fade" id="info-lei" role="tabpanel" aria-labelledby="info-lei-tab" tabindex="0">
+            <div class="row justify-content-center">
+              <div class="col-12 col-lg-10">
+                <h2 class="fw-black h3 mb-1">Legislação em Portugal</h2>
+                <p class="text-muted-foreground mb-4">O cyberbullying tem consequências legais reais. Conhece os teus
+                  direitos.</p>
+
+                <div class="row g-4">
+                  <div class="col-md-6">
+                    <div class="card-modern p-5 h-100">
+                      <div class="d-flex align-items-start justify-content-between gap-3 mb-3">
+                        <div class="badge rounded-pill text-bg-light border fw-bold">Artigo 154.º-A CP</div>
+                        <div class="badge rounded-pill text-bg-primary fw-bold">Stalking</div>
+                      </div>
+                      <div class="fw-black text-[#1e293b] mb-2">Perseguição</div>
+                      <p class="text-muted-foreground mb-0">Perseguir outra pessoa de forma reiterada, provocando medo
+                        ou inquietação.</p>
+                      <div class="text-muted-foreground small fw-bold mt-3">Pena: até 3 anos de prisão ou multa.</div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="card-modern p-5 h-100">
+                      <div class="d-flex align-items-start justify-content-between gap-3 mb-3">
+                        <div class="badge rounded-pill text-bg-light border fw-bold">Artigo 180.º CP</div>
+                        <div class="badge rounded-pill text-bg-primary fw-bold">Difamação</div>
+                      </div>
+                      <div class="fw-black text-[#1e293b] mb-2">Difamação</div>
+                      <p class="text-muted-foreground mb-0">Afirmar ou reproduzir juízo que atente contra a honra e
+                        consideração de outra pessoa.</p>
+                      <div class="text-muted-foreground small fw-bold mt-3">Pena: até 6 meses de prisão ou multa.</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </section>
   </main>
 
   <div id="main-footer-container"></div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script src="../js/main.js"></script>
-  <script>
-    function showTab(tabId, btn) {
-      // Remove active from all tabs and buttons
-      document.querySelectorAll('.info-section').forEach(s => s.classList.remove('active'));
-      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-
-      // Add active to selected tab and button
-      document.getElementById('tab-' + tabId).classList.add('active');
-      btn.classList.add('active');
-      
-      // Scroll to top of sections
-      window.scrollTo({ top: document.querySelector('.info-hero').offsetHeight - 20, behavior: 'smooth' });
-    }
-
-    function toggleFaq(el) {
-      const item = el.parentElement;
-      const isOpen = item.classList.contains('open');
-      
-      // Close all other FAQ items
-      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
-      
-      // Toggle current item
-      if (!isOpen) {
-        item.classList.add('open');
-      }
-    }
-  </script>
 </body>
 
 </html>

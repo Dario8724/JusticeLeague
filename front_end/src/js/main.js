@@ -1,5 +1,5 @@
 (() => {
-  window.SafeNet = window.SafeNet || {};
+    window.SafeNet = window.SafeNet || {};
 
     const base = (() => {
         const cs = document.currentScript;
@@ -33,8 +33,8 @@
         if (window.SafeNet && typeof window.SafeNet.init === 'function') {
             window.SafeNet.init();
         }
-    window.SafeNetReady = true;
-    window.dispatchEvent(new Event('safenet:ready'));
+        window.SafeNetReady = true;
+        window.dispatchEvent(new Event('safenet:ready'));
     };
 
     if (document.readyState === 'loading') {
