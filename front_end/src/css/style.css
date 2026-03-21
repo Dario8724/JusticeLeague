@@ -36,6 +36,14 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+.fw-black {
+  font-weight: 900 !important;
+}
+
+.text-muted-foreground {
+  color: hsl(var(--muted-foreground)) !important;
+}
+
 .hero-gradient {
   background:
     linear-gradient(180deg, #f8fafc 0%, #ffffff 55%, #f8fafc 100%);
