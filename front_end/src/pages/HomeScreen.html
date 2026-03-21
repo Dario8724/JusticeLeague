@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SafeNet - Apoio contra Cyberbullying</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <script src="../js/config.js"></script>
+</head>
+
+<body class="min-h-screen flex flex-col">
+  <div id="main-navbar-container"></div>
+
+  <main class="flex-grow-1">
+    <section class="hero-gradient pt-32 pb-24 overflow-hidden">
+      <div class="container px-4">
+        <div class="row align-items-center gy-5">
+          <div class="col-lg-6 animate-reveal">
+            <div
+              class="d-inline-flex align-items-center gap-2 bg-white/50 backdrop-blur-sm border border-white px-4 py-2 rounded-full text-xs font-black uppercase tracking-widest text-primary mb-5 shadow-sm">
+              <span class="d-inline-block w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+              Espaço seguro para todos os cidadãos
+            </div>
+            <h1 class="display-3 fw-black tracking-tighter mb-4 leading-tight">Apoio seguro contra o <span
+                class="gradient-text">cyberbullying.</span></h1>
+            <p class="text-muted-foreground fs-5 mb-5 max-w-lg leading-relaxed">Fala com apoio especializado, faz a tua
+              denúncia e acede a recursos fiáveis. Um espaço confidencial, simples e gratuito.</p>
+            <div class="d-flex flex-wrap gap-4">
+              <a href="ChatScreen.html"
+                class="btn-modern d-flex align-items-center gap-3 bg-primary text-white px-8 py-4 shadow-2xl shadow-primary/30 hover:shadow-primary/40 text-decoration-none">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z" />
+                </svg>
+                Falar agora
+              </a>
+              <a href="ReportScreen.html"
+                class="btn-modern d-flex align-items-center gap-3 bg-white text-dark border border-black/5 px-8 py-4 shadow-xl hover:shadow-2xl text-decoration-none">
+                Fazer denúncia
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M5 12h14" />
+                  <path d="m12 5 7 7-7 7" />
+                </svg>
+              </a>
+            </div>
+          </div>
+          <div class="col-lg-6 d-flex justify-content-center animate-reveal" style="transition-delay: 200ms;">
+            <div class="position-relative">
+              <div class="position-absolute inset-0 bg-primary/10 rounded-full blur-3xl"></div>
+              <img src="../images/hero-illustration.png" alt="Apoio"
+                class="img-fluid max-w-md animate-float position-relative" />
+            </div>
+          </div>
+        </div>
+
+        <div class="row mt-5 pt-5 gy-4 animate-reveal" style="transition-delay: 400ms;">
+          <div class="col-md-4">
+            <div class="card-modern p-5 text-center">
+              <div class="display-5 fw-black gradient-text mb-2">24/7</div>
+              <div class="text-muted-foreground fw-bold small uppercase tracking-widest">Resposta rápida</div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card-modern p-5 text-center">
+              <div class="display-5 fw-black gradient-text mb-2">100%</div>
+              <div class="text-muted-foreground fw-bold small uppercase tracking-widest">Confidencial</div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card-modern p-5 text-center">
+              <div class="display-5 fw-black gradient-text mb-2">0€</div>
+              <div class="text-muted-foreground fw-bold small uppercase tracking-widest">Acesso gratuito</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-24">
+      <div class="container px-4">
+        <div class="text-center mb-5 animate-reveal">
+          <p class="text-primary fw-black small tracking-[0.2em] text-uppercase mb-3">Onde estamos</p>
+          <h2 class="display-6 fw-black tracking-tighter mb-3">Esquadras da PSP perto de ti</h2>
+          <p class="text-muted-foreground mx-auto mb-0" style="max-width: 54ch;">Escolhe a região e a competência para
+            veres as esquadras disponíveis e evitares deslocações desnecessárias.</p>
+          <div class="row justify-content-center g-4 my-4">
+            <div class="col-12 col-lg-8">
+              <div
+                class="psp-pill-row d-flex flex-nowrap flex-lg-wrap justify-content-lg-center gap-2 pb-2 mb-3 overflow-auto">
+                <button type="button" class="btn btn-sm btn-primary fw-bold rounded-pill px-3" data-map-region="Todas"
+                  data-map-query="Esquadra PSP">Todas</button>
+                <button type="button" class="btn btn-sm btn-light fw-bold rounded-pill px-3 border"
+                  data-map-region="Amadora" data-map-query="Esquadra PSP Amadora">Amadora</button>
+                <button type="button" class="btn btn-sm btn-light fw-bold rounded-pill px-3 border"
+                  data-map-region="Cascais" data-map-query="Esquadra PSP Cascais">Cascais</button>
+                <button type="button" class="btn btn-sm btn-light fw-bold rounded-pill px-3 border"
+                  data-map-region="Loures" data-map-query="Esquadra PSP Loures">Loures</button>
+                <button type="button" class="btn btn-sm btn-light fw-bold rounded-pill px-3 border"
+                  data-map-region="Oeiras" data-map-query="Esquadra PSP Oeiras">Oeiras</button>
+                <button type="button" class="btn btn-sm btn-light fw-bold rounded-pill px-3 border"
+                  data-map-region="Sintra" data-map-query="Esquadra PSP Sintra">Sintra</button>
+                <button type="button" class="btn btn-sm btn-light fw-bold rounded-pill px-3 border"
+                  data-map-region="Vila Franca de Xira" data-map-query="Esquadra PSP Vila Franca de Xira">Vila Franca de
+                  Xira</button>
+              </div>
+              <div class="bg-white border border-black/5 shadow-sm overflow-hidden rounded-[2.5rem]">
+                <div
+                  class="d-flex flex-column flex-md-row align-items-start align-items-md-center justify-content-between gap-2 px-4 py-3 bg-[#f8f9fa] border-bottom border-black/5">
+                  <div class="d-flex flex-wrap align-items-center gap-2">
+                    <span class="badge rounded-pill text-bg-light border">Região: <span
+                        id="psp-map-region-label">Todas</span></span>
+                    <span class="badge rounded-pill text-bg-light border">Competência: <span
+                        id="psp-map-competence-label">Todas</span></span>
+                  </div>
+                  <a id="psp-open-maps" href="https://www.google.com/maps/search/?api=1&query=Esquadra%20PSP"
+                    target="_blank" rel="noopener" class="small fw-bold text-decoration-none">Abrir no Google Maps ↗</a>
+                </div>
+                <div class="position-relative psp-map-frame">
+                  <iframe id="psp-map-iframe" src="https://www.google.com/maps?q=Esquadra%20PSP&output=embed"
+                    class="w-100 h-100 border-0" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+                    allowfullscreen></iframe>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-lg-4">
+              <div class="card-modern p-4 text-start h-100">
+                <div class="d-flex align-items-center justify-content-between mb-3">
+                  <div>
+                    <div class="fw-black small uppercase tracking-widest text-muted-foreground">Atalhos do mapa</div>
+                    <div class="text-muted-foreground small">Seleciona para filtrar e atualizar.</div>
+                  </div>
+                </div>
+                <div class="mb-4">
+                  <div class="fw-black text-[#1e293b] mb-2">Regiões em destaque (COMETLIS)</div>
+                  <div class="d-flex flex-wrap gap-2">
+                    <button type="button" class="badge rounded-pill text-bg-light border"
+                      data-map-region="Amadora">Amadora</button>
+                    <button type="button" class="badge rounded-pill text-bg-light border"
+                      data-map-region="Cascais">Cascais</button>
+                    <button type="button" class="badge rounded-pill text-bg-light border"
+                      data-map-region="Loures">Loures</button>
+                    <button type="button" class="badge rounded-pill text-bg-light border"
+                      data-map-region="Oeiras">Oeiras</button>
+                    <button type="button" class="badge rounded-pill text-bg-light border"
+                      data-map-region="Sintra">Sintra</button>
+                    <button type="button" class="badge rounded-pill text-bg-light border"
+                      data-map-region="Vila Franca de Xira">Vila Franca de Xira</button>
+                  </div>
+                </div>
+                <hr class="border-black/5 my-4">
+                <div>
+                  <div class="fw-black text-[#1e293b] mb-2">Competências</div>
+                  <div class="d-flex flex-wrap gap-2">
+                    <button type="button" class="badge rounded-pill text-bg-primary border-0"
+                      data-map-competence="">Todas</button>
+                    <button type="button" class="badge rounded-pill text-bg-light border"
+                      data-map-competence="Trânsito">Trânsito</button>
+                    <button type="button" class="badge rounded-pill text-bg-light border"
+                      data-map-competence="Investigação criminal">Investigação criminal</button>
+                    <button type="button" class="badge rounded-pill text-bg-light border"
+                      data-map-competence="Segurança aeroportuária">Segurança aeroportuária</button>
+                    <button type="button" class="badge rounded-pill text-bg-light border"
+                      data-map-competence="Segurança de instalações">Segurança de instalações</button>
+                    <button type="button" class="badge rounded-pill text-bg-light border"
+                      data-map-competence="Transportes públicos">Transportes públicos</button>
+                  </div>
+                </div>
+                <div class="mt-4">
+                  <div class="fw-black text-[#1e293b] mb-1">Esquadras encontradas</div>
+                  <div class="small text-muted-foreground mb-1">
+                    Região: <span id="psp-stations-region">Todas</span>
+                  </div>
+                  <div class="small text-muted-foreground mb-3">
+                    Competência: <span id="psp-stations-competence">Todas</span>
+                  </div>
+                  <div id="psp-stations-list" class="d-grid gap-2"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="mt-5 pt-4">
+            <p class="text-primary fw-black small tracking-[0.2em] text-uppercase mb-3">Como ajudamos</p>
+            <h2 class="display-5 fw-black tracking-tighter mb-3">Apoio, denúncia e recursos num só lugar</h2>
+            <p class="text-muted-foreground mx-auto mb-0" style="max-width: 62ch;">Chat de apoio, denúncia guiada e
+              recursos educativos para te ajudar a agir com confiança.</p>
+          </div>
+        </div>
+        <div class="row g-4">
+          <div class="col-sm-6 col-lg-3 animate-reveal" style="transition-delay: 100ms;">
+            <div class="card-modern p-5 h-100">
+              <div
+                class="w-14 h-14 rounded-2xl bg-primary/10 d-flex align-items-center justify-content-center mb-4 text-primary">
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z" />
+                </svg>
+              </div>
+              <h3 class="fw-black h5 mb-3">Chat de Apoio</h3>
+              <p class="text-muted-foreground mb-0 leading-relaxed">Explica a situação e recebe orientação imediata, com
+                privacidade.</p>
+            </div>
+          </div>
+          <div class="col-sm-6 col-lg-3 animate-reveal" style="transition-delay: 200ms;">
+            <div class="card-modern p-5 h-100">
+              <div
+                class="w-14 h-14 rounded-2xl bg-primary/10 d-flex align-items-center justify-content-center mb-4 text-primary">
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path
+                    d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" />
+                </svg>
+              </div>
+              <h3 class="fw-black h5 mb-3">Denúncia Guiada</h3>
+              <p class="text-muted-foreground mb-0 leading-relaxed">Submete a denúncia em poucos passos e anexa provas,
+                se quiseres.</p>
+            </div>
+          </div>
+          <div class="col-sm-6 col-lg-3 animate-reveal" style="transition-delay: 300ms;">
+            <div class="card-modern p-5 h-100">
+              <div
+                class="w-14 h-14 rounded-2xl bg-primary/10 d-flex align-items-center justify-content-center mb-4 text-primary">
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+                  <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
+                </svg>
+              </div>
+              <h3 class="fw-black h5 mb-3">Recursos e Guias</h3>
+              <p class="text-muted-foreground mb-0 leading-relaxed">Guias práticos para prevenir, reagir e proteger a
+                tua presença online.</p>
+            </div>
+          </div>
+          <div class="col-sm-6 col-lg-3 animate-reveal" style="transition-delay: 400ms;">
+            <div class="card-modern p-5 h-100">
+              <div
+                class="w-14 h-14 rounded-2xl bg-primary/10 d-flex align-items-center justify-content-center mb-4 text-primary">
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                  <circle cx="9" cy="7" r="4" />
+                  <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+                  <circle cx="19" cy="11" r="3" />
+                </svg>
+              </div>
+              <h3 class="fw-black h5 mb-3">Rede de Apoio</h3>
+              <p class="text-muted-foreground mb-0 leading-relaxed">Encontra contactos úteis e serviços de apoio por
+                região.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-24 animate-reveal">
+      <div class="container px-4">
+        <div
+          class="position-relative bg-primary rounded-[3rem] p-5 text-center overflow-hidden shadow-2xl shadow-primary/20">
+          <div class="position-absolute inset-0 bg-gradient-to-br from-primary via-accent to-primary opacity-90"></div>
+          <div class="position-relative z-1 py-4">
+            <div
+              class="w-16 h-16 bg-white/20 backdrop-blur rounded-2xl d-flex align-items-center justify-content-center mx-auto mb-5">
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
+                stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <rect width="18" height="11" x="3" y="11" rx="2" ry="2" />
+                <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+              </svg>
+            </div>
+            <h2 class="display-5 fw-black text-white mb-4">Precisas de ajuda agora?</h2>
+            <p class="text-white/80 fs-5 mb-5 max-w-lg mx-auto leading-relaxed">Sem julgamentos e com total
+              confidencialidade. Começa com uma mensagem e seguimos contigo passo a passo. Em caso de emergência, liga
+              112.</p>
+            <a href="ChatScreen.html"
+              class="btn-modern d-inline-block bg-white text-primary px-10 py-4 shadow-2xl hover:shadow-white/20 transition-all text-decoration-none">Iniciar
+              conversa →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="main-footer-container"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../js/main.js"></script>
+</body>
+
+</html>
