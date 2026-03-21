@@ -45,6 +45,23 @@ body {
   color: hsl(var(--primary));
 }
 
+.psp-map-frame {
+  height: clamp(320px, 52vh, 520px);
+}
+
+.psp-pill-row {
+  scrollbar-width: thin;
+}
+
+.psp-pill-row::-webkit-scrollbar {
+  height: 8px;
+}
+
+.psp-pill-row::-webkit-scrollbar-thumb {
+  background: rgba(15, 23, 42, 0.15);
+  border-radius: 999px;
+}
+
 .glass {
   background: rgba(255, 255, 255, 0.7);
   backdrop-filter: blur(16px) saturate(180%);

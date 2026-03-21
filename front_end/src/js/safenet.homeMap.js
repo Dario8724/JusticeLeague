@@ -9,6 +9,9 @@
     const competenceButtons = Array.from(document.querySelectorAll('[data-map-competence]'));
     const regionLabel = document.getElementById('psp-stations-region');
     const competenceLabel = document.getElementById('psp-stations-competence');
+    const mapRegionLabel = document.getElementById('psp-map-region-label');
+    const mapCompetenceLabel = document.getElementById('psp-map-competence-label');
+    const openMapsLink = document.getElementById('psp-open-maps');
     const stationsList = document.getElementById('psp-stations-list');
     if (buttons.length === 0) return;
     if (competenceButtons.length === 0) return;
@@ -55,15 +58,21 @@
 
     const setMap = (query) => {
       iframe.src = `https://www.google.com/maps?q=${encodeURIComponent(query)}&output=embed`;
+      if (openMapsLink) {
+        openMapsLink.href = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`;
+      }
     };
 
     const renderStations = (region, competence) => {
       if (!regionLabel || !stationsList) return;
       regionLabel.innerText = region || 'Todas';
       if (competenceLabel) competenceLabel.innerText = (competence || '').trim() ? competence : 'Todas';
+      if (mapRegionLabel) mapRegionLabel.innerText = region || 'Todas';
+      if (mapCompetenceLabel) mapCompetenceLabel.innerText = (competence || '').trim() ? competence : 'Todas';
       const r = (region && region !== 'Todas') ? region : '';
       const c = (competence || '').trim();
       const primaryQuery = competenceToQuery(c, region);
+      setMap(primaryQuery);
       const items = [
         {
           title: c ? `Pesquisar PSP (${c})${r ? ` em ${r}` : ''}` : (r ? `Pesquisar esquadras da PSP em ${r}` : 'Pesquisar esquadras da PSP (todas as regiões)'),
@@ -111,7 +120,6 @@
         const region = btn.getAttribute('data-map-region') || 'Todas';
         currentRegion = region;
         const query = competenceToQuery(currentCompetence, currentRegion);
-        setMap(query);
         setActive(btn);
         renderStations(currentRegion, currentCompetence);
       });
@@ -122,8 +130,6 @@
         const competence = btn.getAttribute('data-map-competence') || '';
         currentCompetence = competence;
         setActiveCompetence(btn);
-        const query = competenceToQuery(currentCompetence, currentRegion);
-        setMap(query);
         renderStations(currentRegion, currentCompetence);
       });
     });
@@ -137,7 +143,6 @@
           match.click();
           return;
         }
-        setMap(competenceToQuery(currentCompetence, currentRegion));
         renderStations(currentRegion, currentCompetence);
       });
     });

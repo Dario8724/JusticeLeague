@@ -87,9 +87,13 @@
       <div class="container px-4">
         <div class="text-center mb-5 animate-reveal">
           <p class="text-primary fw-black small tracking-[0.2em] text-uppercase mb-3">Onde estamos</p>
+          <h2 class="display-6 fw-black tracking-tighter mb-3">Esquadras da PSP perto de ti</h2>
+          <p class="text-muted-foreground mx-auto mb-0" style="max-width: 54ch;">Filtra por região e competência para
+            encontrares o posto certo e evitares deslocações desnecessárias.</p>
           <div class="row justify-content-center g-4 my-4">
             <div class="col-12 col-lg-8">
-              <div class="d-flex flex-wrap justify-content-center gap-2 mb-3">
+              <div
+                class="psp-pill-row d-flex flex-nowrap flex-lg-wrap justify-content-lg-center gap-2 pb-2 mb-3 overflow-auto">
                 <button type="button" class="btn btn-sm btn-primary fw-bold rounded-pill px-3" data-map-region="Todas"
                   data-map-query="Esquadra PSP">Todas</button>
                 <button type="button" class="btn btn-sm btn-light fw-bold rounded-pill px-3 border"
@@ -106,17 +110,32 @@
                   data-map-region="Vila Franca de Xira" data-map-query="Esquadra PSP Vila Franca de Xira">Vila Franca de
                   Xira</button>
               </div>
-              <div class="position-relative overflow-hidden rounded-[2.5rem] border border-black/5 shadow-sm bg-white"
-                style="height: 380px;">
-                <iframe id="psp-map-iframe" src="https://www.google.com/maps?q=Esquadra%20PSP&output=embed"
-                  class="w-100 h-100 border-0" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
-                  allowfullscreen></iframe>
+              <div class="bg-white border border-black/5 shadow-sm overflow-hidden rounded-[2.5rem]">
+                <div
+                  class="d-flex flex-column flex-md-row align-items-start align-items-md-center justify-content-between gap-2 px-4 py-3 bg-[#f8f9fa] border-bottom border-black/5">
+                  <div class="d-flex flex-wrap align-items-center gap-2">
+                    <span class="badge rounded-pill text-bg-light border">Região: <span
+                        id="psp-map-region-label">Todas</span></span>
+                    <span class="badge rounded-pill text-bg-light border">Competência: <span
+                        id="psp-map-competence-label">Todas</span></span>
+                  </div>
+                  <a id="psp-open-maps" href="https://www.google.com/maps/search/?api=1&query=Esquadra%20PSP"
+                    target="_blank" rel="noopener" class="small fw-bold text-decoration-none">Abrir no Google Maps ↗</a>
+                </div>
+                <div class="position-relative psp-map-frame">
+                  <iframe id="psp-map-iframe" src="https://www.google.com/maps?q=Esquadra%20PSP&output=embed"
+                    class="w-100 h-100 border-0" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+                    allowfullscreen></iframe>
+                </div>
               </div>
             </div>
             <div class="col-12 col-lg-4">
               <div class="card-modern p-4 text-start h-100">
                 <div class="d-flex align-items-center justify-content-between mb-3">
-                  <div class="fw-black small uppercase tracking-widest text-muted-foreground">Pontos principais</div>
+                  <div>
+                    <div class="fw-black small uppercase tracking-widest text-muted-foreground">Pontos principais</div>
+                    <div class="text-muted-foreground small">Seleciona para atualizar o mapa.</div>
+                  </div>
                 </div>
                 <div class="mb-4">
                   <div class="fw-black text-[#1e293b] mb-2">Divisões destacadas (COMETLIS)</div>
@@ -135,6 +154,7 @@
                       data-map-region="Vila Franca de Xira">Vila Franca de Xira</button>
                   </div>
                 </div>
+                <hr class="border-black/5 my-4">
                 <div>
                   <div class="fw-black text-[#1e293b] mb-2">Competência específica</div>
                   <div class="d-flex flex-wrap gap-2">
