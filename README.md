@@ -34,13 +34,11 @@ Inspirado no conceito de uma rede segura (“SafeNet”), o projeto constitui um
 ## Funcionalidades
 
 ###  Geolocalização
-
 * Encontrar esquadras próximas
 * Visualização em mapa
 * Direções até ao local
 
 ###  Denuncias 
-
 * Acesso a lista dos tipos de cyberbully
 * Seleção do tipo de situação
 * Descrição da denuncia
@@ -50,7 +48,6 @@ Inspirado no conceito de uma rede segura (“SafeNet”), o projeto constitui um
 ---
 
 ###  Assistente Inteligente
-
 * Chat interativo
 * Sugestões automáticas das opções mais recorrentes 
 * Orientação para contacto em caso de urgencia 
@@ -58,7 +55,6 @@ Inspirado no conceito de uma rede segura (“SafeNet”), o projeto constitui um
 ---
 
 ###  Ponto de Informação
-
 * Informação atualizadas sobre cyberbully
 * Explicação dos tipos de cyberbully
 * Questionario de auto-conhecimento
@@ -66,7 +62,6 @@ Inspirado no conceito de uma rede segura (“SafeNet”), o projeto constitui um
 ---
 
 ##  Recursos de Apoio 
-
 * Linha direta para esquadras
 * Apoio em situações urgentes
 * Orientação para ajuda especializada 
@@ -74,8 +69,7 @@ Inspirado no conceito de uma rede segura (“SafeNet”), o projeto constitui um
 ---
 
 ##  Segurança e Privacdade 
-
-* Tendo em conta a sensibilidade das denuncias a aplicação garante a proteção dos dados do utilzador, o que permite realizar denuncias segurar e garante a privacidade  das vitimas.
+Tendo em conta a sensibilidade das denuncias a aplicação garante a proteção dos dados do utilzador, o que permite realizar denuncias segurar e garante a privacidade  das vitimas.
 
 ---
 
