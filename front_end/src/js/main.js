@@ -17,6 +17,8 @@ const SafeNet = {
   renderNavbar() {
     const header = document.getElementById('main-navbar-container');
     if (!header) return;
+    const isLoggedIn = localStorage.getItem('safenet_logged_in') === 'true';
+
     header.innerHTML = `
       <header id="main-navbar" class="fixed-top glass border-b border-border/50 bg-white/80 backdrop-blur-md">
         <div class="container h-16 d-flex align-items-center justify-content-between px-4">
@@ -34,7 +36,11 @@ const SafeNet = {
             <a href="ResourcesScreen.html" class="nav-link">Recursos</a>
             <a href="ReportScreen.html" class="nav-link">Denúncia</a>
           </nav>
-          <div class="d-none d-md-flex align-items-center">
+          <div class="d-none d-md-flex align-items-center gap-3">
+            ${isLoggedIn
+        ? `<button onclick="SafeNet.logout()" class="text-muted-foreground hover:text-primary text-sm font-bold transition-all bg-transparent border-0">Sair</button>`
+        : `<a href="LoginScreen.html" class="text-muted-foreground hover:text-primary text-sm font-bold transition-all text-decoration-none">Entrar</a>`
+      }
             <a href="ChatScreen.html" class="bg-primary text-white px-6 py-2.5 rounded-2xl text-sm font-black shadow-lg shadow-primary/25 hover:shadow-primary/40 hover:-translate-y-0.5 transition-all text-decoration-none">Pedir Ajuda</a>
           </div>
           <button id="mobile-toggle" class="d-md-none p-2 rounded-xl hover:bg-muted active:scale-95 transition-all text-foreground border-0 bg-transparent" aria-label="Menu" aria-expanded="false">
@@ -95,6 +101,7 @@ const SafeNet = {
 
       let menu = document.getElementById('mobile-menu');
       if (!menu) {
+        const isLoggedIn = localStorage.getItem('safenet_logged_in') === 'true';
         menu = document.createElement('div');
         menu.id = 'mobile-menu';
         menu.className = 'd-md-none border-t border-border/50 bg-white/95 backdrop-blur-md animate-fade-in position-fixed w-100 start-0 z-40';
@@ -105,6 +112,11 @@ const SafeNet = {
             <a href="ChatScreen.html" class="nav-link d-block">Chat de Apoio</a>
             <a href="ResourcesScreen.html" class="nav-link d-block">Recursos</a>
             <a href="ReportScreen.html" class="nav-link d-block">Denúncia</a>
+            <hr class="border-border/50 my-2">
+            ${isLoggedIn
+            ? `<button onclick="SafeNet.logout()" class="nav-link d-block w-100 text-left bg-transparent border-0">Sair</button>`
+            : `<a href="LoginScreen.html" class="nav-link d-block">Entrar / Registar</a>`
+          }
             <a href="ChatScreen.html" class="d-block w-100 bg-primary text-white text-center px-4 py-3 rounded-xl text-sm font-black mt-2 text-decoration-none shadow-lg">Pedir Ajuda</a>
           </div>
         `;
@@ -114,6 +126,18 @@ const SafeNet = {
         menu.classList.toggle('d-none');
       }
     });
+  },
+
+  logout() {
+    localStorage.removeItem('safenet_logged_in');
+    window.location.reload();
+  },
+
+  login() {
+    localStorage.setItem('safenet_logged_in', 'true');
+    const params = new URLSearchParams(window.location.search);
+    const redirect = params.get('redirect') || 'HomeScreen.html';
+    window.location.href = redirect;
   },
 
   initActiveLinks() {
@@ -278,6 +302,13 @@ const SafeNet = {
     const fCnt = document.getElementById('fileCount');
     const sBtn = document.getElementById('submitBtn');
     if (!desc || !pBtn || !pDrop || !sBtn) return;
+
+    // Verificar login
+    const isLoggedIn = localStorage.getItem('safenet_logged_in') === 'true';
+    if (!isLoggedIn) {
+      window.location.href = 'LoginScreen.html?redirect=ReportScreen.html';
+      return;
+    }
 
     const platforms = ["Instagram", "TikTok", "WhatsApp", "Snapchat", "Facebook", "YouTube", "Discord", "Outro"];
     pDrop.innerHTML = platforms.map(p => `<button class="w-full text-left px-5 py-3 text-sm hover:bg-muted transition-colors text-foreground" onclick="SafeNet.selectPlatform('${p}')">${p}</button>`).join('');
