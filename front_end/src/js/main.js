@@ -8,6 +8,7 @@ const SafeNet = {
     this.initChat();
     this.initReport();
     this.initResources();
+    this.adaptViewport();
   },
 
   initNavbar() {
@@ -247,6 +248,27 @@ const SafeNet = {
         </div>
       </button>
     `).join('');
+  },
+
+  adaptViewport() {
+    const vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+    const setScale = () => {
+      const baseWidth = 1440;
+      const width = window.innerWidth;
+      if (width > 768 && width < baseWidth) {
+        const scale = width / baseWidth;
+        document.body.style.zoom = scale;
+      } else {
+        document.body.style.zoom = 1;
+      }
+    };
+    window.addEventListener('resize', () => {
+      const vh = window.innerHeight * 0.01;
+      document.documentElement.style.setProperty('--vh', `${vh}px`);
+      setScale();
+    });
+    setScale();
   }
 };
 
