@@ -36,12 +36,12 @@ html {
 body {
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
   background:
-    linear-gradient(hsla(var(--background) / 0.965), hsla(var(--background) / 0.965)),
-    url('../images/policia.png');
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  background-attachment: fixed;
+    linear-gradient(hsla(var(--background) / 0.9), hsla(var(--background) / 0.9)),
+    url('../images/policia.png') !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  background-size: cover !important;
+  background-attachment: fixed !important;
   color: hsl(var(--foreground));
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
@@ -55,11 +55,7 @@ body::before {
   inset: -30vmax;
   z-index: -1;
   pointer-events: none;
-  background:
-    radial-gradient(closest-side at 20% 20%, hsla(var(--primary) / 0.25), transparent 70%),
-    radial-gradient(closest-side at 80% 30%, hsla(var(--accent) / 0.18), transparent 70%),
-    radial-gradient(closest-side at 30% 90%, rgba(56, 189, 248, 0.14), transparent 70%),
-    radial-gradient(closest-side at 90% 85%, rgba(236, 72, 153, 0.10), transparent 70%);
+  background: radial-gradient(closest-side at 28% 18%, hsla(var(--primary) / 0.18), transparent 72%);
   filter: blur(30px) saturate(120%);
   transform: translate3d(0, 0, 0);
   animation: aurora 18s ease-in-out infinite;
