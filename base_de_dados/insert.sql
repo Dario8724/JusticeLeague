@@ -27,7 +27,18 @@ INSERT INTO tipo_denuncia (nome, descricao) VALUES
 ('Roubo de Identidade',   'Uso não autorizado de dados pessoais de terceiros para fins fraudulentos'),
 ('Desinformação',         'Difusão intencional de informação falsa com intenção de causar dano'),
 ('Stalking Digital',      'Perseguição ou vigilância repetida de uma pessoa através de meios digitais');
-
+('Cyberstalking',         'Perseguição online com monitorização constante e ameaças que causam medo à vítima'),
+('Doxxing',               'Divulgação de dados pessoais privados com intenção de incitar assédio'),
+('Catfishing',            'Criação de identidade falsa para enganar emocionalmente ou extorquir a vítima'),
+('Fraping',               'Uso indevido da conta de outra pessoa para publicar conteúdos ofensivos'),
+('Masquerading',          'Criação de identidade anónima para perseguir e atacar a vítima'),
+('Trolling',              'Provocações repetidas com insultos dirigidos a uma pessoa específica'),
+('Cyber-baiting',         'Provocar alguém até reagir agressivamente e divulgar essa reação online'),
+('Roasting',              'Críticas que evoluem para humilhação coletiva e ataques pessoais'),
+('Griefing',              'Assédio em jogos online para prejudicar a experiência de outros jogadores'),
+('Sextortion',            'Chantagem com imagens íntimas para obter dinheiro ou mais conteúdo'),
+('Slut-shaming',          'Humilhação baseada na aparência ou comportamento sexual'),
+('Happy Slapping',        'Agressão física filmada para partilha e humilhação online');
 
 -- ============================================================
 -- 3. localizacao
