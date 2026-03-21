@@ -138,16 +138,28 @@
                 <div>
                   <div class="fw-black text-[#1e293b] mb-2">Competência específica</div>
                   <div class="d-flex flex-wrap gap-2">
-                    <span class="badge rounded-pill text-bg-light border">Trânsito</span>
-                    <span class="badge rounded-pill text-bg-light border">Investigação criminal</span>
-                    <span class="badge rounded-pill text-bg-light border">Segurança aeroportuária</span>
-                    <span class="badge rounded-pill text-bg-light border">Segurança de instalações</span>
-                    <span class="badge rounded-pill text-bg-light border">Transportes públicos</span>
+                    <button type="button" class="badge rounded-pill text-bg-primary border-0"
+                      data-map-competence="">Todas</button>
+                    <button type="button" class="badge rounded-pill text-bg-light border"
+                      data-map-competence="Trânsito">Trânsito</button>
+                    <button type="button" class="badge rounded-pill text-bg-light border"
+                      data-map-competence="Investigação criminal">Investigação criminal</button>
+                    <button type="button" class="badge rounded-pill text-bg-light border"
+                      data-map-competence="Segurança aeroportuária">Segurança aeroportuária</button>
+                    <button type="button" class="badge rounded-pill text-bg-light border"
+                      data-map-competence="Segurança de instalações">Segurança de instalações</button>
+                    <button type="button" class="badge rounded-pill text-bg-light border"
+                      data-map-competence="Transportes públicos">Transportes públicos</button>
                   </div>
                 </div>
                 <div class="mt-4">
                   <div class="fw-black text-[#1e293b] mb-1">Estações na região</div>
-                  <div id="psp-stations-region" class="small text-muted-foreground mb-3">Todas</div>
+                  <div class="small text-muted-foreground mb-1">
+                    Região: <span id="psp-stations-region">Todas</span>
+                  </div>
+                  <div class="small text-muted-foreground mb-3">
+                    Competência: <span id="psp-stations-competence">Todas</span>
+                  </div>
                   <div id="psp-stations-list" class="d-grid gap-2"></div>
                 </div>
               </div>
