@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registo - SafeNet</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <script src="../js/config.js"></script>
+</head>
+
+<body class="min-h-screen flex flex-col bg-[#f8f9fa]">
+  <div id="main-navbar-container"></div>
+
+  <main class="flex-grow-1 d-flex align-items-center justify-content-center py-20">
+    <div class="container max-w-md px-4">
+      <div class="bg-white border border-border/40 rounded-[2.5rem] p-8 md:p-12 shadow-sm animate-fade-up">
+        <div class="text-center mb-10">
+          <div
+            class="w-16 h-16 bg-primary rounded-2xl d-flex align-items-center justify-content-center mx-auto mb-6 shadow-lg shadow-primary/20">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
+              stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path
+                d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" />
+            </svg>
+          </div>
+          <h1 class="text-3xl font-black tracking-tight text-[#1e293b] mb-2">Criar conta</h1>
+          <p class="text-muted-foreground text-sm">Preenche os teus dados para te registares.</p>
+        </div>
+
+        <div class="d-flex p-1 bg-[#f8f9fa] rounded-2xl mb-8">
+          <button id="typeCitizen" type="button" onclick="setUserType('citizen')"
+            class="flex-1 py-2.5 text-sm font-bold rounded-xl transition-all border-0 bg-primary text-white shadow-sm">
+            Cidadão
+          </button>
+          <button id="typePSP" type="button" onclick="setUserType('psp')"
+            class="flex-1 py-2.5 text-sm font-bold rounded-xl transition-all border-0 bg-transparent text-[#334155] hover:text-primary">
+            Agente PSP
+          </button>
+        </div>
+
+        <form id="registerForm" class="space-y-6">
+          <div>
+            <label class="text-xs font-bold uppercase tracking-widest text-[#1e293b] mb-2 block ml-1">Nome</label>
+            <input id="regName" type="text" required placeholder="O teu nome"
+              class="w-full bg-[#f8f9fa] border-0 rounded-2xl px-6 py-4 text-sm outline-none focus:ring-2 focus:ring-primary/20 transition-all text-[#1e293b]" />
+          </div>
+
+          <div>
+            <label class="text-xs font-bold uppercase tracking-widest text-[#1e293b] mb-2 block ml-1">Sexo</label>
+            <select id="regSexo" required
+              class="w-full bg-[#f8f9fa] border-0 rounded-2xl px-6 py-4 text-sm outline-none focus:ring-2 focus:ring-primary/20 transition-all text-[#1e293b]">
+              <option value="" selected disabled>Seleciona uma opção</option>
+              <option value="Masculino">Masculino</option>
+              <option value="Feminino">Feminino</option>
+              <option value="Outro">Outro</option>
+              <option value="Prefiro não dizer">Prefiro não dizer</option>
+            </select>
+          </div>
+
+          <div id="registerBadgeField" class="hidden animate-scale-in">
+            <label class="text-xs font-bold uppercase tracking-widest text-[#1e293b] mb-2 block ml-1">Nº de
+              Identificação Policial</label>
+            <input id="registerBadgeNumber" type="text" placeholder="Ex: 123456"
+              class="w-full bg-[#f8f9fa] border-0 rounded-2xl px-6 py-4 text-sm outline-none focus:ring-2 focus:ring-primary/20 transition-all text-[#1e293b]" />
+          </div>
+
+          <div>
+            <label class="text-xs font-bold uppercase tracking-widest text-[#1e293b] mb-2 block ml-1">E-mail</label>
+            <input id="regEmail" type="email" required placeholder="exemplo@email.com"
+              class="w-full bg-[#f8f9fa] border-0 rounded-2xl px-6 py-4 text-sm outline-none focus:ring-2 focus:ring-primary/20 transition-all text-[#1e293b]" />
+          </div>
+
+          <div>
+            <label
+              class="text-xs font-bold uppercase tracking-widest text-[#1e293b] mb-2 block ml-1">Palavra-passe</label>
+            <input id="regPassword" type="password" required placeholder="Cria uma palavra-passe"
+              class="w-full bg-[#f8f9fa] border-0 rounded-2xl px-6 py-4 text-sm outline-none focus:ring-2 focus:ring-primary/20 transition-all text-[#1e293b]" />
+          </div>
+
+          <div>
+            <label class="text-xs font-bold uppercase tracking-widest text-[#1e293b] mb-2 block ml-1">Data de
+              nascimento</label>
+            <input id="regDob" type="date" required
+              class="w-full bg-[#f8f9fa] border-0 rounded-2xl px-6 py-4 text-sm outline-none focus:ring-2 focus:ring-primary/20 transition-all text-[#1e293b]" />
+          </div>
+
+          <div>
+            <label class="text-xs font-bold uppercase tracking-widest text-[#1e293b] mb-2 block ml-1">Telemóvel</label>
+            <input id="regPhone" type="tel" required placeholder="9xx xxx xxx"
+              class="w-full bg-[#f8f9fa] border-0 rounded-2xl px-6 py-4 text-sm outline-none focus:ring-2 focus:ring-primary/20 transition-all text-[#1e293b]" />
+          </div>
+
+          <button type="submit"
+            class="w-full bg-primary text-white rounded-2xl px-6 py-4 font-bold text-base shadow-lg shadow-primary/25 active:scale-[0.98] transition-all hover:shadow-primary/40 border-0">
+            Criar conta
+          </button>
+        </form>
+
+        <div class="mt-10 text-center">
+          <p class="text-sm text-muted-foreground mb-4">Já tens conta?</p>
+          <a id="backToLogin" href="LoginScreen.html"
+            class="text-sm font-bold text-[#1e293b] hover:text-primary transition-colors">Entrar →</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <div id="main-footer-container"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../js/main.js"></script>
+  <script>
+    let currentUserType = 'citizen';
+
+    function runWhenSafeNetReady(fn) {
+      if (window.SafeNetReady && window.SafeNet) {
+        fn();
+        return;
+      }
+      window.addEventListener('safenet:ready', fn, { once: true });
+    }
+
+    function setUserType(type) {
+      currentUserType = type;
+      const citizenBtn = document.getElementById('typeCitizen');
+      const pspBtn = document.getElementById('typePSP');
+      const registerBadgeField = document.getElementById('registerBadgeField');
+      const registerBadgeNumber = document.getElementById('registerBadgeNumber');
+
+      if (type === 'citizen') {
+        citizenBtn.className = 'flex-1 py-2.5 text-sm font-bold rounded-xl transition-all border-0 bg-primary text-white shadow-sm';
+        pspBtn.className = 'flex-1 py-2.5 text-sm font-bold rounded-xl transition-all border-0 bg-transparent text-[#334155] hover:text-primary';
+        registerBadgeField.classList.add('hidden');
+        registerBadgeNumber.required = false;
+      } else {
+        pspBtn.className = 'flex-1 py-2.5 text-sm font-bold rounded-xl transition-all border-0 bg-primary text-white shadow-sm';
+        citizenBtn.className = 'flex-1 py-2.5 text-sm font-bold rounded-xl transition-all border-0 bg-transparent text-[#334155] hover:text-primary';
+        registerBadgeField.classList.remove('hidden');
+        registerBadgeNumber.required = true;
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const params = new URLSearchParams(window.location.search);
+      const redirect = params.get('redirect');
+      const backLink = document.getElementById('backToLogin');
+      if (backLink && redirect) {
+        backLink.href = `LoginScreen.html?redirect=${encodeURIComponent(redirect)}`;
+      }
+      setUserType('citizen');
+    });
+
+    document.getElementById('registerForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const profile = {
+        nome: document.getElementById('regName').value.trim(),
+        sexo: document.getElementById('regSexo').value,
+        email: document.getElementById('regEmail').value.trim(),
+        dataNascimento: document.getElementById('regDob').value,
+        telemovel: document.getElementById('regPhone').value.trim(),
+        tipo: currentUserType,
+        identificacaoPSP: currentUserType === 'psp' ? document.getElementById('registerBadgeNumber').value.trim() : ''
+      };
+      localStorage.setItem('safenet_user_profile', JSON.stringify(profile));
+      localStorage.setItem('safenet_user_type', currentUserType);
+      runWhenSafeNetReady(() => window.SafeNet.login());
+    });
+  </script>
+</body>
+
+</html>
