@@ -12,6 +12,7 @@
       ? `<a href="PSPScreen.html" class="nav-link">Painel PSP</a>`
       : `
             <a href="HomeScreen.html" class="nav-link">Início</a>
+            <a href="InfoScreen.html" class="nav-link">Informação</a>
             <a href="ChatScreen.html" class="nav-link">Chat de Apoio</a>
             <a href="ResourcesScreen.html" class="nav-link">Recursos</a>
             <a href="ReportScreen.html" class="nav-link">Denúncia</a>
@@ -92,6 +93,7 @@
           ? `<a href="PSPScreen.html" class="nav-link d-block">Painel PSP</a>`
           : `
             <a href="HomeScreen.html" class="nav-link d-block">Início</a>
+            <a href="InfoScreen.html" class="nav-link d-block">Informação</a>
             <a href="ChatScreen.html" class="nav-link d-block">Chat de Apoio</a>
             <a href="ResourcesScreen.html" class="nav-link d-block">Recursos</a>
             <a href="ReportScreen.html" class="nav-link d-block">Denúncia</a>

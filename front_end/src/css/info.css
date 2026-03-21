@@ -1,0 +1,509 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0
+}
+
+html {
+    scroll-behavior: smooth
+}
+
+body {
+    font-family: 'DM Sans', sans-serif;
+    background: #F3F4F8;
+    color: #111827;
+    font-size: 16px;
+    line-height: 1.6
+}
+
+h1,
+h2,
+h3,
+h4 {
+    font-family: 'Sora', sans-serif
+}
+
+/* HERO */
+.info-hero {
+    background: #fff;
+    border-bottom: 1px solid #E5E7EB;
+    padding: 52px 40px 44px;
+    margin-top: 60px;
+}
+
+.hero-inner {
+    max-width: 760px
+}
+
+.label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: #4F46E5;
+    margin-bottom: 12px
+}
+
+.info-hero h1 {
+    font-size: clamp(32px, 4vw, 44px);
+    font-weight: 800;
+    line-height: 1.15;
+    margin-bottom: 14px
+}
+
+.info-hero h1 span {
+    color: #4F46E5
+}
+
+.info-hero p {
+    font-size: 16px;
+    color: #6B7280;
+    max-width: 520px;
+    line-height: 1.7;
+    margin-bottom: 28px
+}
+
+.tab-nav {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap
+}
+
+.tab-btn {
+    padding: 9px 20px;
+    border-radius: 20px;
+    border: 1.5px solid #E5E7EB;
+    background: #fff;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    color: #6B7280;
+    transition: all .2s
+}
+
+.tab-btn:hover {
+    border-color: #4F46E5;
+    color: #4F46E5
+}
+
+.tab-btn.active {
+    background: #4F46E5;
+    color: #fff;
+    border-color: #4F46E5
+}
+
+/* SECTIONS */
+.info-section {
+    padding: 52px 40px;
+    display: none
+}
+
+.info-section.active {
+    display: block;
+    animation: fadeUp .35s ease
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(14px)
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0)
+    }
+}
+
+.section-title {
+    font-size: 26px;
+    font-weight: 800;
+    margin-bottom: 6px
+}
+
+.section-sub {
+    font-size: 15px;
+    color: #6B7280;
+    margin-bottom: 36px;
+    max-width: 560px
+}
+
+/* CARDS GRID */
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+    margin-bottom: 48px
+}
+
+.info-card {
+    background: #fff;
+    border-radius: 16px;
+    border: 1px solid #E5E7EB;
+    padding: 28px;
+    transition: all .25s;
+    cursor: default
+}
+
+.info-card:hover {
+    box-shadow: 0 8px 32px rgba(79, 70, 229, .1);
+    transform: translateY(-3px);
+    border-color: #C7D2FE
+}
+
+.card-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+    font-size: 22px
+}
+
+.info-card h3 {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 8px
+}
+
+.info-card p {
+    font-size: 13.5px;
+    color: #6B7280;
+    line-height: 1.65
+}
+
+.card-tag {
+    display: inline-block;
+    margin-top: 14px;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600
+}
+
+/* HIGHLIGHT BOX */
+.highlight {
+    background: #EEF2FF;
+    border: 1.5px solid #C7D2FE;
+    border-radius: 16px;
+    padding: 28px 32px;
+    margin-bottom: 36px;
+    display: flex;
+    gap: 20px;
+    align-items: flex-start
+}
+
+.highlight-icon {
+    font-size: 28px;
+    flex-shrink: 0;
+    margin-top: 2px
+}
+
+.highlight h3 {
+    font-size: 17px;
+    font-weight: 700;
+    margin-bottom: 6px;
+    color: #3730A3
+}
+
+.highlight p {
+    font-size: 14px;
+    color: #4338CA;
+    line-height: 1.7
+}
+
+/* TIPOS GRID */
+.tipos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 16px;
+    margin-bottom: 48px
+}
+
+.tipo-card {
+    background: #fff;
+    border-radius: 14px;
+    border: 1px solid #E5E7EB;
+    padding: 22px;
+    transition: all .2s
+}
+
+.tipo-card:hover {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, .07);
+    border-color: #C7D2FE
+}
+
+.tipo-emoji {
+    font-size: 28px;
+    margin-bottom: 10px
+}
+
+.tipo-card h4 {
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 6px
+}
+
+.tipo-card p {
+    font-size: 13px;
+    color: #6B7280;
+    line-height: 1.6
+}
+
+.tipo-nivel {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600
+}
+
+.nivel-alto {
+    background: #FEF2F2;
+    color: #DC2626
+}
+
+.nivel-medio {
+    background: #FEF3C7;
+    color: #D97706
+}
+
+.nivel-baixo {
+    background: #ECFDF5;
+    color: #059669
+}
+
+/* DICAS */
+.dicas-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 16px;
+    margin-bottom: 48px
+}
+
+.dica-item {
+    background: #fff;
+    border-radius: 14px;
+    border: 1px solid #E5E7EB;
+    padding: 20px 22px;
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    transition: all .2s
+}
+
+.dica-item:hover {
+    box-shadow: 0 4px 16px rgba(79, 70, 229, .08);
+    border-color: #C7D2FE
+}
+
+.dica-num {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    background: #EEF2FF;
+    color: #4F46E5;
+    font-size: 14px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-family: 'Sora', sans-serif
+}
+
+.dica-item h4 {
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 4px
+}
+
+.dica-item p {
+    font-size: 13px;
+    color: #6B7280;
+    line-height: 1.55
+}
+
+/* LEI */
+.lei-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    margin-bottom: 48px
+}
+
+.lei-card {
+    background: #fff;
+    border-radius: 14px;
+    border: 1px solid #E5E7EB;
+    padding: 24px
+}
+
+.lei-card:hover {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, .07);
+    border-color: #C7D2FE
+}
+
+.lei-badge {
+    display: inline-block;
+    padding: 5px 12px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 700;
+    margin-bottom: 14px;
+    letter-spacing: .04em
+}
+
+.lei-card h4 {
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 8px
+}
+
+.lei-card p {
+    font-size: 13px;
+    color: #6B7280;
+    line-height: 1.65
+}
+
+.lei-pena {
+    margin-top: 12px;
+    padding: 10px 14px;
+    background: #FEF2F2;
+    border-radius: 8px;
+    font-size: 12px;
+    color: #7F1D1D;
+    font-weight: 500
+}
+
+/* FAQ */
+.faq-list {
+    max-width: 700px;
+    margin-bottom: 48px
+}
+
+.faq-item {
+    background: #fff;
+    border-radius: 14px;
+    border: 1px solid #E5E7EB;
+    margin-bottom: 10px;
+    overflow: hidden;
+    transition: all .2s
+}
+
+.faq-item.open {
+    border-color: #C7D2FE;
+    box-shadow: 0 2px 12px rgba(79, 70, 229, .08)
+}
+
+.faq-q {
+    padding: 18px 22px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 15px;
+    gap: 12px;
+    user-select: none
+}
+
+.faq-q:hover {
+    color: #4F46E5
+}
+
+.faq-arrow {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    transition: transform .25s;
+    color: #9CA3AF
+}
+
+.faq-item.open .faq-arrow {
+    transform: rotate(180deg);
+    color: #4F46E5
+}
+
+.faq-a {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height .3s ease, padding .3s ease;
+    font-size: 14px;
+    color: #4B5563;
+    line-height: 1.75;
+    padding: 0 22px
+}
+
+.faq-item.open .faq-a {
+    max-height: 300px;
+    padding: 0 22px 18px
+}
+
+/* SOS BANNER */
+.sos-banner {
+    background: #4F46E5;
+    border-radius: 16px;
+    padding: 32px 36px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    flex-wrap: wrap;
+    margin-top: 8px
+}
+
+.sos-banner h3 {
+    font-size: 20px;
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: 6px
+}
+
+.sos-banner p {
+    font-size: 14px;
+    color: #C7D2FE
+}
+
+.sos-banner .sos-num {
+    font-size: 28px;
+    font-weight: 800;
+    color: #fff;
+    font-family: 'Sora', sans-serif
+}
+
+.btn-sos {
+    background: #fff;
+    color: #4F46E5;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    white-space: nowrap;
+    transition: all .2s
+}
+
+.btn-sos:hover {
+    background: #EEF2FF
+}
+
+@media(max-width:640px) {
+
+    .info-hero,
+    .info-section {
+        padding: 32px 16px
+    }
+
+    .sos-banner {
+        padding: 24px 20px
+    }
+}
