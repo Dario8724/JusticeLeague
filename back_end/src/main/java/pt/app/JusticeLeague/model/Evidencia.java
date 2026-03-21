@@ -28,6 +28,14 @@ public class Evidencia {
     @Column(name = "tipo", length = 50)
     private String tipo;
 
+    @Column(name = "tamanho")
+    private Long tamanho;
+
+    @Lob
+    @Basic(fetch = FetchType.LAZY)
+    @Column(name = "conteudo", columnDefinition = "LONGBLOB")
+    private byte[] conteudo;
+
     @Column(name = "descricao", length = 255)
     private String descricao;
 

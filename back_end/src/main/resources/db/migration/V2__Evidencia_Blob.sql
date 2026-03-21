@@ -1,0 +1,4 @@
+ALTER TABLE evidencia
+  ADD COLUMN tamanho BIGINT NULL,
+  ADD COLUMN conteudo LONGBLOB NULL;
+

@@ -15,7 +15,10 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+import java.util.Arrays;
 import java.util.List;
 
 @Configuration
@@ -35,11 +38,13 @@ public class SecurityConfig {
             .authorizeHttpRequests(auth -> auth
 
                 // Rotas públicas (sem token)
-                .requestMatchers("/api/auth/register").permitAll()
-                .requestMatchers("/api/auth/login").permitAll()
-                .requestMatchers("/api/auth/login/psp").permitAll()
-                .requestMatchers("/api/auth/verify").permitAll()
-                .requestMatchers(HttpMethod.GET, "/api/recursos/**").permitAll()
+                .requestMatchers("/", "/index.html", "/favicon.ico").permitAll()
+                .requestMatchers("/pages/**", "/js/**", "/css/**", "/images/**").permitAll()
+                .requestMatchers("/api/auth/register", "/api/auth/login", "/api/auth/login/psp", "/api/auth/verify").permitAll()
+                .requestMatchers("/api/recursos/**").permitAll()
+                .requestMatchers("/api/tipos-denuncia/**").permitAll()
+                .requestMatchers("/api/esquadras/**").permitAll()
+                .requestMatchers("/api/evidencias/download/**").hasAnyRole("UTILIZADOR", "PSP")
 
                 //  Cidadão autenticado
                 .requestMatchers("/api/auth/me").hasAnyRole("UTILIZADOR", "PSP")
@@ -71,18 +76,35 @@ public class SecurityConfig {
     }
 
     @Bean
+    public WebMvcConfigurer webMvcConfigurer() {
+        return new WebMvcConfigurer() {
+            @Override
+            public void addResourceHandlers(ResourceHandlerRegistry registry) {
+                registry
+                        .addResourceHandler("/**")
+                        .addResourceLocations("file:../front_end/src/")
+                        .setCachePeriod(0);
+            }
+        };
+    }
+
+    @Bean
     public CorsConfigurationSource corsConfig() {
         CorsConfiguration config = new CorsConfiguration();
 
         // Em produção, substituir pelo domínio real do frontend SafeNet
-        config.setAllowedOrigins(List.of(
+        config.setAllowedOrigins(Arrays.asList(
             "http://localhost:3000",
             "http://localhost:5173",
+            "http://localhost:5500",
+            "http://127.0.0.1:5500",
+            "http://localhost:5501",
+            "http://127.0.0.1:5501",
             "https://safenet.pt"
         ));
 
-        config.setAllowedMethods(List.of("GET","POST","PUT","PATCH","DELETE","OPTIONS"));
-        config.setAllowedHeaders(List.of("*"));
+        config.setAllowedMethods(Arrays.asList("GET","POST","PUT","PATCH","DELETE","OPTIONS"));
+        config.setAllowedHeaders(Arrays.asList("*"));
         config.setAllowCredentials(true);
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();

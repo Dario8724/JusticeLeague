@@ -12,6 +12,8 @@ import java.time.LocalDateTime;
 public class DenunciaResponse {
 
     private Long id;
+    private Long tipoId;
+    private String tipoNome;
     private String descricao;
     private LocalDateTime dataOcorrencia;
     private LocalDateTime dataRegisto;
@@ -46,6 +48,10 @@ public class DenunciaResponse {
     public static DenunciaResponse from(Denuncia d) {
         DenunciaResponse r = new DenunciaResponse();
         r.setId(d.getId());
+        if (d.getTipo() != null) {
+            r.setTipoId(d.getTipo().getId());
+            r.setTipoNome(d.getTipo().getNome());
+        }
         r.setDescricao(d.getDescricao());
         r.setDataOcorrencia(d.getDataOcorrencia());
         r.setDataRegisto(d.getDataRegisto());

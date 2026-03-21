@@ -11,19 +11,12 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Service
 public class EvidenciaService {
-
-    private final Path root = Paths.get("uploads");
 
     @Autowired
     private EvidenciaRepository evidenciaRepository;
@@ -34,34 +27,24 @@ public class EvidenciaService {
     @Autowired
     private AuthUtils authUtils;
 
-    public void init() {
-        try {
-            if (!Files.exists(root)) {
-                Files.createDirectory(root);
-            }
-        } catch (IOException e) {
-            throw new RuntimeException("Não foi possível inicializar diretório de uploads.");
-        }
-    }
-
     @Transactional
     public EvidenciaResponse upload(Long denunciaId, MultipartFile file, String descricao) {
         Denuncia d = denunciaRepository.findById(denunciaId)
                 .orElseThrow(() -> new RuntimeException("Denúncia não encontrada."));
 
         // Verificar se é o dono
-        if (!d.getUtilizador().getId().equals(authUtils.getUtilizadorAtual().getId())) {
+        if (d.getUtilizador() == null || authUtils.getUtilizadorAtual() == null || !d.getUtilizador().getId().equals(authUtils.getUtilizadorAtual().getId())) {
             throw new RuntimeException("Acesso negado.");
         }
 
         try {
-            String filename = UUID.randomUUID() + "_" + file.getOriginalFilename();
-            Files.copy(file.getInputStream(), this.root.resolve(filename));
-
+            String originalName = file.getOriginalFilename();
             Evidencia ev = Evidencia.builder()
                     .denuncia(d)
-                    .ficheiro(filename)
+                    .ficheiro(originalName != null && !originalName.trim().isEmpty() ? originalName : "upload")
                     .tipo(file.getContentType())
+                    .tamanho(file.getSize())
+                    .conteudo(file.getBytes())
                     .descricao(descricao)
                     .dataUpload(LocalDateTime.now())
                     .build();
@@ -70,7 +53,7 @@ public class EvidenciaService {
             return EvidenciaResponse.from(ev);
 
         } catch (Exception e) {
-            throw new RuntimeException("Erro ao guardar ficheiro: " + e.getMessage());
+            throw new RuntimeException("Erro ao guardar ficheiro (BD): " + e.getMessage());
         }
     }
 
@@ -82,5 +65,20 @@ public class EvidenciaService {
                 .stream()
                 .map(EvidenciaResponse::from)
                 .collect(Collectors.toList());
+    }
+
+    public Evidencia getById(Long evidenciaId) {
+        Evidencia ev = evidenciaRepository.findById(evidenciaId)
+                .orElseThrow(() -> new RuntimeException("Evidência não encontrada."));
+
+        if (authUtils.isPsp()) return ev;
+
+        if (authUtils.isUtilizador()) {
+            if (ev.getDenuncia() != null && ev.getDenuncia().getUtilizador() != null && authUtils.getUtilizadorAtual() != null) {
+                if (ev.getDenuncia().getUtilizador().getId().equals(authUtils.getUtilizadorAtual().getId())) return ev;
+            }
+        }
+
+        throw new RuntimeException("Acesso negado.");
     }
 }

@@ -47,8 +47,10 @@ public class AuthService {
 
         u = utilizadorRepository.save(u);
 
-        // Enviar email de boas-vindas assíncrono
-        emailService.sendWelcomeEmail(u.getEmail(), u.getNome());
+        try {
+            emailService.sendWelcomeEmail(u.getEmail(), u.getNome());
+        } catch (Exception ignored) {
+        }
 
         String token = jwtUtil.generateToken(u.getEmail(), u.getTipo().name(), u.getId());
 
