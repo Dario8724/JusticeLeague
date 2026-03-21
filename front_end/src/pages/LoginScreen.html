@@ -101,6 +101,14 @@
   <script>
     let currentUserType = 'citizen';
 
+    function runWhenSafeNetReady(fn) {
+      if (window.SafeNetReady && window.SafeNet) {
+        fn();
+        return;
+      }
+      window.addEventListener('safenet:ready', fn, { once: true });
+    }
+
     function setUserType(type) {
       currentUserType = type;
       const citizenBtn = document.getElementById('typeCitizen');
@@ -121,11 +129,11 @@
     document.getElementById('loginForm').addEventListener('submit', (e) => {
       e.preventDefault();
       localStorage.setItem('safenet_user_type', currentUserType);
-      SafeNet.login();
+      runWhenSafeNetReady(() => window.SafeNet.login());
     });
 
     document.getElementById('anonymousLogin').addEventListener('click', () => {
-      SafeNet.loginAnonymous();
+      runWhenSafeNetReady(() => window.SafeNet.loginAnonymous());
     });
 
     document.addEventListener('DOMContentLoaded', () => {

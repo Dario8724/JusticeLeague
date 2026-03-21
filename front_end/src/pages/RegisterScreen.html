@@ -117,6 +117,14 @@
   <script>
     let currentUserType = 'citizen';
 
+    function runWhenSafeNetReady(fn) {
+      if (window.SafeNetReady && window.SafeNet) {
+        fn();
+        return;
+      }
+      window.addEventListener('safenet:ready', fn, { once: true });
+    }
+
     function setUserType(type) {
       currentUserType = type;
       const citizenBtn = document.getElementById('typeCitizen');
@@ -160,7 +168,7 @@
       };
       localStorage.setItem('safenet_user_profile', JSON.stringify(profile));
       localStorage.setItem('safenet_user_type', currentUserType);
-      SafeNet.login();
+      runWhenSafeNetReady(() => window.SafeNet.login());
     });
   </script>
 </body>
