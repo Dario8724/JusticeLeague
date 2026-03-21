@@ -104,6 +104,7 @@
     if (this.initNavbar) this.initNavbar();
     if (this.initActiveLinks) this.initActiveLinks();
     if (this.initHomeMap) this.initHomeMap();
+    if (this.initHomeSurvey) this.initHomeSurvey();
     if (this.initPSPPanel) this.initPSPPanel();
     if (this.initChat) this.initChat();
     if (this.initReport) this.initReport();

@@ -155,4 +155,94 @@
     currentCompetence = initialCompetence.getAttribute('data-map-competence') || '';
     renderStations(currentRegion, currentCompetence);
   };
+
+  SafeNet.initHomeSurvey = function () {
+    const form = document.getElementById('homeSurveyForm');
+    if (!form) return;
+
+    const submitBtn = document.getElementById('homeSurveySubmit');
+    const statusEl = document.getElementById('homeSurveyStatus');
+    const okEl = document.getElementById('homeSurveyOk');
+
+    const setStatus = (msg) => {
+      if (!statusEl) return;
+      if (!msg) {
+        statusEl.classList.add('d-none');
+        statusEl.innerText = '';
+        return;
+      }
+      statusEl.classList.remove('d-none');
+      statusEl.innerText = msg;
+    };
+
+    const setOk = (msg) => {
+      if (!okEl) return;
+      if (!msg) {
+        okEl.classList.add('d-none');
+        okEl.innerText = '';
+        return;
+      }
+      okEl.classList.remove('d-none');
+      okEl.innerText = msg;
+    };
+
+    const get = (id) => document.getElementById(id);
+    const val = (id) => (get(id)?.value || '').trim();
+
+    const saveLocal = (payload) => {
+      const key = 'safenet_survey_responses';
+      const raw = localStorage.getItem(key);
+      let arr = [];
+      try { arr = raw ? JSON.parse(raw) : []; } catch { arr = []; }
+      if (!Array.isArray(arr)) arr = [];
+      arr.unshift(payload);
+      localStorage.setItem(key, JSON.stringify(arr.slice(0, 500)));
+    };
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      setStatus('');
+      setOk('');
+
+      const role = val('surveyRole');
+      const ageGroup = val('surveyAgeGroup');
+      const platform = val('surveyPlatform');
+      const type = val('surveyType');
+      const message = val('surveyMessage');
+      const consent = !!get('surveyConsent')?.checked;
+
+      if (!role || !ageGroup || !platform || !type || !message || !consent) {
+        setStatus('Preenche todos os campos e aceita a confirmação final.');
+        return;
+      }
+
+      const payload = {
+        createdAt: new Date().toISOString(),
+        role,
+        ageGroup,
+        platform,
+        type,
+        message
+      };
+
+      if (submitBtn) submitBtn.disabled = true;
+      try {
+        let savedRemote = false;
+        try {
+          if (SafeNet.apiRequest) {
+            await SafeNet.apiRequest('/survey', { method: 'POST', body: payload });
+            savedRemote = true;
+          }
+        } catch {
+          savedRemote = false;
+        }
+
+        if (!savedRemote) saveLocal(payload);
+        form.reset();
+        setOk('Obrigado! Resposta enviada.');
+      } finally {
+        if (submitBtn) submitBtn.disabled = false;
+      }
+    });
+  };
 })();

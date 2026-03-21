@@ -59,23 +59,101 @@
           </div>
         </div>
 
-        <div class="row mt-5 pt-5 gy-4 animate-reveal" style="transition-delay: 400ms;">
-          <div class="col-md-4">
-            <div class="card-modern p-5 text-center">
-              <div class="display-5 fw-black gradient-text mb-2">24/7</div>
-              <div class="text-muted-foreground fw-bold small uppercase tracking-widest">Resposta rápida</div>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="card-modern p-5 text-center">
-              <div class="display-5 fw-black gradient-text mb-2">100%</div>
-              <div class="text-muted-foreground fw-bold small uppercase tracking-widest">Confidencial</div>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="card-modern p-5 text-center">
-              <div class="display-5 fw-black gradient-text mb-2">0€</div>
-              <div class="text-muted-foreground fw-bold small uppercase tracking-widest">Acesso gratuito</div>
+        <div class="row mt-5 pt-5 gy-4 animate-reveal justify-content-center" style="transition-delay: 400ms;">
+          <div class="col-12 col-lg-10">
+            <div class="card-modern p-5">
+              <div
+                class="d-flex flex-column flex-md-row align-items-start align-items-md-center justify-content-between gap-3 mb-4">
+                <div>
+                  <div class="text-primary fw-black small tracking-[0.2em] text-uppercase mb-2">Inquérito</div>
+                  <h2 class="h3 fw-black tracking-tighter mb-1">Formulário rápido</h2>
+                  <p class="text-muted-foreground mb-0">Ajuda-nos a perceber o que acontece mais nas escolas.</p>
+                </div>
+                <div class="text-muted-foreground small fw-bold">Tempo: 1 minuto</div>
+              </div>
+
+              <div id="homeSurveyStatus" class="alert alert-danger rounded-4 border-0 shadow-sm d-none mb-3"></div>
+              <div id="homeSurveyOk" class="alert alert-success rounded-4 border-0 shadow-sm d-none mb-3"></div>
+
+              <form id="homeSurveyForm" class="row g-3">
+                <div class="col-12 col-md-6">
+                  <label
+                    class="text-xs font-bold uppercase tracking-widest text-[#1e293b] mb-2 block ml-1">Perfil</label>
+                  <select id="surveyRole" required
+                    class="w-full bg-[#f8f9fa] border-0 rounded-2xl px-6 py-4 text-sm outline-none focus:ring-2 focus:ring-primary/20 transition-all text-[#1e293b]">
+                    <option value="" selected disabled>Seleciona</option>
+                    <option value="Aluno">Aluno</option>
+                    <option value="Professor/Funcionário">Professor/Funcionário</option>
+                    <option value="Encarregado de Educação">Encarregado de Educação</option>
+                  </select>
+                </div>
+
+                <div class="col-12 col-md-6">
+                  <label
+                    class="text-xs font-bold uppercase tracking-widest text-[#1e293b] mb-2 block ml-1">Idade</label>
+                  <select id="surveyAgeGroup" required
+                    class="w-full bg-[#f8f9fa] border-0 rounded-2xl px-6 py-4 text-sm outline-none focus:ring-2 focus:ring-primary/20 transition-all text-[#1e293b]">
+                    <option value="" selected disabled>Seleciona</option>
+                    <option value="10-12">10–12</option>
+                    <option value="13-15">13–15</option>
+                    <option value="16-18">16–18</option>
+                    <option value="18+">18+</option>
+                  </select>
+                </div>
+
+                <div class="col-12 col-md-6">
+                  <label
+                    class="text-xs font-bold uppercase tracking-widest text-[#1e293b] mb-2 block ml-1">Plataforma</label>
+                  <select id="surveyPlatform" required
+                    class="w-full bg-[#f8f9fa] border-0 rounded-2xl px-6 py-4 text-sm outline-none focus:ring-2 focus:ring-primary/20 transition-all text-[#1e293b]">
+                    <option value="" selected disabled>Seleciona</option>
+                    <option value="Instagram">Instagram</option>
+                    <option value="TikTok">TikTok</option>
+                    <option value="WhatsApp">WhatsApp</option>
+                    <option value="Discord">Discord</option>
+                    <option value="Jogos online">Jogos online</option>
+                    <option value="Outra">Outra</option>
+                  </select>
+                </div>
+
+                <div class="col-12 col-md-6">
+                  <label class="text-xs font-bold uppercase tracking-widest text-[#1e293b] mb-2 block ml-1">Tipo de
+                    situação</label>
+                  <select id="surveyType" required
+                    class="w-full bg-[#f8f9fa] border-0 rounded-2xl px-6 py-4 text-sm outline-none focus:ring-2 focus:ring-primary/20 transition-all text-[#1e293b]">
+                    <option value="" selected disabled>Seleciona</option>
+                    <option value="Insultos/Ameaças">Insultos/Ameaças</option>
+                    <option value="Humilhação pública">Humilhação pública</option>
+                    <option value="Conta falsa/Impersonação">Conta falsa/Impersonação</option>
+                    <option value="Partilha sem consentimento">Partilha sem consentimento</option>
+                    <option value="Extorsão/Sextortion">Extorsão/Sextortion</option>
+                    <option value="Exclusão de grupos">Exclusão de grupos</option>
+                    <option value="Outro">Outro</option>
+                  </select>
+                </div>
+
+                <div class="col-12">
+                  <label class="text-xs font-bold uppercase tracking-widest text-[#1e293b] mb-2 block ml-1">O que
+                    aconteceu? (sem nomes)</label>
+                  <textarea id="surveyMessage" required rows="4" maxlength="500"
+                    placeholder="Escreve um resumo (não coloques nomes, números, moradas ou links)."
+                    class="w-full bg-[#f8f9fa] border-0 rounded-[1.5rem] px-6 py-5 text-sm resize-none outline-none focus:ring-2 focus:ring-primary/10 transition-all leading-relaxed text-[#1e293b]"></textarea>
+                  <div class="text-muted-foreground small mt-2">Máximo 500 caracteres.</div>
+                </div>
+
+                <div
+                  class="col-12 d-flex flex-column flex-md-row align-items-start align-items-md-center justify-content-between gap-3 mt-2">
+                  <label class="d-flex align-items-start gap-2 cursor-pointer">
+                    <input id="surveyConsent" type="checkbox"
+                      class="mt-1 rounded border-border text-primary focus:ring-primary/20" required />
+                    <span class="text-sm text-muted-foreground">Confirmo que não estou a inserir dados pessoais.</span>
+                  </label>
+                  <button id="homeSurveySubmit" type="submit"
+                    class="btn-modern bg-primary text-white px-8 py-3 rounded-2xl fw-black shadow-lg shadow-primary/25 border-0">
+                    Enviar
+                  </button>
+                </div>
+              </form>
             </div>
           </div>
         </div>
