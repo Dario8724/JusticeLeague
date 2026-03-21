@@ -149,7 +149,7 @@
       const profileRaw = localStorage.getItem('safenet_user_profile');
       let profile = null;
       try { profile = profileRaw ? JSON.parse(profileRaw) : null; } catch { profile = null; }
-      const reporterName = profile && profile.nome ? profile.nome : (userType === 'anonymous' ? 'Anónimo' : 'Utilizador');
+      const reporterName = profile && profile.nome ? profile.nome : 'Utilizador';
       const reporterPhone = profile && profile.telemovel ? profile.telemovel : '';
       const reporterEmail = profile && profile.email ? profile.email : '';
 

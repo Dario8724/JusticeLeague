@@ -74,12 +74,8 @@
 
             <div class="d-flex gap-3">
               <button type="submit"
-                class="flex-1 bg-primary text-white rounded-2xl px-6 py-4 font-bold text-base shadow-lg shadow-primary/25 active:scale-[0.98] transition-all hover:shadow-primary/40 border-0">
+                class="w-full bg-primary text-white rounded-2xl px-6 py-4 font-bold text-base shadow-lg shadow-primary/25 active:scale-[0.98] transition-all hover:shadow-primary/40 border-0">
                 Entrar na conta
-              </button>
-              <button id="anonymousLogin" type="button"
-                class="flex-1 bg-[#111827] text-white rounded-2xl px-6 py-4 font-bold text-base shadow-lg shadow-black/10 active:scale-[0.98] transition-all hover:bg-[#0b1220] hover:shadow-black/15 border-0">
-                Anónimo
               </button>
             </div>
           </form>
@@ -130,15 +126,6 @@
       e.preventDefault();
       localStorage.setItem('safenet_user_type', currentUserType);
       runWhenSafeNetReady(() => window.SafeNet.login());
-    });
-
-    document.getElementById('anonymousLogin').addEventListener('click', () => {
-      const email = (document.getElementById('loginEmail')?.value || '').trim();
-      if (!email) {
-        document.getElementById('loginEmail')?.focus();
-        return;
-      }
-      runWhenSafeNetReady(() => window.SafeNet.loginAnonymous(email));
     });
 
     document.addEventListener('DOMContentLoaded', () => {

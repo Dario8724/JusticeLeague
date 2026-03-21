@@ -165,20 +165,6 @@
     window.location.href = redirect;
   };
 
-  SafeNet.loginAnonymous = function (email) {
-    localStorage.setItem('safenet_logged_in', 'true');
-    localStorage.setItem('safenet_user_type', 'anonymous');
-    const normalizedEmail = (email || '').trim();
-    if (normalizedEmail) {
-      localStorage.setItem('safenet_user_profile', JSON.stringify({ nome: 'Anónimo', email: normalizedEmail }));
-    } else {
-      localStorage.setItem('safenet_user_profile', JSON.stringify({ nome: 'Anónimo', email: '' }));
-    }
-    const params = new URLSearchParams(window.location.search);
-    const redirect = params.get('redirect') || 'ReportScreen.html';
-    window.location.href = redirect;
-  };
-
   SafeNet.initActiveLinks = function () {
     const currentPath = window.location.pathname.split('/').pop() || 'HomeScreen.html';
     const normalizedPath = (currentPath === 'index.html' || currentPath === '') ? 'HomeScreen.html' : currentPath;
