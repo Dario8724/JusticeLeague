@@ -1,4 +1,4 @@
-#  Justice League – PSP Smart Assist
+#  SafeNet – PSP Smart Assist
 
 Aplicação mobile inovadora para apoio ao cidadão em Lisboa, inspirada no conceito de uma equipa que protege e serve a comunidade.
 
@@ -6,9 +6,9 @@ Aplicação mobile inovadora para apoio ao cidadão em Lisboa, inspirada no conc
 
 ##  Sobre o Projeto
 
-O **Justice League – PSP Smart Assist** é uma aplicação que centraliza serviços da PSP, permitindo ao utilizador obter ajuda de forma rápida, inteligente e segura.
+O **SafeNet – PSP Smart Assist** é uma aplicação que centraliza serviços da PSP, permitindo ao utilizador obter ajuda de forma rápida, inteligente e segura.
 
-Inspirado na ideia de uma “liga de justiça”, o projeto representa uma solução digital que protege o cidadão no dia a dia.
+Inspirado na ideia de uma “SafeNet”, o projeto representa uma solução digital que protege o cidadão no dia a dia.
 
 ---
 
