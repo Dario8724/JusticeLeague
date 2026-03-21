@@ -1,0 +1,46 @@
+html {
+  background: hsl(var(--background));
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background:
+    linear-gradient(hsla(var(--background) / 0.9), hsla(var(--background) / 0.9)),
+    url('../images/policia.png') !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  background-size: cover !important;
+  background-attachment: fixed !important;
+  color: hsl(var(--foreground));
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  position: relative;
+  isolation: isolate;
+}
+
+body>* {
+  position: relative;
+}
+
+.focus-ring:focus-visible,
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 4px hsla(var(--primary) / 0.16);
+}
+
+.selection,
+::selection {
+  background: hsla(var(--primary) / 0.22);
+}
+
+.fw-black {
+  font-weight: 900 !important;
+}
+
+.text-muted-foreground {
+  color: hsl(var(--muted-foreground)) !important;
+}

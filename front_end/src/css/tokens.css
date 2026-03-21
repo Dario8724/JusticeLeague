@@ -1,0 +1,30 @@
+:root {
+  --background: 225 30% 98%;
+  --foreground: 222 47% 11%;
+  --primary: 262 83% 57%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 210 20% 96%;
+  --secondary-foreground: 222 47% 11%;
+  --accent: 191 92% 43%;
+  --accent-foreground: 0 0% 100%;
+  --muted: 210 20% 96%;
+  --muted-foreground: 215 16% 38%;
+  --card: 0 0% 100%;
+  --border: 214 20% 92%;
+  --ring: 262 83% 57%;
+  --alert: 0 84% 60%;
+  --alert-foreground: 0 0% 100%;
+  --success: 142 76% 36%;
+  --chat-user: 221 56% 35%;
+  --chat-user-foreground: 0 0% 100%;
+  --chat-bot: 210 20% 96%;
+  --chat-bot-foreground: 222 47% 11%;
+  --radius-xl: 1.5rem;
+  --radius-2xl: 2rem;
+  --radius-3xl: 2.5rem;
+
+  --bs-primary: hsl(var(--primary));
+  --bs-primary-rgb: 124, 58, 237;
+  --bs-link-color: hsl(var(--primary));
+  --bs-link-hover-color: hsl(var(--accent));
+}

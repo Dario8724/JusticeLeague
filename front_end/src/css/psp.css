@@ -1,0 +1,108 @@
+.psp-map-frame {
+  height: clamp(320px, 52vh, 520px);
+}
+
+.psp-pill-row {
+  scrollbar-width: thin;
+}
+
+.psp-pill-row::-webkit-scrollbar {
+  height: 8px;
+}
+
+.psp-pill-row::-webkit-scrollbar-thumb {
+  background: rgba(15, 23, 42, 0.15);
+  border-radius: 999px;
+}
+
+.psp-quick-actions {
+  background: linear-gradient(180deg, rgba(2, 6, 23, 0.92), rgba(2, 6, 23, 0.84)) !important;
+  border-color: rgba(255, 255, 255, 0.06) !important;
+}
+
+.psp-quick-title {
+  color: rgba(255, 255, 255, 0.96);
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  font-size: 1.4rem;
+}
+
+.psp-quick-foot {
+  color: rgba(226, 232, 240, 0.7);
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.psp-quick-action {
+  display: flex;
+  align-items: center;
+  gap: 0.95rem;
+  width: 100%;
+  padding: 1.05rem 1.1rem;
+  border-radius: 1.25rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(15, 23, 42, 0.54);
+  color: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.22);
+  transition: transform 0.2s ease, box-shadow 0.35s ease, border-color 0.35s ease, background 0.35s ease;
+}
+
+.psp-quick-action:hover {
+  transform: translateY(-2px);
+  border-color: rgba(255, 255, 255, 0.14);
+  background: rgba(15, 23, 42, 0.62);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.28);
+}
+
+.psp-quick-action:active {
+  transform: translateY(0) scale(0.99);
+}
+
+.psp-quick-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.92);
+  flex-shrink: 0;
+}
+
+.psp-quick-label {
+  font-weight: 900;
+  font-size: 1.08rem;
+  letter-spacing: -0.02em;
+}
+
+.psp-quick-action--primary {
+  background: rgba(59, 130, 246, 0.98);
+  border-color: rgba(59, 130, 246, 0.25);
+  box-shadow: 0 28px 70px rgba(59, 130, 246, 0.22);
+}
+
+.psp-quick-action--primary:hover {
+  background: rgba(37, 99, 235, 0.98);
+  border-color: rgba(37, 99, 235, 0.3);
+  box-shadow: 0 34px 80px rgba(37, 99, 235, 0.28);
+}
+
+.psp-quick-action--primary .psp-quick-icon {
+  background: rgba(255, 255, 255, 0.16);
+}
+
+.psp-quick-action--danger {
+  background: rgba(15, 23, 42, 0.54);
+}
+
+.psp-quick-action--danger:hover {
+  border-color: rgba(244, 63, 94, 0.28);
+  box-shadow: 0 34px 80px rgba(244, 63, 94, 0.12);
+}
+
+.psp-quick-action--danger .psp-quick-icon {
+  color: rgba(244, 63, 94, 0.95);
+  background: rgba(244, 63, 94, 0.14);
+}
