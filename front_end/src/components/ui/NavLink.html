@@ -1,0 +1,46 @@
+<!-- NavLink Component (HTML Template) -->
+<!-- 
+  Este componente demonstra como implementar o comportamento de um NavLink 
+  que muda de classe quando está ativo no contexto de páginas HTML simples.
+-->
+
+<a 
+  href="PAGE_NAME.html" 
+  class="nav-link px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-200 active:scale-95 text-muted-foreground hover:text-foreground hover:bg-muted"
+  data-active-class="bg-primary/10 text-primary"
+>
+  Link Text
+</a>
+
+<!-- Exemplo de Script Global para gerir NavLinks em qualquer página -->
+<script>
+  (function() {
+    /**
+     * Atualiza todos os elementos com a classe .nav-link para refletir o estado ativo.
+     * Deve ser incluído em todas as páginas ou no componente de Navbar.
+     */
+    function updateActiveLinks() {
+      const currentPath = window.location.pathname.split('/').pop() || 'HomeScreen.html';
+      const navLinks = document.querySelectorAll('.nav-link');
+
+      navLinks.forEach(link => {
+        const href = link.getAttribute('href');
+        const activeClass = link.getAttribute('data-active-class') || 'bg-primary/10 text-primary';
+        const baseClasses = "text-muted-foreground hover:text-foreground hover:bg-muted";
+
+        if (href === currentPath) {
+          // Remover classes base e adicionar classe ativa
+          baseClasses.split(' ').forEach(cls => link.classList.remove(cls));
+          activeClass.split(' ').forEach(cls => link.classList.add(cls));
+        } else {
+          // Garantir que as classes base estão presentes e a ativa removida
+          activeClass.split(' ').forEach(cls => link.classList.remove(cls));
+          baseClasses.split(' ').forEach(cls => link.classList.add(cls));
+        }
+      });
+    }
+
+    // Executar ao carregar a página
+    window.addEventListener('DOMContentLoaded', updateActiveLinks);
+  })();
+</script>
