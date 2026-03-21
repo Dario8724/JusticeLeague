@@ -1,4 +1,4 @@
-package mvc.Repository;
+package mvc.repository;
 
 import mvc.model.Esquadra;
 import org.springframework.data.jpa.repository.JpaRepository;

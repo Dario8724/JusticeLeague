@@ -1,4 +1,4 @@
-package mvc.Repository;
+package mvc.repository;
 
 import mvc.model.Notificacao;
 import mvc.model.Utilizador;

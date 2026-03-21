@@ -1,4 +1,4 @@
-package mvc.Repository;
+package mvc.repository;
 
 import mvc.model.Chat;
 import mvc.model.Denuncia;
