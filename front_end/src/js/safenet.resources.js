@@ -21,8 +21,9 @@
       {
         icon: `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>`,
         title: "O que é Cyberbullying?",
-        desc: "Aprende a identificar sinais e formas de cyberbullying.",
-        color: "bg-[#f3e8ff] text-[#a855f7]"
+        desc: "Faz o nosso questionário para identificares sinais de cyberbullying.",
+        color: "bg-[#f3e8ff] text-[#a855f7]",
+        href: "QuizScreen.html"
       },
       {
         icon: `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>`,
@@ -45,7 +46,7 @@
     ];
 
     grid.innerHTML = resources.map((res, i) => `
-      <div class="animate-fade-up flex flex-col items-start gap-4 p-8 rounded-[2rem] bg-white border border-border/40 text-left shadow-sm hover:shadow-md transition-all duration-300" style="animation-delay: ${i * 100}ms;">
+      <${res.href ? `a href="${res.href}"` : 'div'} class="animate-fade-up flex flex-col items-start gap-4 p-8 rounded-[2rem] bg-white border border-border/40 text-left shadow-sm hover:shadow-md transition-all duration-300 text-decoration-none" style="animation-delay: ${i * 100}ms;">
         <div class="w-11 h-11 rounded-2xl ${res.color} flex items-center justify-center shadow-sm">
           ${res.icon}
         </div>
@@ -53,7 +54,7 @@
           <h3 class="font-bold text-lg mb-2 text-[#1e293b]">${res.title}</h3>
           <p class="text-sm text-muted-foreground leading-relaxed">${res.desc}</p>
         </div>
-      </div>
+      </${res.href ? 'a' : 'div'}>
     `).join('');
   };
 })();

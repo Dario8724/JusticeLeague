@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Questionário — Será que é Cyberbullying?</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:wght@400;500&display=swap"
+    rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/quiz.css">
+  <script src="../js/config.js"></script>
+</head>
+
+<body>
+  <div id="main-navbar-container"></div>
+  <div class="quiz-container">
+    <div class="card">
+
+      <div class="q-label">Questionário de Auto-Avaliação</div>
+      <div class="q-title">Será que é cyberbullying?</div>
+      <div class="q-sub">Responde com honestidade — não há respostas certas ou erradas.</div>
+
+      <div class="progress-bar">
+        <div class="progress-fill" id="progress" style="width:0%"></div>
+      </div>
+
+      <!-- STEP: IDADE -->
+      <div id="step-age">
+        <div class="step-intro">
+          <div class="emoji">👤</div>
+          <div style="font-size:16px;font-weight:600;margin-bottom:6px">Quantos anos tens?</div>
+          <div style="font-size:13px;color:#6B7280;margin-bottom:22px">As perguntas vão adaptar-se à tua idade.</div>
+        </div>
+        <div class="age-btns">
+          <button class="age-btn" onclick="selectAge('10-12',this)">10 – 12 anos</button>
+          <button class="age-btn" onclick="selectAge('13-15',this)">13 – 15 anos</button>
+          <button class="age-btn" onclick="selectAge('16+',this)">16 ou mais</button>
+        </div>
+        <div class="nav-btns">
+          <button class="btn-next" id="btn-start" onclick="startQuiz()" disabled>Começar →</button>
+        </div>
+      </div>
+
+      <!-- STEP: PERGUNTAS -->
+      <div id="step-questions" style="display:none"></div>
+
+      <!-- STEP: RESULTADO -->
+      <div class="result" id="step-result"></div>
+
+    </div>
+  </div>
+  <div id="main-footer-container"></div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../js/main.js"></script>
+  <script>
+    const PERGUNTAS = {
+      vitima: [
+        { normal: "Alguém te enviou mensagens repetidas a insultar, ameaçar ou humilhar?", simples: "Alguém te manda mensagens que te deixam triste, assustado/a ou com vergonha?", peso: 2 },
+        { normal: "Partilharam fotos, vídeos ou informação tua sem a tua autorização?", simples: "Alguém partilhou fotos tuas sem te pedir?", peso: 2 },
+        { normal: "Alguém criou um perfil falso com o teu nome ou as tuas fotos?", simples: "Alguém fingiu ser tu na internet?", peso: 2 },
+        { normal: "Foste excluído/a de grupos online de forma repetida e intencional?", simples: "Tiraram-te de grupos de amigos online de propósito várias vezes?", peso: 1 },
+        { normal: "Alguém ameaçou-te ou chantageou-te com informação privada?", simples: "Alguém disse que ia contar segredos teus se não fizesses o que eles queriam?", peso: 3 },
+        { normal: "Sentes medo ou ansiedade por causa do que acontece online?", simples: "Ficas com medo ou nervoso/a por causa de coisas que acontecem na internet?", peso: 2 }
+      ],
+      agressor: [
+        { normal: "Já enviaste mensagens repetidas a alguém com intenção de o/a chatear ou magoar?", simples: "Já mandaste mensagens a alguém várias vezes para o/a chatear de propósito?", peso: 2 },
+        { normal: "Já partilhaste fotos ou informação de alguém sem a sua permissão?", simples: "Já partilhaste fotos de alguém sem ele/ela saber ou deixar?", peso: 2 },
+        { normal: "Já excluíste alguém de grupos online de propósito para o/a magoar?", simples: "Já tiraste alguém de um grupo online para o/a deixar de fora de propósito?", peso: 1 },
+        { normal: "Já fizeste comentários negativos ou humilhantes sobre alguém nas redes sociais?", simples: "Já escreveste coisas feias sobre alguém nas redes sociais?", peso: 2 },
+        { normal: "Já te juntaste a outros para pressionar, gozar ou isolar alguém online?", simples: "Já te juntaste a amigos para gozar com alguém online?", peso: 2 }
+      ]
+    };
+
+    let idade = '', respostas = {}, todasPerguntas = [], atual = 0;
+
+    function selectAge(a, el) {
+      idade = a;
+      document.querySelectorAll('.age-btn').forEach(b => b.classList.remove('sel'));
+      el.classList.add('sel');
+      document.getElementById('btn-start').disabled = false;
+    }
+
+    function startQuiz() {
+      const simples = idade === '10-12';
+      todasPerguntas = [
+        ...PERGUNTAS.vitima.map((p, i) => ({ ...p, id: 'v' + i, tipo: 'vitima', texto: simples ? p.simples : p.normal })),
+        ...PERGUNTAS.agressor.map((p, i) => ({ ...p, id: 'a' + i, tipo: 'agressor', texto: simples ? p.simples : p.normal }))
+      ];
+      document.getElementById('step-age').style.display = 'none';
+      document.getElementById('step-questions').style.display = 'block';
+      renderPergunta();
+    }
+
+    function renderPergunta() {
+      const p = todasPerguntas[atual];
+      const total = todasPerguntas.length;
+      document.getElementById('progress').style.width = ((atual / total) * 100) + '%';
+      const sel = respostas[p.id];
+      const simples = idade === '10-12';
+      const tagClass = p.tipo === 'vitima' ? 'tag-vitima' : 'tag-agressor';
+      const tagLabel = p.tipo === 'vitima' ? 'Sobre o que te aconteceu' : 'Sobre o teu comportamento';
+
+      document.getElementById('step-questions').innerHTML = ` 
+     <span class="section-tag ${tagClass}">${tagLabel}</span> 
+     <div class="question-card"> 
+       <div class="q-num">Pergunta ${atual + 1} de ${total}</div> 
+       <div class="q-text ${simples ? 'simples' : ''}">${p.texto}</div> 
+       <div class="options"> 
+         <button class="opt-btn ${sel === 'sim' ? 'sel-sim' : ''}" onclick="responder('sim')">${simples ? '😔 Sim, aconteceu' : 'Sim'}</button> 
+         <button class="opt-btn ${sel === 'vez' ? 'sel-vez' : ''}" onclick="responder('vez')">${simples ? '🤔 Uma vez ou duas' : 'Às vezes'}</button> 
+         <button class="opt-btn ${sel === 'nao' ? 'sel-nao' : ''}" onclick="responder('nao')">${simples ? '😊 Não, nunca' : 'Não'}</button> 
+       </div> 
+     </div> 
+     <div class="nav-btns"> 
+       ${atual > 0 ? '<button class="btn-back" onclick="voltar()">← Voltar</button>' : ''} 
+       <button class="btn-next" onclick="avancar()" ${sel ? '' : 'disabled'}> 
+         ${atual === todasPerguntas.length - 1 ? 'Ver resultado →' : 'Seguinte →'} 
+       </button> 
+     </div> 
+   `;
+    }
+
+    function responder(val) {
+      respostas[todasPerguntas[atual].id] = val;
+      renderPergunta();
+    }
+
+    function voltar() { if (atual > 0) { atual--; renderPergunta(); } }
+
+    function avancar() {
+      if (atual < todasPerguntas.length - 1) { atual++; renderPergunta(); }
+      else mostrarResultado();
+    }
+
+    function mostrarResultado() {
+      document.getElementById('progress').style.width = '100%';
+      document.getElementById('step-questions').style.display = 'none';
+
+      let pontoV = 0, pontoA = 0;
+      PERGUNTAS.vitima.forEach((_, i) => {
+        const r = respostas['v' + i], p = PERGUNTAS.vitima[i];
+        if (r === 'sim') pontoV += p.peso * 2;
+        else if (r === 'vez') pontoV += p.peso;
+      });
+      PERGUNTAS.agressor.forEach((_, i) => {
+        const r = respostas['a' + i], p = PERGUNTAS.agressor[i];
+        if (r === 'sim') pontoA += p.peso * 2;
+        else if (r === 'vez') pontoA += p.peso;
+      });
+
+      const maxV = PERGUNTAS.vitima.reduce((s, p) => s + p.peso * 2, 0);
+      const maxA = PERGUNTAS.agressor.reduce((s, p) => s + p.peso * 2, 0);
+      const pctV = pontoV / maxV, pctA = pontoA / maxA;
+      const simples = idade === '10-12';
+
+      let badge, badgeStyle, titulo, desc, dicas, acoes = false, sos = false;
+
+      if (pctV >= 0.4 && pctA >= 0.4) {
+        badge = '⚠️ Situação complexa';
+        badgeStyle = 'background:#FEF3C7;color:#B45309';
+        titulo = simples ? 'Estás a passar por uma situação difícil e precisas de ajuda.' : 'Parece que estás numa situação complexa — podes estar a sofrer e a reagir de formas que magoam outros.';
+        desc = simples ? 'Às vezes quando alguém nos magoa, acabamos por magoar outros também. Isso não é culpa tua, mas é importante falar com um adulto de confiança.' : 'Quando somos vítimas durante muito tempo, por vezes adotamos comportamentos agressivos. Não te define — mas é importante procurar apoio para trabalhar ambas as situações.';
+        dicas = [{ cor: '#F59E0B', txt: simples ? 'Fala com um professor ou familiar de confiança.' : 'Fala com um psicólogo escolar ou linha de apoio.' }, { cor: '#F59E0B', txt: simples ? 'Não respondas com raiva a mensagens que te magoam.' : 'Guarda capturas de ecrã das mensagens que recebeste.' }, { cor: '#F59E0B', txt: simples ? 'Pede ajuda — não tens de resolver isto sozinho/a.' : 'Reflete sobre os teus comportamentos online com apoio profissional.' }];
+        acoes = true; sos = true;
+      } else if (pctV >= 0.35) {
+        const grave = pctV >= 0.6;
+        badge = grave ? '🔴 Situação grave' : '🟡 Possível vítima';
+        badgeStyle = grave ? 'background:#FEF2F2;color:#DC2626' : 'background:#FEF3C7;color:#D97706';
+        titulo = simples ? 'As tuas respostas indicam que alguém te está a magoar online. Isso não é normal e não é culpa tua.' : 'As tuas respostas indicam que podes estar a ser vítima de cyberbullying.';
+        desc = simples ? 'O que te está a acontecer não é normal e não mereces isso. Há pessoas que te podem ajudar — não precisas de lidar com isto sozinho/a.' : 'Ninguém merece ser tratado desta forma. Existem recursos e entidades como a PSP que podem ajudar a resolver esta situação.';
+        dicas = [{ cor: '#3B82F6', txt: simples ? 'Guarda as mensagens que te magoaram (pede ajuda a um adulto).' : 'Guarda evidências — capturas de ecrã, datas, nomes de utilizador.' }, { cor: '#3B82F6', txt: simples ? 'Conta a um adulto de confiança — pais, professor ou psicólogo.' : 'Bloqueia e denuncia o agressor nas plataformas onde aconteceu.' }, { cor: '#3B82F6', txt: simples ? 'Não respondas às mensagens más — isso pode piorar.' : 'Podes fazer uma denúncia formal à PSP de forma confidencial.' }];
+        acoes = true; sos = grave;
+      } else if (pctA >= 0.35) {
+        badge = '🔵 Atenção ao teu comportamento';
+        badgeStyle = 'background:#EEF2FF;color:#4F46E5';
+        titulo = simples ? 'Algumas das tuas respostas mostram que podes estar a magoar outras pessoas online.' : 'As tuas respostas indicam que alguns dos teus comportamentos online podem estar a magoar outras pessoas.';
+        desc = simples ? 'Às vezes fazemos coisas que magoam os outros sem querer. O importante é perceber e mudar. Fala com alguém de confiança sobre isto.' : 'Não significa que sejas uma má pessoa — mas é importante refletir sobre o impacto das tuas ações online. O cyberbullying tem consequências reais e pode ter implicações legais.';
+        dicas = [{ cor: '#6366F1', txt: simples ? 'Pensa em como te sentirias se alguém fizesse isso contigo.' : 'Coloca-te no lugar da outra pessoa — como se sentiria?' }, { cor: '#6366F1', txt: simples ? 'Pede desculpa à pessoa que magoaste.' : 'Considera pedir desculpa e parar os comportamentos identificados.' }, { cor: '#6366F1', txt: simples ? 'Fala com um adulto de confiança sobre o que aconteceu.' : 'Fala com um psicólogo escolar — este processo é confidencial.' }];
+      } else {
+        badge = '🟢 Situação segura';
+        badgeStyle = 'background:#ECFDF5;color:#059669';
+        titulo = simples ? 'Ótimo! As tuas respostas indicam que estás seguro/a online.' : 'As tuas respostas não indicam sinais de cyberbullying ativos.';
+        desc = simples ? 'Continua a usar a internet de forma segura e a tratar todos com respeito. Se algum dia precisares de ajuda, podes voltar aqui.' : 'Continua a usar a internet de forma responsável. Se alguma situação mudar, não hesites em voltar a fazer este questionário.';
+        dicas = [{ cor: '#10B981', txt: simples ? 'Nunca partilhes informação pessoal com desconhecidos.' : 'Mantém as tuas configurações de privacidade atualizadas.' }, { cor: '#10B981', txt: simples ? 'Se um amigo estiver a ser gozado online, ajuda-o a contar a um adulto.' : 'Se vires alguém a ser vítima, não ignores — podes ajudar a denunciar.' }, { cor: '#10B981', txt: simples ? 'Trata sempre os outros online como gostarias de ser tratado.' : 'Pensa sempre antes de publicar — o que está online pode ficar para sempre.' }];
+      }
+
+      const resultEl = document.getElementById('step-result');
+      resultEl.style.display = 'block';
+      resultEl.innerHTML = ` 
+     ${sos ? `<div class="sos-box">📞 Se precisares de ajuda urgente: <strong>Linha SOS Criança 116 111</strong> — gratuita, 24h</div>` : ''} 
+     <span class="result-badge" style="${badgeStyle}">${badge}</span> 
+     <div class="result-title">${titulo}</div> 
+     <div class="result-desc">${desc}</div> 
+     <div class="result-tips"> 
+       <h4>O que podes fazer agora</h4> 
+       ${dicas.map(d => `<div class="tip"><div class="tip-dot" style="background:${d.cor}"></div><span>${d.txt}</span></div>`).join('')} 
+     </div> 
+     <div class="result-actions"> 
+       ${acoes ? `<button class="btn-action btn-primary-a" onclick="window.location.href='ReportScreen.html'">Fazer denúncia</button> 
+       <button class="btn-action btn-secondary-a" onclick="window.location.href='ChatScreen.html'">Falar com o SafeBot</button>` : ''} 
+       <button class="btn-action btn-secondary-a" onclick="reiniciar()">Refazer questionário</button> 
+     </div> 
+   `;
+    }
+
+    function reiniciar() {
+      idade = ''; respostas = {}; todasPerguntas = []; atual = 0;
+      document.getElementById('step-result').style.display = 'none';
+      document.getElementById('step-age').style.display = 'block';
+      document.querySelectorAll('.age-btn').forEach(b => b.classList.remove('sel'));
+      document.getElementById('btn-start').disabled = true;
+      document.getElementById('progress').style.width = '0%';
+    } 
+  </script>
+</body>
+
+</html>
