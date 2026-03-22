@@ -6,6 +6,11 @@
     const typeField = document.getElementById('reportType');
     const typeHint = document.getElementById('reportTypeHint');
     const typeButtons = Array.from(document.querySelectorAll('[data-report-type]'));
+    const typePicker = document.getElementById('reportTypePicker');
+    const typeSummary = document.getElementById('reportTypeSummary');
+    const typeSummaryValue = document.getElementById('reportTypeSummaryValue');
+    const typeEditBtn = document.getElementById('reportTypeEditBtn');
+    const descSection = document.getElementById('reportDescriptionSection');
     const pBtn = document.getElementById('platformDropdownBtn');
     const pDrop = document.getElementById('platformDropdown');
     const sPlat = document.getElementById('selectedPlatform');
@@ -49,18 +54,32 @@
 
     restoreDraft();
 
+    const setTypePickerMode = (mode) => {
+      const picker = typePicker;
+      const summary = typeSummary;
+      if (!picker || !summary) return;
+      if (mode === 'summary') {
+        picker.classList.add('d-none');
+        summary.classList.remove('d-none');
+      } else {
+        summary.classList.add('d-none');
+        picker.classList.remove('d-none');
+      }
+    };
+
     const updateTypeUI = () => {
       if (!requiresType) return;
       const selected = typeField ? (typeField.value || '').trim() : '';
       typeButtons.forEach(btn => {
         const val = (btn.getAttribute('data-report-type') || '').trim();
         const active = selected && val === selected;
-        btn.classList.toggle('border-primary/40', active);
-        btn.classList.toggle('bg-white', active);
-        btn.classList.toggle('shadow-sm', active);
+        btn.classList.toggle('safenet-report-type-active', active);
         btn.setAttribute('aria-pressed', active ? 'true' : 'false');
       });
-      if (typeHint) typeHint.classList.toggle('hidden', !!selected);
+      if (typeHint) typeHint.classList.toggle('d-none', !!selected);
+      if (typeSummaryValue) typeSummaryValue.innerText = selected || '';
+      if (selected) setTypePickerMode('summary');
+      else setTypePickerMode('picker');
     };
 
     const updateSubmitState = () => {
@@ -75,9 +94,19 @@
           typeField.value = (btn.getAttribute('data-report-type') || '').trim();
           updateTypeUI();
           updateSubmitState();
+          const target = descSection || desc;
+          if (target && target.scrollIntoView) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          if (desc && desc.focus) desc.focus({ preventScroll: true });
         });
       });
       updateTypeUI();
+    }
+
+    if (typeEditBtn) {
+      typeEditBtn.addEventListener('click', () => {
+        setTypePickerMode('picker');
+        if (typePicker && typePicker.scrollIntoView) typePicker.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
     }
 
     if (needsAuthToSubmit) {

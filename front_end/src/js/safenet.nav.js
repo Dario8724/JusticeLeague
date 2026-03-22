@@ -177,7 +177,7 @@
   SafeNet.initActiveLinks = function () {
     const currentPath = window.location.pathname.split('/').pop() || 'HomeScreen.html';
     const normalizedPath = (currentPath === 'index.html' || currentPath === '') ? 'HomeScreen.html' : currentPath;
-    document.querySelectorAll('.nav-link').forEach(link => {
+    document.querySelectorAll('a.nav-link[href]').forEach(link => {
       const path = link.getAttribute('href');
       if (path === normalizedPath) link.classList.add('active');
       else link.classList.remove('active');

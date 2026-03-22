@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Notícias e Atualizações | SafeNet</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <script src="../js/config.js"></script>
+</head>
+
+<body class="min-h-screen flex flex-col">
+  <div id="main-navbar-container"></div>
+
+  <main class="flex-grow-1">
+    <section class="hero-gradient pt-32 pb-16 overflow-hidden">
+      <div class="container px-4">
+        <div class="row justify-content-center">
+          <div class="col-12 col-lg-10 text-center animate-reveal">
+            <div class="d-inline-flex align-items-center gap-2 text-primary mb-3">
+              <span class="d-inline-block w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+              <span class="small fw-black tracking-[0.2em] text-uppercase">Notícias e atualizações</span>
+            </div>
+            <h1 class="display-5 fw-black tracking-tighter mb-3">O que está a acontecer agora.</h1>
+            <p class="text-muted-foreground fs-5 mb-0">Notícias, eventos, alertas e casos resolvidos relacionados com
+              segurança digital e cyberbullying.</p>
+          </div>
+        </div>
+
+        <div class="row justify-content-center mt-5 animate-reveal" style="transition-delay: 150ms;">
+          <div class="col-12 col-lg-10">
+            <div class="card-modern p-2 p-md-3">
+              <ul class="nav nav-pills nav-fill gap-2" id="infoTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                  <button class="nav-link active" id="info-oque-tab" data-bs-toggle="pill" data-bs-target="#info-oque"
+                    type="button" role="tab" aria-controls="info-oque" aria-selected="true">Notícias</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <button class="nav-link" id="info-tipos-tab" data-bs-toggle="pill" data-bs-target="#info-tipos"
+                    type="button" role="tab" aria-controls="info-tipos" aria-selected="false">Eventos</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <button class="nav-link" id="info-proteger-tab" data-bs-toggle="pill" data-bs-target="#info-proteger"
+                    type="button" role="tab" aria-controls="info-proteger" aria-selected="false">Alertas</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <button class="nav-link" id="info-lei-tab" data-bs-toggle="pill" data-bs-target="#info-lei"
+                    type="button" role="tab" aria-controls="info-lei" aria-selected="false">Casos</button>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-24">
+      <div class="container px-4">
+        <div class="tab-content" id="infoTabContent">
+
+          <!-- TAB 1: NOTÍCIAS RECENTES -->
+          <div class="tab-pane fade show active" id="info-oque" role="tabpanel">
+            <div class="row justify-content-center">
+              <div class="col-12 col-lg-10">
+
+                <h2 class="fw-black h3 mb-4">Notícias recentes</h2>
+
+                <div class="row g-4">
+
+                  <div class="col-md-6">
+                    <div class="card-modern p-5 h-100">
+                      <div class="fw-black text-[#1e293b] mb-2">
+                        Caso de cyberbullying em escola de Lisboa
+                      </div>
+                      <p class="text-muted-foreground">
+                        Um grupo de estudantes criou um perfil falso no Instagram para gozar com um colega,
+                        partilhando fotos editadas e mensagens ofensivas. O caso foi reportado à direção da escola
+                        e às autoridades.
+                      </p>
+                      <div class="small text-muted-foreground mt-3">Lisboa • Há 2 dias</div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="card-modern p-5 h-100">
+                      <div class="fw-black text-[#1e293b] mb-2">
+                        Tentativa de burla através de WhatsApp
+                      </div>
+                      <p class="text-muted-foreground">
+                        Vários jovens em Almada receberam mensagens a pedir dinheiro, fingindo ser familiares.
+                        A PSP alerta para nunca transferir dinheiro sem confirmar a identidade.
+                      </p>
+                      <div class="small text-muted-foreground mt-3">Almada • Há 1 semana</div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="card-modern p-5 h-100">
+                      <div class="fw-black text-[#1e293b] mb-2">
+                        Divulgação de fotos sem consentimento
+                      </div>
+                      <p class="text-muted-foreground">
+                        Um caso em Oeiras envolveu a partilha de imagens privadas num grupo escolar.
+                        A vítima recebeu apoio psicológico e o caso está a ser investigado.
+                      </p>
+                      <div class="small text-muted-foreground mt-3">Oeiras • Há 3 dias</div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="card-modern p-5 h-100">
+                      <div class="fw-black text-[#1e293b] mb-2">
+                        Conta de gaming usada para assédio
+                      </div>
+                      <p class="text-muted-foreground">
+                        Um jogador foi alvo de insultos e ameaças constantes durante jogos online.
+                        A plataforma suspendeu as contas envolvidas após denúncia.
+                      </p>
+                      <div class="small text-muted-foreground mt-3">Sintra • Há 5 dias</div>
+                    </div>
+                  </div>
+
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB 2: EVENTOS -->
+          <div class="tab-pane fade" id="info-tipos" role="tabpanel">
+            <div class="row justify-content-center">
+              <div class="col-12 col-lg-10">
+
+                <h2 class="fw-black h3 mb-4">Eventos e ações</h2>
+
+                <div class="row g-4">
+
+                  <div class="col-md-6">
+                    <div class="card-modern p-5 h-100">
+                      <div class="fw-black mb-2">Workshop de segurança digital</div>
+                      <p class="text-muted-foreground">
+                        Sessão numa escola secundária de Lisboa sobre privacidade online e prevenção do cyberbullying.
+                      </p>
+                      <span class="badge text-bg-primary">Evento educativo</span>
+                    </div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="card-modern p-5 h-100">
+                      <div class="fw-black mb-2">Campanha “Internet Segura”</div>
+                      <p class="text-muted-foreground">
+                        Iniciativa local com distribuição de guias e palestras para jovens e pais.
+                      </p>
+                      <span class="badge text-bg-primary">Campanha</span>
+                    </div>
+                  </div>
+
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB 3: ALERTAS -->
+          <div class="tab-pane fade" id="info-proteger" role="tabpanel">
+            <div class="row justify-content-center">
+              <div class="col-12 col-lg-10">
+
+                <h2 class="fw-black h3 mb-4">Alertas de segurança</h2>
+
+                <div class="row g-4">
+
+                  <div class="col-md-4">
+                    <div class="card-modern p-5 h-100">
+                      <div class="fw-black mb-2">Perfis falsos</div>
+                      <p class="text-muted-foreground">
+                        Verifica sempre quem te adiciona. Muitos ataques começam com contas falsas.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div class="col-md-4">
+                    <div class="card-modern p-5 h-100">
+                      <div class="fw-black mb-2">Links suspeitos</div>
+                      <p class="text-muted-foreground">
+                        Não cliques em links desconhecidos — podem roubar dados.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div class="col-md-4">
+                    <div class="card-modern p-5 h-100">
+                      <div class="fw-black mb-2">Partilha de dados</div>
+                      <p class="text-muted-foreground">
+                        Nunca partilhes passwords ou informações pessoais.
+                      </p>
+                    </div>
+                  </div>
+
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB 4: CASOS RESOLVIDOS -->
+          <div class="tab-pane fade" id="info-lei" role="tabpanel">
+            <div class="row justify-content-center">
+              <div class="col-12 col-lg-10">
+
+                <h2 class="fw-black h3 mb-4">Casos resolvidos</h2>
+
+                <div class="row g-4">
+
+                  <div class="col-md-6">
+                    <div class="card-modern p-5 h-100">
+                      <div class="fw-black mb-2">Investigação a grupo de cyberbullying</div>
+                      <p class="text-muted-foreground">
+                        Um grupo responsável por ataques online foi identificado após denúncia.
+                        Foram aplicadas medidas disciplinares e acompanhamento.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="card-modern p-5 h-100">
+                      <div class="fw-black mb-2">Caso de extorsão digital travado</div>
+                      <p class="text-muted-foreground">
+                        Um jovem foi alvo de chantagem online, mas conseguiu ajuda rapidamente.
+                        O suspeito foi identificado.
+                      </p>
+                    </div>
+                  </div>
+
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="main-footer-container"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../js/main.js"></script>
+</body>
+
+</html>
