@@ -232,3 +232,12 @@
 .nav-link.active::before {
   display: none;
 }
+
+details.safenet-faq>summary {
+  list-style: none;
+  cursor: pointer;
+}
+
+details.safenet-faq>summary::-webkit-details-marker {
+  display: none;
+}
