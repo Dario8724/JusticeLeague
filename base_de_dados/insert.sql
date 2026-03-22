@@ -158,4 +158,15 @@ INSERT INTO relatorio_psp (den_id, psp_id, descricao, acao_tomada) VALUES
 
 (4, 2,
  'Denúncia anónima de sextorsão. Análise da mensagem de ameaça revelou uso de serviço de email temporário. Montante exigido: 500€ em Bitcoin.',
- 'Investigação em curso. Solicitada colaboração internacional para rastreio da carteira de criptomoeda. Vítima aconselhada a não efectuar pagamentos e a preservar todas as comunicações.');
+ 'Investigação em curso. Solicitada colaboração internacional para rastreio da carteira de criptomoeda. Vítima aconselhada a não efectuar pagamentos e a preservar todas as comunicações.'); 
+
+--11. Flyway_schema_history; 
+INSERT INTO flyway_schema_history 
+    (installed_rank, version, description, type, script, checksum, installed_by, installed_on, execution_time, success)
+VALUES
+    (1, '1.0.0', 'Create users table',        'SQL', 'V1.0.0__Create_users_table.sql',        123456789, 'root', CURRENT_TIMESTAMP, 245,  1),
+    (2, '1.0.1', 'Create products table',     'SQL', 'V1.0.1__Create_products_table.sql',      987654321, 'root', CURRENT_TIMESTAMP, 312,  1),
+    (3, '1.0.2', 'Add email index to users',  'SQL', 'V1.0.2__Add_email_index_to_users.sql',   111222333, 'root', CURRENT_TIMESTAMP, 98,   1),
+    (4, '1.1.0', 'Create orders table',       'SQL', 'V1.1.0__Create_orders_table.sql',        444555666, 'root', CURRENT_TIMESTAMP, 420,  1),
+    (5, NULL,    'flyway baseline',            'BASELINE', '<< Flyway Baseline >>',             NULL,      'root', CURRENT_TIMESTAMP, 0,    1);
+
