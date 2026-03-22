@@ -24,7 +24,6 @@
         desc: "Fique a par das últimas notícias e eventos relacionados com segurança online.",
         color: "bg-[#f3e8ff] text-[#a855f7]",
         href: "NewsAndUpdates.html"
-        // colocar o link para a página de notícias ou eventos quando estiver disponível
       }
     ];
 
