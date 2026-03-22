@@ -4,6 +4,8 @@ html {
 
 body {
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-size: var(--fs-16);
+  line-height: var(--lh-normal);
   background:
     linear-gradient(hsla(var(--background) / 0.9), hsla(var(--background) / 0.9)),
     url('../images/policia.png') !important;
@@ -43,4 +45,34 @@ select:focus-visible {
 
 .text-muted-foreground {
   color: hsl(var(--muted-foreground)) !important;
+}
+
+.s-text-14 {
+  font-size: var(--fs-14);
+  line-height: var(--lh-normal);
+}
+
+.s-text-16 {
+  font-size: var(--fs-16);
+  line-height: var(--lh-normal);
+}
+
+.s-text-18 {
+  font-size: var(--fs-18);
+  line-height: var(--lh-relaxed);
+}
+
+.s-text-24 {
+  font-size: var(--fs-24);
+  line-height: var(--lh-snug);
+}
+
+.s-text-32 {
+  font-size: var(--fs-32);
+  line-height: var(--lh-tight);
+}
+
+.s-text-48 {
+  font-size: var(--fs-48);
+  line-height: var(--lh-tight);
 }

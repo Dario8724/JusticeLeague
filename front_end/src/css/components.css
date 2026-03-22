@@ -5,6 +5,63 @@
     linear-gradient(180deg, rgba(248, 250, 252, 0.75) 0%, rgba(255, 255, 255, 0.92) 55%, rgba(248, 250, 252, 0.75) 100%);
 }
 
+.safenet-hero {
+  position: relative;
+}
+
+.safenet-hero-blob {
+  position: absolute;
+  width: 520px;
+  height: 520px;
+  border-radius: 999px;
+  filter: blur(60px);
+  opacity: 0.55;
+  pointer-events: none;
+  transform: translate3d(0, 0, 0);
+}
+
+.safenet-hero-blob--a {
+  top: -220px;
+  left: -240px;
+  background: radial-gradient(circle at 30% 30%, hsla(var(--primary) / 0.45), transparent 60%);
+}
+
+.safenet-hero-blob--b {
+  top: -220px;
+  right: -260px;
+  background: radial-gradient(circle at 30% 30%, hsla(var(--accent) / 0.35), transparent 60%);
+}
+
+.safenet-hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  font-weight: 900;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-size: var(--fs-14);
+  color: hsl(var(--primary));
+}
+
+.safenet-hero-title {
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  font-size: clamp(2.3rem, 4.6vw, 3.2rem);
+  line-height: var(--lh-tight);
+}
+
+.safenet-hero-subtitle {
+  font-size: var(--fs-18);
+  line-height: var(--lh-relaxed);
+  color: hsl(var(--muted-foreground));
+  max-width: 62ch;
+}
+
 .gradient-text {
   background: linear-gradient(90deg, hsl(var(--primary)), hsl(var(--accent)), hsl(var(--primary)));
   -webkit-background-clip: text;
@@ -76,6 +133,47 @@
 
 .card-modern:hover::after {
   opacity: 0.35;
+}
+
+.card-modern .safenet-card-icon {
+  transition: transform 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.1), filter 0.35s ease;
+  transform: translateZ(0);
+}
+
+.card-modern:hover .safenet-card-icon {
+  transform: translateY(-2px) rotate(-2deg) scale(1.06);
+  filter: saturate(1.05);
+}
+
+.safenet-skeleton {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1rem;
+  background: rgba(2, 6, 23, 0.06);
+}
+
+.safenet-skeleton::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.55), transparent);
+  transform: translateX(-100%);
+  animation: safenetShimmer 1.25s ease-in-out infinite;
+}
+
+.safenet-skeleton-line {
+  height: 12px;
+  border-radius: 999px;
+}
+
+.safenet-skeleton-line--lg {
+  height: 16px;
+}
+
+@keyframes safenetShimmer {
+  100% {
+    transform: translateX(100%);
+  }
 }
 
 .btn-modern {
@@ -239,6 +337,16 @@
 
 .nav-link.active::before {
   display: none;
+}
+
+.report-stepper .nav-link.active {
+  background: transparent;
+  color: hsl(var(--foreground));
+}
+
+.report-stepper .nav-link:hover {
+  background: hsla(var(--primary) / 0.12);
+  color: hsl(var(--primary));
 }
 
 details.safenet-faq>summary {

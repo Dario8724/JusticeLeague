@@ -80,13 +80,7 @@
       stepButtons.forEach((btn) => {
         const s = Number(btn.getAttribute('data-report-step') || '0');
         const isActive = s === step;
-        const isDone = s > 0 && s < step;
-        btn.classList.toggle('text-bg-primary', isActive);
-        btn.classList.toggle('border-0', isActive);
-        btn.classList.toggle('text-bg-light', !isActive);
-        btn.classList.toggle('border', !isActive);
-        btn.classList.toggle('text-primary', isDone && !isActive);
-        btn.classList.toggle('text-dark', !isDone && !isActive);
+        btn.classList.toggle('active', isActive);
         btn.setAttribute('aria-current', isActive ? 'step' : 'false');
       });
     };

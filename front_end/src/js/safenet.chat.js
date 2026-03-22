@@ -261,13 +261,20 @@
     const render = () => {
       container.innerHTML = messages.map(msg => {
         const isUser = msg.sender === "user";
+        const isSkeleton = !!msg.skeleton;
         return `
           <div class="flex gap-4 ${isUser ? "flex-row-reverse" : ""} animate-scale-in">
             <div class="safenet-chat-avatar ${isUser ? "safenet-chat-avatar--user" : "safenet-chat-avatar--bot"}">
               ${isUser ? userIcon : botIcon}
             </div>
             <div class="safenet-bubble ${isUser ? "safenet-bubble--user" : "safenet-bubble--bot"}">
-              ${msg.text}
+              ${isSkeleton ? `
+                <div class="d-grid gap-2" style="min-width: 220px;">
+                  <div class="safenet-skeleton safenet-skeleton-line safenet-skeleton-line--lg" style="width: 78%;"></div>
+                  <div class="safenet-skeleton safenet-skeleton-line" style="width: 92%;"></div>
+                  <div class="safenet-skeleton safenet-skeleton-line" style="width: 64%;"></div>
+                </div>
+              `.trim() : msg.text}
             </div>
           </div>
         `;
@@ -297,7 +304,11 @@
       input.value = "";
       btn.disabled = true;
       render();
+      const typingId = Date.now() + 0.5;
+      messages.push({ id: typingId, sender: "bot", skeleton: true });
+      render();
       setTimeout(() => {
+        messages = messages.filter(m => m.id !== typingId);
         const res = responseFor(raw);
         messages.push({ id: Date.now() + 1, text: res, sender: "bot" });
 
