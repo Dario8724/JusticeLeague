@@ -13,21 +13,51 @@
   <script src="../js/config.js"></script>
 </head>
 
-<body class="min-h-screen pt-20 pb-16 bg-[#f8f9fa] flex flex-col">
+<body class="min-h-screen pt-20 pb-16 flex flex-col">
   <div id="main-navbar-container"></div>
 
   <main class="flex-grow-1">
-    <div class="container mx-auto max-w-6xl px-4 mt-16">
-      <div class="animate-fade-up mb-12">
-        <p class="text-primary font-bold text-xs tracking-[0.1em] uppercase mb-3">Recursos</p>
-        <h1 class="text-4xl md:text-5xl font-black tracking-tight text-[#1e293b] mb-4">Recursos e contactos úteis</h1>
-        <p class="text-muted-foreground text-lg max-w-2xl leading-relaxed">Linhas de emergência, contactos da PSP e
-          informação prática para te ajudar a agir com segurança.</p>
+    <section class="hero-gradient safenet-hero pt-32 pb-16 overflow-hidden">
+      <div class="safenet-hero-blob safenet-hero-blob--a"></div>
+      <div class="safenet-hero-blob safenet-hero-blob--b"></div>
+      <div class="container px-4">
+        <div class="row justify-content-center">
+          <div class="col-12 col-lg-10 animate-reveal">
+            <div class="d-flex flex-column flex-lg-row align-items-start align-items-lg-end justify-content-between gap-4">
+              <div>
+                <div class="safenet-hero-badge mb-3">
+                  <span class="d-inline-block w-2 h-2 rounded-full bg-primary"></span>
+                  Recursos
+                </div>
+                <h1 class="safenet-hero-title mb-3 text-[#1e293b]">Recursos e contactos úteis</h1>
+                <p class="safenet-hero-subtitle mb-0">Linhas de emergência, contactos da PSP e informação prática para te
+                  ajudar a agir com segurança.</p>
+              </div>
+              <div class="d-flex flex-wrap gap-3">
+                <a href="ResourcesScreen.html#help"
+                  class="btn-modern d-inline-flex align-items-center gap-2 bg-primary text-white px-6 py-3 text-decoration-none shadow-lg shadow-primary/20">
+                  Linha de ajuda
+                  <span aria-hidden="true">↗</span>
+                </a>
+                <a href="ReportScreen.html"
+                  class="btn-modern d-inline-flex align-items-center gap-2 bg-white text-dark border border-black/5 px-6 py-3 text-decoration-none shadow-sm">
+                  Fazer denúncia
+                  <span aria-hidden="true">↗</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div id="resourcesGrid" class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-        <!-- Cards serão inseridos aqui via JavaScript -->
+    </section>
+
+    <section class="py-24">
+      <div class="container mx-auto max-w-6xl px-4">
+        <div id="resourcesGrid" class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+          <!-- Cards serão inseridos aqui via JavaScript -->
+        </div>
       </div>
-    </div>
+    </section>
   </main>
 
   <div id="main-footer-container"></div>

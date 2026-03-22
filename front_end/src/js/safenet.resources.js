@@ -10,6 +10,31 @@
     const ensureHelpPanel = () => {
       if (document.getElementById('helpLineModal')) return;
 
+      const copyText = async (text) => {
+        const t = String(text || '').trim();
+        if (!t) return false;
+        try {
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            await navigator.clipboard.writeText(t);
+            return true;
+          }
+        } catch { }
+        try {
+          const el = document.createElement('textarea');
+          el.value = t;
+          el.setAttribute('readonly', 'true');
+          el.style.position = 'fixed';
+          el.style.opacity = '0';
+          document.body.appendChild(el);
+          el.select();
+          const ok = document.execCommand('copy');
+          el.remove();
+          return !!ok;
+        } catch {
+          return false;
+        }
+      };
+
       const pspContacts = [
         {
           unit: 'COMANDO METROPOLITANO DE LISBOA',
@@ -132,6 +157,8 @@
 
       const rowsHtml = pspContacts.map((c) => {
         const phone = c.phone ? `<a class="fw-bold text-decoration-none" href="${telHref(c.phone)}">${c.phone}</a>` : `<span class="text-muted-foreground">—</span>`;
+        const mapsQuery = [c.unit, c.address, c.postalCode, c.locality].filter(Boolean).join(' ');
+        const addr = [c.address, c.postalCode, c.locality].filter(Boolean).join(', ');
 
         return `
           <div class="card-modern p-4">
@@ -154,6 +181,10 @@
                   <div>${phone}</div>
                 </div>
               </div>
+            </div>
+            <div class="d-flex flex-wrap gap-2 mt-3">
+              <button type="button" class="btn btn-sm btn-light border fw-bold rounded-3 px-3" data-copy="${addr}">Copiar morada</button>
+              <button type="button" class="btn btn-sm btn-light border fw-bold rounded-3 px-3" data-maps="${mapsQuery}">Abrir no Maps</button>
             </div>
           </div>
         `.trim();
@@ -195,7 +226,24 @@
           </div>
         </div>
       `;
-      document.body.appendChild(wrapper.firstElementChild);
+      const modalEl = wrapper.firstElementChild;
+      document.body.appendChild(modalEl);
+
+      modalEl.querySelectorAll('[data-copy]').forEach((btn) => {
+        btn.addEventListener('click', async () => {
+          const text = btn.getAttribute('data-copy') || '';
+          const ok = await copyText(text);
+          if (SafeNet.toast) SafeNet.toast(ok ? 'Morada copiada.' : 'Não foi possível copiar.', { variant: ok ? 'success' : 'error' });
+        });
+      });
+
+      modalEl.querySelectorAll('[data-maps]').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const q = btn.getAttribute('data-maps') || '';
+          const url = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(q)}`;
+          window.open(url, '_blank', 'noopener');
+        });
+      });
     };
 
     const ensureSecurityTipsModal = () => {
@@ -266,24 +314,54 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
               </div>
               <div class="modal-body px-4 px-md-5 pb-5 pt-0">
-                <div class="card-modern p-2 p-md-3 mb-4">
-                  <ul class="nav nav-pills nav-fill gap-2" id="newsUpdatesTab" role="tablist">
-                    <li class="nav-item" role="presentation">
-                      <button class="nav-link active" id="news-updates-news-tab" data-bs-toggle="pill" data-bs-target="#news-updates-news" type="button" role="tab" aria-controls="news-updates-news" aria-selected="true">Notícias</button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                      <button class="nav-link" id="news-updates-events-tab" data-bs-toggle="pill" data-bs-target="#news-updates-events" type="button" role="tab" aria-controls="news-updates-events" aria-selected="false">Eventos</button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                      <button class="nav-link" id="news-updates-alerts-tab" data-bs-toggle="pill" data-bs-target="#news-updates-alerts" type="button" role="tab" aria-controls="news-updates-alerts" aria-selected="false">Alertas</button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                      <button class="nav-link" id="news-updates-cases-tab" data-bs-toggle="pill" data-bs-target="#news-updates-cases" type="button" role="tab" aria-controls="news-updates-cases" aria-selected="false">Casos</button>
-                    </li>
-                  </ul>
+                <div id="newsUpdatesSkeleton" class="d-none">
+                  <div class="card-modern p-4 mb-4">
+                    <div class="d-flex flex-wrap gap-2">
+                      <div class="safenet-skeleton safenet-skeleton-line" style="width: 110px;"></div>
+                      <div class="safenet-skeleton safenet-skeleton-line" style="width: 100px;"></div>
+                      <div class="safenet-skeleton safenet-skeleton-line" style="width: 90px;"></div>
+                      <div class="safenet-skeleton safenet-skeleton-line" style="width: 80px;"></div>
+                    </div>
+                  </div>
+                  <div class="row g-4">
+                    <div class="col-md-6">
+                      <div class="card-modern p-5 h-100">
+                        <div class="safenet-skeleton safenet-skeleton-line safenet-skeleton-line--lg mb-3" style="width: 70%;"></div>
+                        <div class="safenet-skeleton safenet-skeleton-line mb-2" style="width: 92%;"></div>
+                        <div class="safenet-skeleton safenet-skeleton-line mb-2" style="width: 86%;"></div>
+                        <div class="safenet-skeleton safenet-skeleton-line" style="width: 58%;"></div>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="card-modern p-5 h-100">
+                        <div class="safenet-skeleton safenet-skeleton-line safenet-skeleton-line--lg mb-3" style="width: 66%;"></div>
+                        <div class="safenet-skeleton safenet-skeleton-line mb-2" style="width: 90%;"></div>
+                        <div class="safenet-skeleton safenet-skeleton-line mb-2" style="width: 82%;"></div>
+                        <div class="safenet-skeleton safenet-skeleton-line" style="width: 62%;"></div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
 
-                <div class="tab-content" id="newsUpdatesTabContent">
+                <div id="newsUpdatesContent">
+                  <div class="card-modern p-2 p-md-3 mb-4">
+                    <ul class="nav nav-pills nav-fill gap-2" id="newsUpdatesTab" role="tablist">
+                      <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="news-updates-news-tab" data-bs-toggle="pill" data-bs-target="#news-updates-news" type="button" role="tab" aria-controls="news-updates-news" aria-selected="true">Notícias</button>
+                      </li>
+                      <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="news-updates-events-tab" data-bs-toggle="pill" data-bs-target="#news-updates-events" type="button" role="tab" aria-controls="news-updates-events" aria-selected="false">Eventos</button>
+                      </li>
+                      <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="news-updates-alerts-tab" data-bs-toggle="pill" data-bs-target="#news-updates-alerts" type="button" role="tab" aria-controls="news-updates-alerts" aria-selected="false">Alertas</button>
+                      </li>
+                      <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="news-updates-cases-tab" data-bs-toggle="pill" data-bs-target="#news-updates-cases" type="button" role="tab" aria-controls="news-updates-cases" aria-selected="false">Casos</button>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div class="tab-content" id="newsUpdatesTabContent">
                   <div class="tab-pane fade show active" id="news-updates-news" role="tabpanel" aria-labelledby="news-updates-news-tab" tabindex="0">
                     <h3 class="fw-black h5 mb-3">Notícias recentes</h3>
                     <div class="row g-4">
@@ -380,12 +458,25 @@
                     </div>
                   </div>
                 </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
       `;
-      document.body.appendChild(wrapper.firstElementChild);
+      const modalEl = wrapper.firstElementChild;
+      document.body.appendChild(modalEl);
+      modalEl.addEventListener('show.bs.modal', () => {
+        const s = modalEl.querySelector('#newsUpdatesSkeleton');
+        const c = modalEl.querySelector('#newsUpdatesContent');
+        if (!s || !c) return;
+        s.classList.remove('d-none');
+        c.classList.add('d-none');
+        window.setTimeout(() => {
+          s.classList.add('d-none');
+          c.classList.remove('d-none');
+        }, 350);
+      });
     };
 
     const resources = [
@@ -416,14 +507,26 @@
     ensureSecurityTipsModal();
     ensureNewsUpdatesModal();
 
+    const hash = (window.location.hash || '').toLowerCase();
+    const openModal = (id) => {
+      const el = document.getElementById(id);
+      if (!el) return;
+      if (window.bootstrap && window.bootstrap.Modal) {
+        window.bootstrap.Modal.getOrCreateInstance(el).show();
+      }
+    };
+    if (hash === '#help' || hash === '#linhadeajuda') openModal('helpLineModal');
+    if (hash === '#security' || hash === '#seguranca') openModal('securityTipsModal');
+    if (hash === '#news' || hash === '#noticias') openModal('newsUpdatesModal');
+
     grid.innerHTML = resources.map((res, i) => `
-      <${res.href ? `a href="${res.href}"` : res.action ? 'button type="button"' : 'div'} ${res.action === 'helpLine' ? 'data-bs-toggle="modal" data-bs-target="#helpLineModal" aria-haspopup="dialog"' : res.action === 'securityTips' ? 'data-bs-toggle="modal" data-bs-target="#securityTipsModal" aria-haspopup="dialog"' : res.action === 'newsUpdates' ? 'data-bs-toggle="modal" data-bs-target="#newsUpdatesModal" aria-haspopup="dialog"' : ''} class="animate-fade-up flex flex-col items-start gap-4 p-8 rounded-[2rem] bg-white border border-border/40 text-left shadow-sm hover:shadow-md transition-all duration-300 text-decoration-none w-100" style="animation-delay: ${i * 100}ms;">
-        <div class="w-11 h-11 rounded-2xl ${res.color} flex items-center justify-center shadow-sm">
+      <${res.href ? `a href="${res.href}"` : res.action ? 'button type="button"' : 'div'} ${res.action === 'helpLine' ? 'data-bs-toggle="modal" data-bs-target="#helpLineModal" aria-haspopup="dialog"' : res.action === 'securityTips' ? 'data-bs-toggle="modal" data-bs-target="#securityTipsModal" aria-haspopup="dialog"' : res.action === 'newsUpdates' ? 'data-bs-toggle="modal" data-bs-target="#newsUpdatesModal" aria-haspopup="dialog"' : ''} class="card-modern animate-fade-up d-flex flex-column align-items-start gap-4 p-8 text-start text-decoration-none w-100 border-0" style="animation-delay: ${i * 100}ms;">
+        <div class="safenet-card-icon w-11 h-11 rounded-2xl ${res.color} d-flex align-items-center justify-content-center shadow-sm">
           ${res.icon}
         </div>
         <div>
-          <h3 class="font-bold text-lg mb-2 text-[#1e293b]">${res.title}</h3>
-          <p class="text-sm text-muted-foreground leading-relaxed">${res.desc}</p>
+          <h3 class="fw-black s-text-24 mb-2 text-[#1e293b]">${res.title}</h3>
+          <p class="s-text-16 text-muted-foreground mb-0">${res.desc}</p>
         </div>
       </${res.href ? 'a' : res.action ? 'button' : 'div'}>
     `).join('');

@@ -133,6 +133,13 @@
     };
 
     const render = async () => {
+      tbody.innerHTML = `
+        <tr><td colspan="5"><div class="safenet-skeleton safenet-skeleton-line safenet-skeleton-line--lg" style="width: 40%;"></div></td></tr>
+        <tr><td colspan="5"><div class="safenet-skeleton safenet-skeleton-line" style="width: 92%;"></div></td></tr>
+        <tr><td colspan="5"><div class="safenet-skeleton safenet-skeleton-line" style="width: 86%;"></div></td></tr>
+        <tr><td colspan="5"><div class="safenet-skeleton safenet-skeleton-line" style="width: 78%;"></div></td></tr>
+        <tr><td colspan="5"><div class="safenet-skeleton safenet-skeleton-line" style="width: 90%;"></div></td></tr>
+      `.trim();
       const reports = await loadReports();
       computeCounts(reports);
       const visible = applyFilters(reports);

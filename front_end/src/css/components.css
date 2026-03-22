@@ -5,6 +5,63 @@
     linear-gradient(180deg, rgba(248, 250, 252, 0.75) 0%, rgba(255, 255, 255, 0.92) 55%, rgba(248, 250, 252, 0.75) 100%);
 }
 
+.safenet-hero {
+  position: relative;
+}
+
+.safenet-hero-blob {
+  position: absolute;
+  width: 520px;
+  height: 520px;
+  border-radius: 999px;
+  filter: blur(60px);
+  opacity: 0.55;
+  pointer-events: none;
+  transform: translate3d(0, 0, 0);
+}
+
+.safenet-hero-blob--a {
+  top: -220px;
+  left: -240px;
+  background: radial-gradient(circle at 30% 30%, hsla(var(--primary) / 0.45), transparent 60%);
+}
+
+.safenet-hero-blob--b {
+  top: -220px;
+  right: -260px;
+  background: radial-gradient(circle at 30% 30%, hsla(var(--accent) / 0.35), transparent 60%);
+}
+
+.safenet-hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  font-weight: 900;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-size: var(--fs-14);
+  color: hsl(var(--primary));
+}
+
+.safenet-hero-title {
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  font-size: clamp(2.3rem, 4.6vw, 3.2rem);
+  line-height: var(--lh-tight);
+}
+
+.safenet-hero-subtitle {
+  font-size: var(--fs-18);
+  line-height: var(--lh-relaxed);
+  color: hsl(var(--muted-foreground));
+  max-width: 62ch;
+}
+
 .gradient-text {
   background: linear-gradient(90deg, hsl(var(--primary)), hsl(var(--accent)), hsl(var(--primary)));
   -webkit-background-clip: text;
@@ -76,6 +133,47 @@
 
 .card-modern:hover::after {
   opacity: 0.35;
+}
+
+.card-modern .safenet-card-icon {
+  transition: transform 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.1), filter 0.35s ease;
+  transform: translateZ(0);
+}
+
+.card-modern:hover .safenet-card-icon {
+  transform: translateY(-2px) rotate(-2deg) scale(1.06);
+  filter: saturate(1.05);
+}
+
+.safenet-skeleton {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1rem;
+  background: rgba(2, 6, 23, 0.06);
+}
+
+.safenet-skeleton::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.55), transparent);
+  transform: translateX(-100%);
+  animation: safenetShimmer 1.25s ease-in-out infinite;
+}
+
+.safenet-skeleton-line {
+  height: 12px;
+  border-radius: 999px;
+}
+
+.safenet-skeleton-line--lg {
+  height: 16px;
+}
+
+@keyframes safenetShimmer {
+  100% {
+    transform: translateX(100%);
+  }
 }
 
 .btn-modern {
@@ -241,6 +339,16 @@
   display: none;
 }
 
+.report-stepper .nav-link.active {
+  background: transparent;
+  color: hsl(var(--foreground));
+}
+
+.report-stepper .nav-link:hover {
+  background: hsla(var(--primary) / 0.12);
+  color: hsl(var(--primary));
+}
+
 details.safenet-faq>summary {
   list-style: none;
   cursor: pointer;
@@ -282,4 +390,78 @@ details.safenet-faq>summary.accordion-button:not(.collapsed)::after {
   border-color: hsla(var(--primary) / 0.35) !important;
   background: rgba(255, 255, 255, 0.95) !important;
   box-shadow: 0 14px 28px rgba(15, 23, 42, 0.10) !important;
+}
+
+#safenet-toast-host {
+  position: fixed;
+  top: 84px;
+  right: 16px;
+  z-index: 1405;
+  display: grid;
+  gap: 0.6rem;
+  width: min(380px, calc(100vw - 32px));
+  pointer-events: none;
+}
+
+.safenet-toast {
+  pointer-events: auto;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: start;
+  gap: 0.75rem;
+  padding: 0.9rem 1rem;
+  border-radius: 1.1rem;
+  border: 1px solid rgba(2, 6, 23, 0.08);
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(14px) saturate(160%);
+  -webkit-backdrop-filter: blur(14px) saturate(160%);
+  box-shadow: 0 18px 34px rgba(15, 23, 42, 0.12);
+  transform: translateY(-8px);
+  opacity: 0;
+  transition: transform 0.22s ease, opacity 0.22s ease;
+}
+
+.safenet-toast--show {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.safenet-toast--hide {
+  transform: translateY(-8px);
+  opacity: 0;
+}
+
+.safenet-toast__body {
+  color: hsl(var(--foreground));
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.safenet-toast__close {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  color: hsl(var(--muted-foreground));
+  font-weight: 900;
+  width: 34px;
+  height: 34px;
+  border-radius: 0.9rem;
+  line-height: 1;
+}
+
+.safenet-toast__close:hover {
+  background: rgba(2, 6, 23, 0.04);
+  color: hsl(var(--foreground));
+}
+
+.safenet-toast--success {
+  border-color: rgba(16, 185, 129, 0.22);
+}
+
+.safenet-toast--warn {
+  border-color: rgba(245, 158, 11, 0.28);
+}
+
+.safenet-toast--error {
+  border-color: rgba(239, 68, 68, 0.28);
 }

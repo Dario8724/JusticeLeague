@@ -23,6 +23,18 @@
   --radius-2xl: 2rem;
   --radius-3xl: 2.5rem;
 
+  --fs-14: 0.875rem;
+  --fs-16: 1rem;
+  --fs-18: 1.125rem;
+  --fs-24: 1.5rem;
+  --fs-32: 2rem;
+  --fs-48: 3rem;
+
+  --lh-tight: 1.08;
+  --lh-snug: 1.2;
+  --lh-normal: 1.5;
+  --lh-relaxed: 1.65;
+
   --bs-primary: hsl(var(--primary));
   --bs-primary-rgb: 59, 130, 246;
   --bs-link-color: hsl(var(--primary));

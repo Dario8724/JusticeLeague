@@ -13,188 +13,250 @@
   <script src="../js/config.js"></script>
 </head>
 
-<body class="min-h-screen pt-20 pb-16 bg-[#f8f9fa] flex flex-col">
+<body class="min-h-screen pt-20 pb-16 flex flex-col">
   <div id="main-navbar-container"></div>
 
   <main class="flex-grow-1">
-    <div class="container mx-auto max-w-4xl px-4 mt-16">
-      <div class="animate-fade-up mb-10">
-        <p class="text-primary font-bold text-xs tracking-[0.1em] uppercase mb-3">Denúncia</p>
-        <h1 class="text-4xl md:text-5xl font-black tracking-tight text-[#1e293b] mb-4">Reportar uma situação</h1>
-        <p class="text-muted-foreground text-lg leading-relaxed">Conta-nos o que aconteceu. Tudo é confidencial e
-          seguro.</p>
-      </div>
-
-      <div class="bg-white border border-border/40 rounded-[2.5rem] p-8 md:p-12 shadow-sm animate-fade-up"
-        style="animation-delay: 100ms;">
-        <div class="space-y-10">
-          <div id="reportTypeSection">
-            <label class="text-sm font-bold mb-4 block text-[#1e293b]">Tipo de denúncia</label>
-            <input id="reportType" type="hidden" value="" />
-            <div id="reportTypeSummary" class="d-none">
-              <div class="d-flex align-items-center justify-content-between gap-3 bg-[#f8f9fa] rounded-2xl px-5 py-4">
-                <div class="d-flex flex-column">
-                  <div class="text-xs text-muted-foreground fw-bold text-uppercase tracking-[0.12em]">Selecionado</div>
-                  <div id="reportTypeSummaryValue" class="font-bold text-[#1e293b]"></div>
-                </div>
-                <button id="reportTypeEditBtn" type="button"
-                  class="w-10 h-10 rounded-xl hover:bg-white transition-all active:scale-95 cursor-pointer border-0 d-flex align-items-center justify-content-center bg-transparent"
-                  aria-label="Alterar tipo">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
-                    class="text-muted-foreground">
-                    <path d="M18 6 6 18" />
-                    <path d="m6 6 12 12" />
-                  </svg>
-                </button>
-              </div>
-            </div>
-            <div id="reportTypePicker" class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              <button type="button"
-                class="w-full text-left bg-[#f8f9fa] rounded-2xl px-5 py-4 border border-transparent hover:border-primary/20 hover:bg-white active:scale-[0.995] transition-all"
-                data-report-type="Cyberstalking (Ciberperseguição)">
-                <div class="font-bold text-[#1e293b]">Cyberstalking (Ciberperseguição)</div>
-                <div class="text-sm text-muted-foreground mt-0.5">Monitorização obsessiva, recolha de dados e ameaças.
-                </div>
-              </button>
-              <button type="button"
-                class="w-full text-left bg-[#f8f9fa] rounded-2xl px-5 py-4 border border-transparent hover:border-primary/20 hover:bg-white active:scale-[0.995] transition-all"
-                data-report-type="Doxxing (Doxing)">
-                <div class="font-bold text-[#1e293b]">Doxxing (Doxing)</div>
-                <div class="text-sm text-muted-foreground mt-0.5">Divulgação de informações privadas para incitar
-                  assédio.</div>
-              </button>
-              <button type="button"
-                class="w-full text-left bg-[#f8f9fa] rounded-2xl px-5 py-4 border border-transparent hover:border-primary/20 hover:bg-white active:scale-[0.995] transition-all"
-                data-report-type="Catfishing">
-                <div class="font-bold text-[#1e293b]">Catfishing</div>
-                <div class="text-sm text-muted-foreground mt-0.5">Identidade falsa para enganar, humilhar ou extorquir.
-                </div>
-              </button>
-              <button type="button"
-                class="w-full text-left bg-[#f8f9fa] rounded-2xl px-5 py-4 border border-transparent hover:border-primary/20 hover:bg-white active:scale-[0.995] transition-all"
-                data-report-type="Fraping">
-                <div class="font-bold text-[#1e293b]">Fraping</div>
-                <div class="text-sm text-muted-foreground mt-0.5">Acesso à conta e publicação de conteúdo em nome da
-                  vítima.</div>
-              </button>
-              <button type="button"
-                class="w-full text-left bg-[#f8f9fa] rounded-2xl px-5 py-4 border border-transparent hover:border-primary/20 hover:bg-white active:scale-[0.995] transition-all"
-                data-report-type="Masquerading (Mascaramento)">
-                <div class="font-bold text-[#1e293b]">Masquerading (Mascaramento)</div>
-                <div class="text-sm text-muted-foreground mt-0.5">Identidade falsa criada para perseguir a vítima.</div>
-              </button>
-              <button type="button"
-                class="w-full text-left bg-[#f8f9fa] rounded-2xl px-5 py-4 border border-transparent hover:border-primary/20 hover:bg-white active:scale-[0.995] transition-all"
-                data-report-type="Trolling (Provocação)">
-                <div class="font-bold text-[#1e293b]">Trolling (Provocação)</div>
-                <div class="text-sm text-muted-foreground mt-0.5">Ataques repetidos com sarcasmo cruel e insultos.</div>
-              </button>
-              <button type="button"
-                class="w-full text-left bg-[#f8f9fa] rounded-2xl px-5 py-4 border border-transparent hover:border-primary/20 hover:bg-white active:scale-[0.995] transition-all"
-                data-report-type="Cyber-baiting (Provocação para Reação)">
-                <div class="font-bold text-[#1e293b]">Cyber-baiting (Provocação para Reação)</div>
-                <div class="text-sm text-muted-foreground mt-0.5">Provocar até reação e depois filmar/partilhar para
-                  ridicularizar.</div>
-              </button>
-              <button type="button"
-                class="w-full text-left bg-[#f8f9fa] rounded-2xl px-5 py-4 border border-transparent hover:border-primary/20 hover:bg-white active:scale-[0.995] transition-all"
-                data-report-type="Roasting (Fritura)">
-                <div class="font-bold text-[#1e293b]">Roasting (Fritura)</div>
-                <div class="text-sm text-muted-foreground mt-0.5">“Brincadeira” que escala para ataques pessoais e
-                  humilhação.</div>
-              </button>
-              <button type="button"
-                class="w-full text-left bg-[#f8f9fa] rounded-2xl px-5 py-4 border border-transparent hover:border-primary/20 hover:bg-white active:scale-[0.995] transition-all"
-                data-report-type="Griefing">
-                <div class="font-bold text-[#1e293b]">Griefing</div>
-                <div class="text-sm text-muted-foreground mt-0.5">Abuso em videojogos para arruinar a experiência de
-                  outros.</div>
-              </button>
-              <button type="button"
-                class="w-full text-left bg-[#f8f9fa] rounded-2xl px-5 py-4 border border-transparent hover:border-primary/20 hover:bg-white active:scale-[0.995] transition-all"
-                data-report-type="Sextortion (Sextorsão)">
-                <div class="font-bold text-[#1e293b]">Sextortion (Sextorsão)</div>
-                <div class="text-sm text-muted-foreground mt-0.5">Chantagem com imagens/vídeos íntimos para exigir
-                  dinheiro ou mais conteúdo.</div>
-              </button>
-              <button type="button"
-                class="w-full text-left bg-[#f8f9fa] rounded-2xl px-5 py-4 border border-transparent hover:border-primary/20 hover:bg-white active:scale-[0.995] transition-all"
-                data-report-type="Slut-shaming">
-                <div class="font-bold text-[#1e293b]">Slut-shaming</div>
-                <div class="text-sm text-muted-foreground mt-0.5">Ataques sobre sexualidade/aparência para envergonhar.
-                </div>
-              </button>
-              <button type="button"
-                class="w-full text-left bg-[#f8f9fa] rounded-2xl px-5 py-4 border border-transparent hover:border-primary/20 hover:bg-white active:scale-[0.995] transition-all"
-                data-report-type="Happy Slapping">
-                <div class="font-bold text-[#1e293b]">Happy Slapping</div>
-                <div class="text-sm text-muted-foreground mt-0.5">Agressão física filmada para publicar e partilhar
-                  online.</div>
-              </button>
-            </div>
-            <div id="reportTypeHint" class="text-sm text-muted-foreground mt-3">Seleciona uma opção para continuar.
-            </div>
-          </div>
-
-          <div id="reportDescriptionSection">
-            <label class="text-sm font-bold mb-4 block text-[#1e293b]">O que aconteceu?</label>
-            <textarea id="description" placeholder="Descreve a situação com o máximo de detalhe possível..." rows="6"
-              class="w-full bg-[#f8f9fa] border-0 rounded-[1.5rem] px-6 py-5 text-sm resize-none outline-none focus:ring-2 focus:ring-primary/10 transition-all leading-relaxed text-[#1e293b]"></textarea>
-          </div>
-          <div>
-            <label class="text-sm font-bold mb-4 block text-[#1e293b]">Onde aconteceu?</label>
-            <div class="relative">
-              <button id="platformDropdownBtn"
-                class="w-full bg-[#f8f9fa] border-0 rounded-2xl px-6 py-4 text-sm text-left flex items-center justify-between active:scale-[0.995] transition-all text-[#1e293b]">
-                <span id="selectedPlatform" class="text-muted-foreground">Seleciona a plataforma</span>
-                <svg id="dropdownIcon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
-                  fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                  class="text-muted-foreground transition-transform duration-200">
-                  <path d="m6 9 6 6 6-6" />
-                </svg>
-              </button>
-              <div id="platformDropdown"
-                class="hidden absolute top-full left-0 right-0 mt-3 bg-white border border-border/40 rounded-2xl shadow-xl z-20 overflow-hidden animate-scale-in">
-              </div>
-            </div>
-          </div>
-
-          <div>
-            <label class="text-sm font-bold mb-4 block text-[#1e293b]">Provas (opcional)</label>
-            <label
-              class="flex items-center gap-5 bg-[#f8f9fa] border-2 border-dashed border-border/60 rounded-[1.5rem] px-8 py-8 cursor-pointer hover:border-primary/30 active:scale-[0.995] transition-all group">
-              <div
-                class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary/15 transition-colors shrink-0">
-                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                  class="text-primary">
-                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-                  <polyline points="17 8 12 3 7 8" />
-                  <line x1="12" x2="12" y1="3" y2="15" />
-                </svg>
-              </div>
+    <section class="hero-gradient safenet-hero pt-32 pb-16 overflow-hidden">
+      <div class="safenet-hero-blob safenet-hero-blob--a"></div>
+      <div class="safenet-hero-blob safenet-hero-blob--b"></div>
+      <div class="container px-4">
+        <div class="row justify-content-center">
+          <div class="col-12 col-lg-10 animate-reveal">
+            <div
+              class="d-flex flex-column flex-lg-row align-items-start align-items-lg-end justify-content-between gap-4">
               <div>
-                <p class="text-base font-bold text-[#1e293b] mb-0.5">Carregar imagens ou screenshots</p>
-                <p class="text-sm text-muted-foreground mb-0">PNG, JPG até 10MB</p>
+                <div class="safenet-hero-badge mb-3">
+                  <span class="d-inline-block w-2 h-2 rounded-full bg-primary"></span>
+                  Denúncia
+                </div>
+                <h1 class="safenet-hero-title mb-3 text-[#1e293b]">Reportar uma situação</h1>
+                <p class="safenet-hero-subtitle mb-0">Conta-nos o que aconteceu. Tudo é confidencial e seguro.</p>
               </div>
-              <input id="fileInput" type="file" multiple accept="image/*" class="hidden" />
-            </label>
-            <p id="fileCount" class="hidden text-sm text-primary font-semibold mt-3 ml-2"></p>
+              <div class="d-flex flex-wrap gap-3">
+                <a href="ChatScreen.html"
+                  class="btn-modern d-inline-flex align-items-center gap-2 bg-primary text-white px-6 py-3 text-decoration-none shadow-lg shadow-primary/20">
+                  Falar com apoio
+                  <span aria-hidden="true">↗</span>
+                </a>
+                <a href="ResourcesScreen.html"
+                  class="btn-modern d-inline-flex align-items-center gap-2 bg-white text-dark border border-black/5 px-6 py-3 text-decoration-none shadow-sm">
+                  Ver recursos
+                  <span aria-hidden="true">↗</span>
+                </a>
+              </div>
+            </div>
           </div>
-
-          <button id="submitBtn" disabled
-            class="w-full flex items-center justify-center gap-3 bg-primary text-white rounded-2xl px-6 py-4 font-bold text-lg shadow-lg shadow-primary/20 active:scale-[0.98] transition-all duration-200 disabled:opacity-40 disabled:pointer-events-none cursor-pointer border-0">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <line x1="22" y1="2" x2="11" y2="13" />
-              <polygon points="22 2 15 22 11 13 2 9 22 2" />
-            </svg>
-            Submeter denúncia
-          </button>
         </div>
       </div>
-    </div>
+    </section>
+
+    <section class="py-24">
+      <div class="container mx-auto max-w-4xl px-4">
+        <div class="bg-white border border-border/40 rounded-[2.5rem] p-8 md:p-12 shadow-sm animate-fade-up"
+          style="animation-delay: 100ms;">
+          <div class="space-y-10">
+            <div id="reportStepper" class="card-modern p-4">
+              <div
+                class="d-flex flex-column flex-lg-row align-items-start align-items-lg-center justify-content-between gap-3">
+                <div>
+                  <div class="text-primary fw-black small tracking-[0.2em] text-uppercase">Passos</div>
+                  <div class="fw-black text-[#1e293b]">Submissão guiada</div>
+                </div>
+                <div class="w-100 w-lg-auto">
+                  <ul class="nav nav-pills nav-fill gap-2 report-stepper">
+                    <li class="nav-item">
+                      <button type="button" class="nav-link" data-report-step="1">Tipo</button>
+                    </li>
+                    <li class="nav-item">
+                      <button type="button" class="nav-link" data-report-step="2">Descrição</button>
+                    </li>
+                    <li class="nav-item">
+                      <button type="button" class="nav-link" data-report-step="3">Plataforma</button>
+                    </li>
+                    <li class="nav-item">
+                      <button type="button" class="nav-link" data-report-step="4">Provas</button>
+                    </li>
+                    <li class="nav-item">
+                      <button type="button" class="nav-link" data-report-step="5">Submeter</button>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div id="reportTypeSection">
+              <label class="text-sm font-bold mb-4 block text-[#1e293b]">Tipo de denúncia</label>
+              <input id="reportType" type="hidden" value="" />
+              <div id="reportTypeSummary" class="d-none">
+                <div class="d-flex align-items-center justify-content-between gap-3 bg-[#f8f9fa] rounded-2xl px-5 py-4">
+                  <div class="d-flex flex-column">
+                    <div class="text-xs text-muted-foreground fw-bold text-uppercase tracking-[0.12em]">Selecionado
+                    </div>
+                    <div id="reportTypeSummaryValue" class="font-bold text-[#1e293b]"></div>
+                  </div>
+                  <button id="reportTypeEditBtn" type="button"
+                    class="w-10 h-10 rounded-xl hover:bg-white transition-all active:scale-95 cursor-pointer border-0 d-flex align-items-center justify-content-center bg-transparent"
+                    aria-label="Alterar tipo">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                      stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+                      class="text-muted-foreground">
+                      <path d="M18 6 6 18" />
+                      <path d="m6 6 12 12" />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+              <div id="reportTypePicker" class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <button type="button"
+                  class="w-full text-left bg-[#f8f9fa] rounded-2xl px-5 py-4 border border-transparent hover:border-primary/20 hover:bg-white active:scale-[0.995] transition-all"
+                  data-report-type="Cyberstalking (Ciberperseguição)">
+                  <div class="font-bold text-[#1e293b]">Cyberstalking (Ciberperseguição)</div>
+                  <div class="text-sm text-muted-foreground mt-0.5">Monitorização obsessiva, recolha de dados e ameaças.
+                  </div>
+                </button>
+                <button type="button"
+                  class="w-full text-left bg-[#f8f9fa] rounded-2xl px-5 py-4 border border-transparent hover:border-primary/20 hover:bg-white active:scale-[0.995] transition-all"
+                  data-report-type="Doxxing (Doxing)">
+                  <div class="font-bold text-[#1e293b]">Doxxing (Doxing)</div>
+                  <div class="text-sm text-muted-foreground mt-0.5">Divulgação de informações privadas para incitar
+                    assédio.</div>
+                </button>
+                <button type="button"
+                  class="w-full text-left bg-[#f8f9fa] rounded-2xl px-5 py-4 border border-transparent hover:border-primary/20 hover:bg-white active:scale-[0.995] transition-all"
+                  data-report-type="Catfishing">
+                  <div class="font-bold text-[#1e293b]">Catfishing</div>
+                  <div class="text-sm text-muted-foreground mt-0.5">Identidade falsa para enganar, humilhar ou
+                    extorquir.
+                  </div>
+                </button>
+                <button type="button"
+                  class="w-full text-left bg-[#f8f9fa] rounded-2xl px-5 py-4 border border-transparent hover:border-primary/20 hover:bg-white active:scale-[0.995] transition-all"
+                  data-report-type="Fraping">
+                  <div class="font-bold text-[#1e293b]">Fraping</div>
+                  <div class="text-sm text-muted-foreground mt-0.5">Acesso à conta e publicação de conteúdo em nome da
+                    vítima.</div>
+                </button>
+                <button type="button"
+                  class="w-full text-left bg-[#f8f9fa] rounded-2xl px-5 py-4 border border-transparent hover:border-primary/20 hover:bg-white active:scale-[0.995] transition-all"
+                  data-report-type="Masquerading (Mascaramento)">
+                  <div class="font-bold text-[#1e293b]">Masquerading (Mascaramento)</div>
+                  <div class="text-sm text-muted-foreground mt-0.5">Identidade falsa criada para perseguir a vítima.
+                  </div>
+                </button>
+                <button type="button"
+                  class="w-full text-left bg-[#f8f9fa] rounded-2xl px-5 py-4 border border-transparent hover:border-primary/20 hover:bg-white active:scale-[0.995] transition-all"
+                  data-report-type="Trolling (Provocação)">
+                  <div class="font-bold text-[#1e293b]">Trolling (Provocação)</div>
+                  <div class="text-sm text-muted-foreground mt-0.5">Ataques repetidos com sarcasmo cruel e insultos.
+                  </div>
+                </button>
+                <button type="button"
+                  class="w-full text-left bg-[#f8f9fa] rounded-2xl px-5 py-4 border border-transparent hover:border-primary/20 hover:bg-white active:scale-[0.995] transition-all"
+                  data-report-type="Cyber-baiting (Provocação para Reação)">
+                  <div class="font-bold text-[#1e293b]">Cyber-baiting (Provocação para Reação)</div>
+                  <div class="text-sm text-muted-foreground mt-0.5">Provocar até reação e depois filmar/partilhar para
+                    ridicularizar.</div>
+                </button>
+                <button type="button"
+                  class="w-full text-left bg-[#f8f9fa] rounded-2xl px-5 py-4 border border-transparent hover:border-primary/20 hover:bg-white active:scale-[0.995] transition-all"
+                  data-report-type="Roasting (Fritura)">
+                  <div class="font-bold text-[#1e293b]">Roasting (Fritura)</div>
+                  <div class="text-sm text-muted-foreground mt-0.5">“Brincadeira” que escala para ataques pessoais e
+                    humilhação.</div>
+                </button>
+                <button type="button"
+                  class="w-full text-left bg-[#f8f9fa] rounded-2xl px-5 py-4 border border-transparent hover:border-primary/20 hover:bg-white active:scale-[0.995] transition-all"
+                  data-report-type="Griefing">
+                  <div class="font-bold text-[#1e293b]">Griefing</div>
+                  <div class="text-sm text-muted-foreground mt-0.5">Abuso em videojogos para arruinar a experiência de
+                    outros.</div>
+                </button>
+                <button type="button"
+                  class="w-full text-left bg-[#f8f9fa] rounded-2xl px-5 py-4 border border-transparent hover:border-primary/20 hover:bg-white active:scale-[0.995] transition-all"
+                  data-report-type="Sextortion (Sextorsão)">
+                  <div class="font-bold text-[#1e293b]">Sextortion (Sextorsão)</div>
+                  <div class="text-sm text-muted-foreground mt-0.5">Chantagem com imagens/vídeos íntimos para exigir
+                    dinheiro ou mais conteúdo.</div>
+                </button>
+                <button type="button"
+                  class="w-full text-left bg-[#f8f9fa] rounded-2xl px-5 py-4 border border-transparent hover:border-primary/20 hover:bg-white active:scale-[0.995] transition-all"
+                  data-report-type="Slut-shaming">
+                  <div class="font-bold text-[#1e293b]">Slut-shaming</div>
+                  <div class="text-sm text-muted-foreground mt-0.5">Ataques sobre sexualidade/aparência para
+                    envergonhar.
+                  </div>
+                </button>
+                <button type="button"
+                  class="w-full text-left bg-[#f8f9fa] rounded-2xl px-5 py-4 border border-transparent hover:border-primary/20 hover:bg-white active:scale-[0.995] transition-all"
+                  data-report-type="Happy Slapping">
+                  <div class="font-bold text-[#1e293b]">Happy Slapping</div>
+                  <div class="text-sm text-muted-foreground mt-0.5">Agressão física filmada para publicar e partilhar
+                    online.</div>
+                </button>
+              </div>
+              <div id="reportTypeHint" class="text-sm text-muted-foreground mt-3">Seleciona uma opção para continuar.
+              </div>
+            </div>
+
+            <div id="reportDescriptionSection">
+              <label class="text-sm font-bold mb-4 block text-[#1e293b]">O que aconteceu?</label>
+              <textarea id="description" placeholder="Descreve a situação com o máximo de detalhe possível..." rows="6"
+                class="w-full bg-[#f8f9fa] border-0 rounded-[1.5rem] px-6 py-5 text-sm resize-none outline-none focus:ring-2 focus:ring-primary/10 transition-all leading-relaxed text-[#1e293b]"></textarea>
+            </div>
+            <div id="reportPlatformSection">
+              <label class="text-sm font-bold mb-4 block text-[#1e293b]">Onde aconteceu?</label>
+              <div class="relative">
+                <button id="platformDropdownBtn"
+                  class="w-full bg-[#f8f9fa] border-0 rounded-2xl px-6 py-4 text-sm text-left flex items-center justify-between active:scale-[0.995] transition-all text-[#1e293b]">
+                  <span id="selectedPlatform" class="text-muted-foreground">Seleciona a plataforma</span>
+                  <svg id="dropdownIcon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="text-muted-foreground transition-transform duration-200">
+                    <path d="m6 9 6 6 6-6" />
+                  </svg>
+                </button>
+                <div id="platformDropdown"
+                  class="hidden absolute top-full left-0 right-0 mt-3 bg-white border border-border/40 rounded-2xl shadow-xl z-20 overflow-hidden animate-scale-in">
+                </div>
+              </div>
+            </div>
+
+            <div id="reportEvidenceSection">
+              <label class="text-sm font-bold mb-4 block text-[#1e293b]">Provas (opcional)</label>
+              <label
+                class="flex items-center gap-5 bg-[#f8f9fa] border-2 border-dashed border-border/60 rounded-[1.5rem] px-8 py-8 cursor-pointer hover:border-primary/30 active:scale-[0.995] transition-all group">
+                <div
+                  class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary/15 transition-colors shrink-0">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="text-primary">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                    <polyline points="17 8 12 3 7 8" />
+                    <line x1="12" x2="12" y1="3" y2="15" />
+                  </svg>
+                </div>
+                <div>
+                  <p class="text-base font-bold text-[#1e293b] mb-0.5">Carregar imagens ou screenshots</p>
+                  <p class="text-sm text-muted-foreground mb-0">PNG, JPG até 10MB</p>
+                </div>
+                <input id="fileInput" type="file" multiple accept="image/*" class="hidden" />
+              </label>
+              <p id="fileCount" class="hidden text-sm text-primary font-semibold mt-3 ml-2"></p>
+            </div>
+
+            <button id="submitBtn" disabled
+              class="w-full flex items-center justify-center gap-3 bg-primary text-white rounded-2xl px-6 py-4 font-bold text-lg shadow-lg shadow-primary/20 active:scale-[0.98] transition-all duration-200 disabled:opacity-40 disabled:pointer-events-none cursor-pointer border-0">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="22" y1="2" x2="11" y2="13" />
+                <polygon points="22 2 15 22 11 13 2 9 22 2" />
+              </svg>
+              Submeter denúncia
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
 
   <div id="main-footer-container"></div>

@@ -238,7 +238,54 @@
     this.clearAuth();
   };
 
+  SafeNet.ensureToastHost = function () {
+    if (document.getElementById('safenet-toast-host')) return;
+    const host = document.createElement('div');
+    host.id = 'safenet-toast-host';
+    host.setAttribute('aria-live', 'polite');
+    host.setAttribute('aria-atomic', 'true');
+    document.body.appendChild(host);
+  };
+
+  SafeNet.toast = function (message, options) {
+    const text = String(message || '').trim();
+    if (!text) return;
+    this.ensureToastHost();
+    const host = document.getElementById('safenet-toast-host');
+    if (!host) return;
+
+    const opts = options && typeof options === 'object' ? options : {};
+    const variant = String(opts.variant || 'info').toLowerCase();
+    const timeoutMs = Number.isFinite(opts.timeoutMs) ? opts.timeoutMs : 3200;
+
+    const t = document.createElement('div');
+    t.className = `safenet-toast safenet-toast--${variant}`;
+    t.setAttribute('role', 'status');
+    t.innerHTML = `
+      <div class="safenet-toast__body">${text}</div>
+      <button type="button" class="safenet-toast__close" aria-label="Fechar">×</button>
+    `.trim();
+
+    const close = () => {
+      t.classList.add('safenet-toast--hide');
+      window.setTimeout(() => t.remove(), 220);
+    };
+
+    const btn = t.querySelector('.safenet-toast__close');
+    if (btn) btn.addEventListener('click', close);
+    t.addEventListener('click', (e) => {
+      const target = e.target;
+      const isLink = target && (target.tagName === 'A' || target.closest('a'));
+      if (!isLink) close();
+    });
+
+    host.appendChild(t);
+    window.setTimeout(() => t.classList.add('safenet-toast--show'), 10);
+    if (timeoutMs > 0) window.setTimeout(close, timeoutMs);
+  };
+
   SafeNet.init = function () {
+    this.ensureToastHost();
     if (this.renderNavbar) this.renderNavbar();
     if (this.renderFooter) this.renderFooter();
     if (this.initNavbar) this.initNavbar();
