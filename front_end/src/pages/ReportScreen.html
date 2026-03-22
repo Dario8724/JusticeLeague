@@ -28,6 +28,26 @@
       <div class="bg-white border border-border/40 rounded-[2.5rem] p-8 md:p-12 shadow-sm animate-fade-up"
         style="animation-delay: 100ms;">
         <div class="space-y-10">
+          <div id="reportStepper" class="card-modern p-4">
+            <div class="d-flex flex-wrap align-items-center justify-content-between gap-3">
+              <div>
+                <div class="text-primary fw-black small tracking-[0.2em] text-uppercase">Passos</div>
+                <div class="fw-black text-[#1e293b]">Submissão guiada</div>
+              </div>
+              <div class="d-flex flex-wrap gap-2">
+                <button type="button" class="badge rounded-pill text-bg-light border fw-bold px-3 py-2"
+                  data-report-step="1">Tipo</button>
+                <button type="button" class="badge rounded-pill text-bg-light border fw-bold px-3 py-2"
+                  data-report-step="2">Descrição</button>
+                <button type="button" class="badge rounded-pill text-bg-light border fw-bold px-3 py-2"
+                  data-report-step="3">Plataforma</button>
+                <button type="button" class="badge rounded-pill text-bg-light border fw-bold px-3 py-2"
+                  data-report-step="4">Provas</button>
+                <button type="button" class="badge rounded-pill text-bg-light border fw-bold px-3 py-2"
+                  data-report-step="5">Submeter</button>
+              </div>
+            </div>
+          </div>
           <div id="reportTypeSection">
             <label class="text-sm font-bold mb-4 block text-[#1e293b]">Tipo de denúncia</label>
             <input id="reportType" type="hidden" value="" />
@@ -142,7 +162,7 @@
             <textarea id="description" placeholder="Descreve a situação com o máximo de detalhe possível..." rows="6"
               class="w-full bg-[#f8f9fa] border-0 rounded-[1.5rem] px-6 py-5 text-sm resize-none outline-none focus:ring-2 focus:ring-primary/10 transition-all leading-relaxed text-[#1e293b]"></textarea>
           </div>
-          <div>
+          <div id="reportPlatformSection">
             <label class="text-sm font-bold mb-4 block text-[#1e293b]">Onde aconteceu?</label>
             <div class="relative">
               <button id="platformDropdownBtn"
@@ -160,7 +180,7 @@
             </div>
           </div>
 
-          <div>
+          <div id="reportEvidenceSection">
             <label class="text-sm font-bold mb-4 block text-[#1e293b]">Provas (opcional)</label>
             <label
               class="flex items-center gap-5 bg-[#f8f9fa] border-2 border-dashed border-border/60 rounded-[1.5rem] px-8 py-8 cursor-pointer hover:border-primary/30 active:scale-[0.995] transition-all group">

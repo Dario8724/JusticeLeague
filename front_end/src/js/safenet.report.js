@@ -11,6 +11,10 @@
     const typeSummaryValue = document.getElementById('reportTypeSummaryValue');
     const typeEditBtn = document.getElementById('reportTypeEditBtn');
     const descSection = document.getElementById('reportDescriptionSection');
+    const platformSection = document.getElementById('reportPlatformSection');
+    const evidenceSection = document.getElementById('reportEvidenceSection');
+    const stepper = document.getElementById('reportStepper');
+    const stepButtons = Array.from(document.querySelectorAll('[data-report-step]'));
     const pBtn = document.getElementById('platformDropdownBtn');
     const pDrop = document.getElementById('platformDropdown');
     const sPlat = document.getElementById('selectedPlatform');
@@ -54,6 +58,44 @@
 
     restoreDraft();
 
+    const platformSelected = () => {
+      return !!(sPlat && !sPlat.classList.contains('text-muted-foreground') && String(sPlat.innerText || '').trim());
+    };
+
+    const computeStep = () => {
+      const selectedType = requiresType && typeField ? (typeField.value || '').trim() : '';
+      const hasDesc = !!(desc.value || '').trim();
+      const hasPlatform = platformSelected();
+      const filesCount = fInp && fInp.files ? fInp.files.length : 0;
+      if (requiresType && !selectedType) return 1;
+      if (!hasDesc) return 2;
+      if (!hasPlatform) return 3;
+      if (!filesCount) return 4;
+      return 5;
+    };
+
+    const updateStepper = () => {
+      if (!stepper || stepButtons.length === 0) return;
+      const step = computeStep();
+      stepButtons.forEach((btn) => {
+        const s = Number(btn.getAttribute('data-report-step') || '0');
+        const isActive = s === step;
+        const isDone = s > 0 && s < step;
+        btn.classList.toggle('text-bg-primary', isActive);
+        btn.classList.toggle('border-0', isActive);
+        btn.classList.toggle('text-bg-light', !isActive);
+        btn.classList.toggle('border', !isActive);
+        btn.classList.toggle('text-primary', isDone && !isActive);
+        btn.classList.toggle('text-dark', !isDone && !isActive);
+        btn.setAttribute('aria-current', isActive ? 'step' : 'false');
+      });
+    };
+
+    const scrollTo = (el) => {
+      if (!el || !el.scrollIntoView) return;
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    };
+
     const setTypePickerMode = (mode) => {
       const picker = typePicker;
       const summary = typeSummary;
@@ -80,12 +122,14 @@
       if (typeSummaryValue) typeSummaryValue.innerText = selected || '';
       if (selected) setTypePickerMode('summary');
       else setTypePickerMode('picker');
+      updateStepper();
     };
 
     const updateSubmitState = () => {
       const hasDesc = !!(desc.value || '').trim();
       const hasType = !requiresType || !!((typeField && typeField.value) ? typeField.value.trim() : '');
       sBtn.disabled = !(hasDesc && hasType);
+      updateStepper();
     };
 
     if (requiresType && typeField) {
@@ -97,6 +141,7 @@
           const target = descSection || desc;
           if (target && target.scrollIntoView) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
           if (desc && desc.focus) desc.focus({ preventScroll: true });
+          if (SafeNet.toast) SafeNet.toast('Tipo selecionado.', { variant: 'success' });
         });
       });
       updateTypeUI();
@@ -105,7 +150,28 @@
     if (typeEditBtn) {
       typeEditBtn.addEventListener('click', () => {
         setTypePickerMode('picker');
-        if (typePicker && typePicker.scrollIntoView) typePicker.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        scrollTo(typePicker);
+      });
+    }
+
+    if (stepButtons.length > 0) {
+      stepButtons.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const s = Number(btn.getAttribute('data-report-step') || '0');
+          if (s === 1) {
+            setTypePickerMode('picker');
+            scrollTo(document.getElementById('reportTypeSection') || typePicker);
+          } else if (s === 2) {
+            scrollTo(descSection || desc);
+            if (desc && desc.focus) desc.focus({ preventScroll: true });
+          } else if (s === 3) {
+            scrollTo(platformSection || pBtn);
+          } else if (s === 4) {
+            scrollTo(evidenceSection || fInp);
+          } else if (s === 5) {
+            scrollTo(sBtn);
+          }
+        });
       });
     }
 
@@ -137,6 +203,8 @@
       sPlat.classList.add('text-foreground');
       pDrop.classList.add('hidden');
       if (dIcon) dIcon.classList.remove('rotate-180');
+      updateStepper();
+      if (SafeNet.toast) SafeNet.toast('Plataforma selecionada.', { variant: 'success' });
     };
 
     window.addEventListener('click', (e) => {
@@ -152,14 +220,17 @@
         if (files.length > 0) {
           fCnt.innerText = `✓ ${files.length} ficheiro(s) selecionado(s)`;
           fCnt.classList.remove('hidden');
+          if (SafeNet.toast) SafeNet.toast(`${files.length} ficheiro(s) anexado(s).`, { variant: 'info' });
         } else {
           fCnt.classList.add('hidden');
         }
+        updateStepper();
       });
     }
 
     desc.addEventListener('input', updateSubmitState);
     updateSubmitState();
+    updateStepper();
     let submitting = false;
     sBtn.addEventListener('click', async () => {
       if (needsAuthToSubmit) {
@@ -170,9 +241,19 @@
 
       if (submitting) return;
       const description = desc.value.trim();
-      if (!description) return;
+      if (!description) {
+        if (SafeNet.toast) SafeNet.toast('Escreve a descrição do que aconteceu.', { variant: 'warn' });
+        scrollTo(descSection || desc);
+        if (desc && desc.focus) desc.focus({ preventScroll: true });
+        return;
+      }
       const selectedType = requiresType && typeField ? (typeField.value || '').trim() : '';
-      if (requiresType && !selectedType) return;
+      if (requiresType && !selectedType) {
+        if (SafeNet.toast) SafeNet.toast('Seleciona o tipo de denúncia.', { variant: 'warn' });
+        setTypePickerMode('picker');
+        scrollTo(document.getElementById('reportTypeSection') || typePicker);
+        return;
+      }
 
       const platformText = (sPlat && !sPlat.classList.contains('text-muted-foreground')) ? (sPlat.innerText || '').trim() : '';
       const profileRaw = localStorage.getItem('safenet_user_profile');
@@ -208,6 +289,7 @@
 
       submitting = true;
       sBtn.disabled = true;
+      if (SafeNet.toast) SafeNet.toast('A enviar denúncia…', { variant: 'info', timeoutMs: 1800 });
       let finalId = fallbackId;
       let savedRemote = false;
       try {

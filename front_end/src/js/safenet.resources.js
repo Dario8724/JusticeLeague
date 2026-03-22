@@ -10,6 +10,31 @@
     const ensureHelpPanel = () => {
       if (document.getElementById('helpLineModal')) return;
 
+      const copyText = async (text) => {
+        const t = String(text || '').trim();
+        if (!t) return false;
+        try {
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            await navigator.clipboard.writeText(t);
+            return true;
+          }
+        } catch { }
+        try {
+          const el = document.createElement('textarea');
+          el.value = t;
+          el.setAttribute('readonly', 'true');
+          el.style.position = 'fixed';
+          el.style.opacity = '0';
+          document.body.appendChild(el);
+          el.select();
+          const ok = document.execCommand('copy');
+          el.remove();
+          return !!ok;
+        } catch {
+          return false;
+        }
+      };
+
       const pspContacts = [
         {
           unit: 'COMANDO METROPOLITANO DE LISBOA',
@@ -132,6 +157,8 @@
 
       const rowsHtml = pspContacts.map((c) => {
         const phone = c.phone ? `<a class="fw-bold text-decoration-none" href="${telHref(c.phone)}">${c.phone}</a>` : `<span class="text-muted-foreground">—</span>`;
+        const mapsQuery = [c.unit, c.address, c.postalCode, c.locality].filter(Boolean).join(' ');
+        const addr = [c.address, c.postalCode, c.locality].filter(Boolean).join(', ');
 
         return `
           <div class="card-modern p-4">
@@ -154,6 +181,10 @@
                   <div>${phone}</div>
                 </div>
               </div>
+            </div>
+            <div class="d-flex flex-wrap gap-2 mt-3">
+              <button type="button" class="btn btn-sm btn-light border fw-bold rounded-3 px-3" data-copy="${addr}">Copiar morada</button>
+              <button type="button" class="btn btn-sm btn-light border fw-bold rounded-3 px-3" data-maps="${mapsQuery}">Abrir no Maps</button>
             </div>
           </div>
         `.trim();
@@ -195,7 +226,24 @@
           </div>
         </div>
       `;
-      document.body.appendChild(wrapper.firstElementChild);
+      const modalEl = wrapper.firstElementChild;
+      document.body.appendChild(modalEl);
+
+      modalEl.querySelectorAll('[data-copy]').forEach((btn) => {
+        btn.addEventListener('click', async () => {
+          const text = btn.getAttribute('data-copy') || '';
+          const ok = await copyText(text);
+          if (SafeNet.toast) SafeNet.toast(ok ? 'Morada copiada.' : 'Não foi possível copiar.', { variant: ok ? 'success' : 'error' });
+        });
+      });
+
+      modalEl.querySelectorAll('[data-maps]').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const q = btn.getAttribute('data-maps') || '';
+          const url = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(q)}`;
+          window.open(url, '_blank', 'noopener');
+        });
+      });
     };
 
     const ensureSecurityTipsModal = () => {
@@ -415,6 +463,18 @@
     ensureHelpPanel();
     ensureSecurityTipsModal();
     ensureNewsUpdatesModal();
+
+    const hash = (window.location.hash || '').toLowerCase();
+    const openModal = (id) => {
+      const el = document.getElementById(id);
+      if (!el) return;
+      if (window.bootstrap && window.bootstrap.Modal) {
+        window.bootstrap.Modal.getOrCreateInstance(el).show();
+      }
+    };
+    if (hash === '#help' || hash === '#linhadeajuda') openModal('helpLineModal');
+    if (hash === '#security' || hash === '#seguranca') openModal('securityTipsModal');
+    if (hash === '#news' || hash === '#noticias') openModal('newsUpdatesModal');
 
     grid.innerHTML = resources.map((res, i) => `
       <${res.href ? `a href="${res.href}"` : res.action ? 'button type="button"' : 'div'} ${res.action === 'helpLine' ? 'data-bs-toggle="modal" data-bs-target="#helpLineModal" aria-haspopup="dialog"' : res.action === 'securityTips' ? 'data-bs-toggle="modal" data-bs-target="#securityTipsModal" aria-haspopup="dialog"' : res.action === 'newsUpdates' ? 'data-bs-toggle="modal" data-bs-target="#newsUpdatesModal" aria-haspopup="dialog"' : ''} class="animate-fade-up flex flex-col items-start gap-4 p-8 rounded-[2rem] bg-white border border-border/40 text-left shadow-sm hover:shadow-md transition-all duration-300 text-decoration-none w-100" style="animation-delay: ${i * 100}ms;">
