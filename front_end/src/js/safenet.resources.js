@@ -132,8 +132,6 @@
 
       const rowsHtml = pspContacts.map((c) => {
         const phone = c.phone ? `<a class="fw-bold text-decoration-none" href="${telHref(c.phone)}">${c.phone}</a>` : `<span class="text-muted-foreground">—</span>`;
-        const fax = c.fax ? `<span class="text-muted-foreground">${c.fax}</span>` : `<span class="text-muted-foreground">—</span>`;
-        const email = c.email ? `<a class="text-decoration-none" href="mailto:${c.email}">${c.email}</a>` : `<span class="text-muted-foreground">—</span>`;
 
         return `
           <div class="card-modern p-4">
@@ -154,14 +152,6 @@
                 <div>
                   <div class="text-muted-foreground text-xs fw-bold text-uppercase tracking-[0.12em]">Telefone</div>
                   <div>${phone}</div>
-                </div>
-                <div>
-                  <div class="text-muted-foreground text-xs fw-bold text-uppercase tracking-[0.12em]">Fax</div>
-                  <div>${fax}</div>
-                </div>
-                <div>
-                  <div class="text-muted-foreground text-xs fw-bold text-uppercase tracking-[0.12em]">Email</div>
-                  <div>${email}</div>
                 </div>
               </div>
             </div>
