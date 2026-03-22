@@ -41,6 +41,7 @@ public class SecurityConfig {
                 .requestMatchers("/", "/index.html", "/favicon.ico").permitAll()
                 .requestMatchers("/pages/**", "/js/**", "/css/**", "/images/**").permitAll()
                 .requestMatchers("/api/auth/register", "/api/auth/login", "/api/auth/login/psp", "/api/auth/verify").permitAll()
+                .requestMatchers("/api/chat-apoio/**").permitAll()
                 .requestMatchers("/api/recursos/**").permitAll()
                 .requestMatchers("/api/tipos-denuncia/**").permitAll()
                 .requestMatchers("/api/esquadras/**").permitAll()
@@ -107,14 +108,9 @@ public class SecurityConfig {
     public CorsConfigurationSource corsConfig() {
         CorsConfiguration config = new CorsConfiguration();
 
-        // Em produção, substituir pelo domínio real do frontend SafeNet
-        config.setAllowedOrigins(Arrays.asList(
-                "http://localhost:3000",
-                "http://localhost:5173",
-                "http://localhost:5500",
-                "http://127.0.0.1:5500",
-                "http://localhost:5501",
-                "http://127.0.0.1:5501",
+        config.setAllowedOriginPatterns(Arrays.asList(
+                "http://localhost:*",
+                "http://127.0.0.1:*",
                 "https://safenet.pt"
         ));
 

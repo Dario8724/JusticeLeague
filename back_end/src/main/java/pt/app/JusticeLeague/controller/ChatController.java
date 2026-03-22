@@ -22,6 +22,11 @@ public class ChatController {
         return ResponseEntity.ok(chatService.enviarMensagem(denunciaId, req));
     }
 
+    @PostMapping("/{denunciaId}/apoio")
+    public ResponseEntity<List<ChatMensagemResponse>> enviarComApoio(@PathVariable Long denunciaId, @Valid @RequestBody ChatMensagemRequest req) {
+        return ResponseEntity.ok(chatService.enviarMensagemComApoio(denunciaId, req));
+    }
+
     @GetMapping("/{denunciaId}")
     public ResponseEntity<List<ChatMensagemResponse>> listar(@PathVariable Long denunciaId) {
         return ResponseEntity.ok(chatService.listarMensagens(denunciaId));

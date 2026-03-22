@@ -65,7 +65,14 @@ tailwind.config = {
 }
 
 window.SAFENET_CONFIG = window.SAFENET_CONFIG || {};
-window.SAFENET_CONFIG.apiBaseUrl = window.SAFENET_CONFIG.apiBaseUrl || localStorage.getItem('safenet_api_base') || window.location.origin;
+(() => {
+  const stored = localStorage.getItem('safenet_api_base');
+  const port = String(window.location.port || '');
+  const defaultBackEnd = (port === '5500' || port === '5501' || port === '5173' || port === '3000')
+    ? 'http://localhost:8080'
+    : window.location.origin;
+  window.SAFENET_CONFIG.apiBaseUrl = window.SAFENET_CONFIG.apiBaseUrl || stored || defaultBackEnd;
+})();
 window.SAFENET_CONFIG.apiPrefix = window.SAFENET_CONFIG.apiPrefix || '/api';
 window.SAFENET_CONFIG.apiTimeoutMs = window.SAFENET_CONFIG.apiTimeoutMs || 12000;
 window.SAFENET_CONFIG.reportsPath = window.SAFENET_CONFIG.reportsPath || '/reports';
