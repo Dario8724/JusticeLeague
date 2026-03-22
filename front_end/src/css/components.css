@@ -241,3 +241,31 @@ details.safenet-faq>summary {
 details.safenet-faq>summary::-webkit-details-marker {
   display: none;
 }
+
+details.safenet-faq>summary.accordion-button {
+  padding: 1.25rem 1.5rem;
+  font-size: 1.05rem;
+  line-height: 1.35;
+}
+
+details.safenet-faq .accordion-body {
+  padding: 0 1.5rem 1.25rem 1.5rem;
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
+details.safenet-faq>summary.accordion-button::after {
+  content: '▾';
+  background-image: none;
+  width: auto;
+  height: auto;
+  margin-left: auto;
+  font-size: 1.35rem;
+  line-height: 1;
+  opacity: 0.75;
+  transform: none;
+}
+
+details.safenet-faq>summary.accordion-button:not(.collapsed)::after {
+  transform: rotate(180deg);
+}
