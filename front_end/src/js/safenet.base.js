@@ -57,11 +57,13 @@
     if (!url || url === this.getApiPrefix()) throw new Error('API base URL não configurado');
 
     const init = options ? { ...options } : {};
+    const skipAuth = !!init.skipAuth;
+    delete init.skipAuth;
     const headers = new Headers(init.headers || {});
     headers.set('Accept', headers.get('Accept') || 'application/json');
 
     const token = this.getAuthToken();
-    if (token && !headers.get('Authorization')) {
+    if (!skipAuth && token && !headers.has('Authorization')) {
       headers.set('Authorization', `Bearer ${token}`);
     }
 
@@ -73,7 +75,9 @@
     }
 
     init.headers = headers;
-    init.credentials = init.credentials || 'include';
+    if (!init.credentials) {
+      init.credentials = skipAuth ? 'omit' : 'include';
+    }
 
     const ctrl = new AbortController();
     const t = window.setTimeout(() => ctrl.abort(), timeoutMs);
