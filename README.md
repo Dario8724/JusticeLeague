@@ -8,7 +8,7 @@ Levando em conta os dados atuais, que revelam uma realidade que continua a exigi
 
 ## Público-Alvo
 
-Direcionado principalmente a jovens, crianças, encarregados de educação e comunidades educativas, sendo tambem util para cidadão que necessitem de apoio ou que queiram denunciar situações de cyberbully.
+Direcionado principalmente a jovens, crianças, encarregados de educação e comunidades educativas, sendo também util para cidadão que necessitem de apoio ou que queiram denunciar situações de cyberbully.
 
 ---
 ##  Sobre o Projeto
@@ -48,23 +48,23 @@ Inspirado no conceito de uma rede segura (“SafeNet”), o projeto constitui um
 ---
 
 ###  Assistente Inteligente
-* Chat interativo
-* Sugestões automáticas das opções mais recorrentes 
-* Orientação para contacto em caso de urgencia 
+* Chat interativo.
+* Sugestões automáticas das opções mais recorrentes. 
+* Orientação para contacto em caso de urgencia.
 
 ---
 
 ###  Ponto de Informação
-* Informação atualizadas sobre cyberbully
-* Explicação dos tipos de cyberbully
-* Questionario de auto-conhecimento
-* Dicas de segurança online 
+* Informação atualizadas sobre cyberbully.
+* Explicação dos tipos de cyberbully.
+* Questionario de auto-conhecimento.
+* Dicas de segurança online. 
 ---
 
 ##  Recursos de Apoio 
-* Linha direta para esquadras
-* Apoio em situações urgentes
-* Orientação para ajuda especializada 
+* Linha direta para esquadras.
+* Apoio em situações urgentes.
+* Orientação para ajuda especializada. 
 
 ---
 
@@ -76,10 +76,10 @@ Tendo em conta a sensibilidade das denuncias a aplicação garante a proteção 
 ## Inovação 
 O projeto diferencia-se por: 
 
-* Integração de assistente inteligente
-* Experiência centrada no utilizador
-* Combinação de segurança, rapidez e tecnologia
-* Possibilidade futura de uso de inteligência artificial para prevenção
+* Integração de assistente inteligente.
+* Experiência centrada no utilizador.
+* Combinação de segurança, rapidez e tecnologia.
+* Possibilidade futura de uso de inteligência artificial para prevenção.
 * Possibilidade de apoio a investigações através de análise de dados, respeitando normas legais e proteção de dados(futuramente).
 
 ---
