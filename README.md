@@ -34,65 +34,88 @@ Inspirado no conceito de uma rede segura (“SafeNet”), o projeto constitui um
 ## Funcionalidades
 
 ###  Geolocalização
-* Encontrar esquadras próximas
-* Visualização em mapa
-* Direções até ao local
+Esta funcionalidade permite ao utilizador localizar rapidamente apoio físico próximo em situações de risco ou necessidade.
 
-###  Denuncias 
-* Acesso a lista dos tipos de cyberbully
-* Seleção do tipo de situação
-* Descrição da denuncia
-* Inserção de provas (imagens, prints, etc.)
-* Encaminhamento da denuncia para autoridades competentes
+* Identificação automática de esquadras próximas através da localização do utilizador
+* Visualização intuitiva em mapa para fácil navegação
+* Possibilidade de traçar direções até ao local escolhido, facilitando o acesso rápido a autoridades como a PSP
+* Otimizada para situações de urgência, reduzindo o tempo de resposta.
 
----
+###  Denúcias 
+Módulo central da aplicação foca na recolha e encaminhamento seguro de situações de cyberbullying.
+
+* Lista organizada dos diferentes tipos de cyberbullying (ex: insultos, ameaças, exposição de dados, etc.)
+* Seleção guiada do tipo de situação para facilitar o processo
+* Campo para descrição detalhada da ocorrência
+* Possibilidade de anexar provas (imagens, capturas de ecrã, ficheiros)
+* Encaminhamento automático da denúncia para entidades competentes, garantindo rapidez e segurança no processo.
+
 
 ###  Assistente Inteligente
-* Chat interativo.
-* Sugestões automáticas das opções mais recorrentes. 
-* Orientação para contacto em caso de urgencia.
+Um sistema interativo que apoio o utilizador em tempo real.
 
----
+* Chat automático disponível 24/7 para responder a dúvidas
+* Sugestões inteligentes baseadas nas situações mais comuns
+* Orientação passo a passo sobre o que fazer em cada caso
+* Encaminhamento imediato para contactos de emergência quando necessário
+
+
 
 ###  Ponto de Informação
-* Informação atualizadas sobre cyberbully.
-* Explicação dos tipos de cyberbully.
-* Questionario de auto-conhecimento.
-* Dicas de segurança online. 
----
+Espaço educativo para aumentar a consciencialização e prevenção.
+
+* Informação atualizada sobre cyberbullying e segurança digital
+* Questionários de autoavaliação para ajudar o utilizador a identificar situações de risco
+* Dicas práticas de segurança online e proteção de dados
+
 
 ##  Recursos de Apoio 
-* Linha direta para esquadras.
-* Apoio em situações urgentes.
-* Orientação para ajuda especializada. 
+Área dedicada ao suporte imediato e acompanhamento.
+
+* Linha direta para contacto com autoridades e serviços de apoio
+* Apoio rápido em situações urgentes
+* Orientação para ajuda especializada (psicólogos, serviços sociais, etc.)
+* Reforço da rede de apoio ao utilizador, promovendo segurança e bem-estar
 
 ---
 
-##  Segurança e Privacdade 
-Tendo em conta a sensibilidade das denuncias a aplicação garante a proteção dos dados do utilzador, o que permite realizar denuncias segurar e garante a privacidade  das vitimas.
+##  Segurança e Privacdade-
+Tendo em conta a elevada sensibilidade das denúncias, a aplicação garante a proteção rigorosa dos dados dos utilizadores.
+
+* Implementação de mecanismos de segurança que asseguram a confidencialidade da informação
+* Possibilidade de realizar denúncias de forma segura e, quando necessário, anónima
+* Proteção da identidade das vítimas, prevenindo exposição ou retaliação
+* Conformidade com normas legais de proteção de dados em Portugal
+
+Criando um ambiente de confiança que incentiva as vítimas a procurar ajuda sem receio.
 
 ---
 
 ## Inovação 
-O projeto diferencia-se por: 
+O projeto destaca-se por integrar tecnologia e foco no utilizador de forma diferenciadora:
 
-* Integração de assistente inteligente.
-* Experiência centrada no utilizador.
-* Combinação de segurança, rapidez e tecnologia.
-* Possibilidade futura de uso de inteligência artificial para prevenção.
-* Possibilidade de apoio a investigações através de análise de dados, respeitando normas legais e proteção de dados(futuramente).
+* Integração de um assistente inteligente para apoio imediato
+* Experiência intuitiva e centrada nas necessidades do utilizador
+* Combinação eficaz de segurança, rapidez e tecnologia
+* Potencial futuro de utilização de inteligência artificial para prevenção de casos de cyberbullying
+* Possibilidade de apoiar investigações através de análise de dados, respeitando sempre normas legais e privacidade (em desenvolvimento futuro).
 
 ---
 
 ## Impactos esperados 
+A implementação desta solução poderá gerar impactos positivos significativos:
 
-Dar mais visibilidade às vítimas de cyberbullying, contribuir para a redução dos casos e aumentar a consciencialização sobre o tema, facilitando o acesso e o apoio especializado, promovendo uma sociedade mais segura e informada.
+* Dar maior visibilidade às vítimas de cyberbullying
+* Contribuir para a redução de casos através de denúncia facilitada
+* Aumentar a consciencialização da sociedade sobre os perigos do ambiente digital
+* Facilitar o acesso a apoio especializado e às autoridades, como a PSP
+* Promover uma sociedade mais segura, informada e responsável no uso da internet
 
 ---
 ## Conclusão
 
-**O SafeNet** – PSP Smart Assist representa uma solução digital inovadora que visa responder a um problema cada vez mais presente na sociedade, o cyberbullying.
+**O SafeNet** – PSP Smart Assist apresenta-se como uma solução digital inovadora e necessária para responder a um problema cada vez mais presente: o cyberbullying.
 
-Através da integração de ferramentas de apoio, informação e denúncia a aplicação permite ajudar as vítimas, sensibilizar a população e facilitar o contacto com as autoridades.
-Com foco na acessibilidade, segurança e tecnologia este projeto contribui para a criação de um ambiente digital mais seguro, promovendo a prevenção e a redução dos casos de cyberbullying.
+Através da integração de ferramentas de denúncia, apoio e informação, a aplicação não só auxilia diretamente as vítimas, como também contribui para a sensibilização da população e para o fortalecimento da ligação com as autoridades.
 
+Mais do que uma aplicação, o SafeNet representa um passo importante rumo a um ambiente digital mais seguro, humano e consciente.
